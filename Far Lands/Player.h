@@ -6,6 +6,7 @@ class Player
 {
 private:
 	Stats* stats = nullptr;
+	sf::RectangleShape rect;
 
 public:
 	Player();
@@ -14,4 +15,5 @@ public:
 	void AtrackItem();
 	void Interact();
 	void Atack();
+	void Draw(sf::RenderWindow* win);
 };

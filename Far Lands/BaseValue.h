@@ -1,9 +1,18 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "ResourceManager.h"
 #define WIN_HEIGHT 720
 #define WIN_WIDTH 1280
 
 enum class EntityType { PLAYER };
+
+enum class TileType { GRASS};
+
+enum class TextureType {PLAYER, GRASS };
+
+#define MISSING_TEXTURE_PATH "Textures\\missingTexture.png"
+
+#define MAX_TEXTURE_COUNT 100
 
 #define BASE_GAZE_DERECTION 0
 

@@ -14,7 +14,7 @@ private:
     ~GameCore();
 public:
     static GameCore* GetInstance();
-    static void Destroy_Instance();
+    static void DestroyInstance();
 #pragma endregion 
 
 private:

@@ -39,7 +39,9 @@ void GameCore::Draw()
 {
     win->clear();
 
-    world->Draw();
+    world->Draw(win);
+
+    player->Draw(win);
 
     win->display();
 }
@@ -51,7 +53,7 @@ GameCore* GameCore::GetInstance()
     return instance;
 }
 
-void GameCore::Destroy_Instance()
+void GameCore::DestroyInstance()
 {
     if (instance != nullptr)
     {

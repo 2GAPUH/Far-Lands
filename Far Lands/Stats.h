@@ -16,7 +16,6 @@ public:
 	float lucky = 0;
 	bool collision = 0;
 	int gazeDerection = 0;
-	sf::RectangleShape rect;
 
 	Stats(EntityType type);
 };

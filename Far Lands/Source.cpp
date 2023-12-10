@@ -5,5 +5,7 @@ int main()
 {
 	GameCore::GetInstance()->Start();
 
+	GameCore::DestroyInstance();
+
 	return 0;
 }

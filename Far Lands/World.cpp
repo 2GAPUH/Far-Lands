@@ -12,7 +12,7 @@ World::~World()
 {
 }
 
-void World::Draw()
+void World::Draw(sf::RenderWindow* win)
 {
 }
 
