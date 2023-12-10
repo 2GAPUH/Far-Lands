@@ -1,10 +1,9 @@
-#include <SFML/Graphics.hpp>
-using namespace sf;
 #include "GameCore.h"
+
 
 int main()
 {
-    
+	GameCore::GetInstance()->Start();
 
-    return 0;
+	return 0;
 }

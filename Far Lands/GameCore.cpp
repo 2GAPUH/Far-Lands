@@ -2,11 +2,49 @@
 
 GameCore* GameCore::instance = nullptr;
 
-GameCore::GameCore() {}
+GameCore::GameCore() 
+{
+    win = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "Far Lands", sf::Style::Titlebar | sf::Style::Close);
+    world = new World;
+    player = new Player;
+}
 
-GameCore::~GameCore() {}
+GameCore::~GameCore() 
+{
+    delete player;
+    player = nullptr;
+    delete world;
+    world = nullptr;
+    delete win;
+    win = nullptr;
+}
 
-GameCore* GameCore::Get_Instance()
+void GameCore::Update()
+{
+    sf::Event ev;
+    while (win->pollEvent(ev))
+    {
+        switch (ev.type)
+        {
+        case sf::Event::Closed:
+            win->close();
+            break;
+
+
+        }
+    }
+}
+
+void GameCore::Draw()
+{
+    win->clear();
+
+    world->Draw();
+
+    win->display();
+}
+
+GameCore* GameCore::GetInstance()
 {
     if (instance == nullptr)
         instance = new GameCore();
@@ -20,4 +58,19 @@ void GameCore::Destroy_Instance()
         delete instance;
         instance = nullptr;
     }
+}
+
+void GameCore::Start()
+{
+    while (win->isOpen())
+    {
+        Update();
+
+        Draw();
+    }
+}
+
+sf::RenderWindow* GameCore::GetWin()
+{
+    return win;
 }
