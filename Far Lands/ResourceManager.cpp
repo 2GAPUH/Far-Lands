@@ -51,7 +51,7 @@ sf::Texture* ResourceManager::LoadTexture(sf::String path)
 {
     path = "Textures\\" + path;
     sf::Texture* tmp = new sf::Texture;
-    if (tmp->loadFromFile(path))
+    if (!tmp->loadFromFile(path))
         return missingTexture;
     count++;
     return tmp;

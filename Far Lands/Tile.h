@@ -6,7 +6,7 @@ class Tile
 	sf::RectangleShape rect;
 
 public:
-	Tile(TileType type, sf::Vector2f pos);
+	Tile(TileType type, sf::Vector2i pos);
 	void Draw(sf::RenderWindow* win);
 };
 

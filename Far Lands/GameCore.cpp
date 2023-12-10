@@ -4,7 +4,7 @@ GameCore* GameCore::instance = nullptr;
 
 GameCore::GameCore() 
 {
-    win = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "Far Lands", sf::Style::Titlebar | sf::Style::Close);
+    win = new sf::RenderWindow(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y), "Far Lands", sf::Style::Titlebar | sf::Style::Close);
     world = new World;
     player = new Player;
 }

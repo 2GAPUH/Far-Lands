@@ -1,20 +1,22 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "ResourceManager.h"
-#define WIN_HEIGHT 720
-#define WIN_WIDTH 1280
+#define WIN_SIZE sf::Vector2f{1280, 720}
 
 enum class EntityType { PLAYER };
 
 enum class TileType { GRASS};
 
-enum class TextureType {PLAYER, GRASS };
+enum class TextureType { PLAYER, GRASS };
 
 #define MISSING_TEXTURE_PATH "Textures\\missingTexture.png"
 
 #define MAX_TEXTURE_COUNT 100
 
 #define BASE_GAZE_DERECTION 0
+
+#define HERO_SIZE sf::Vector2f{32, 32}
+#define TILE_SIZE sf::Vector2f{32, 32}
+#define MAP_SIZE sf::Vector2f{50, 50}
 
 #pragma region PLAYER
 #define PLAYER_HP 100
