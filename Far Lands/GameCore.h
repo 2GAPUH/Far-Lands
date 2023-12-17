@@ -25,6 +25,7 @@ private:
 private:
     void Update();
     void Draw();
+    void Move();
 
 public:
     void Start();

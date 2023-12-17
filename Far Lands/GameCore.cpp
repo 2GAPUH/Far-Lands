@@ -7,6 +7,8 @@ GameCore::GameCore()
     win = new sf::RenderWindow(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y), "Far Lands", sf::Style::Titlebar | sf::Style::Close);
     world = new World;
     player = new Player;
+    win->setFramerateLimit(FRAME_LIMIT);
+    
 }
 
 GameCore::~GameCore() 
@@ -22,6 +24,8 @@ GameCore::~GameCore()
 void GameCore::Update()
 {
     sf::Event ev;
+    sf::Vector2f;
+
     while (win->pollEvent(ev))
     {
         switch (ev.type)
@@ -33,6 +37,8 @@ void GameCore::Update()
 
         }
     }
+
+    Move();
 }
 
 void GameCore::Draw()
@@ -76,3 +82,31 @@ sf::RenderWindow* GameCore::GetWin()
 {
     return win;
 }
+
+void GameCore::Move()
+{
+    sf::Vector2f shift = {0, 0};
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        shift.x += player->GetSpeed();
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        shift.x += -player->GetSpeed();
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        shift.y += player->GetSpeed();
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+        shift.y += -player->GetSpeed();
+    }
+
+    world->Move(shift);
+}
+
+

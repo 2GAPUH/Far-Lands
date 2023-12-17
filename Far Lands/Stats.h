@@ -4,9 +4,7 @@
 
 class Stats
 {
-	Stats(float HP, float DMG, float defense, float speed, float money, float lucky);
-	Stats(bool collision, int gazeDerection);
-
+	void SetStats(float HP, float DMG, float defense, float speed, float money, float lucky, bool collision, int gazeDerection);
 public:
 	float HP = 0;
 	float DMG = 0;

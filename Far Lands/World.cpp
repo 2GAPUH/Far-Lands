@@ -28,5 +28,7 @@ void World::Draw(sf::RenderWindow* win)
 
 void World::Move(sf::Vector2f shift)
 {
-
+	for (int i = 0; i < MAP_SIZE.x; i++)
+		for (int j = 0; j < MAP_SIZE.y; j++)
+			map[i][j]->Move(shift);
 }

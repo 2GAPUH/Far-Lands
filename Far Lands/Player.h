@@ -16,4 +16,5 @@ public:
 	void Interact();
 	void Atack();
 	void Draw(sf::RenderWindow* win);
+	float GetSpeed();
 };

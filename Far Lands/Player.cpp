@@ -19,3 +19,8 @@ void Player::Draw(sf::RenderWindow* win)
 {
 	win->draw(rect);
 }
+
+float Player::GetSpeed()
+{
+	return stats->speed;
+}

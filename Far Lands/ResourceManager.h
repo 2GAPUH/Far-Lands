@@ -20,7 +20,9 @@ private:
     sf::Texture* missingTexture = nullptr;
     sf::Texture* LoadTexture(sf::String path);
 
+
 public:
-    sf::Texture* GetTexture(TextureType type);
+    sf::Texture* GetTexture(TextureType type);   
+    sf::IntRect GetTextureRect(TextureType type);
 };
 

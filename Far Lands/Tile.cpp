@@ -10,6 +10,7 @@ Tile::Tile(TileType type, sf::Vector2i pos)
 	{
 	case TileType::GRASS:
 		rect.setTexture(ResourceManager::GetInstance()->GetTexture(TextureType::GRASS));
+		rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(TextureType::GRASS));
 		break;
 	}
 }
@@ -17,4 +18,9 @@ Tile::Tile(TileType type, sf::Vector2i pos)
 void Tile::Draw(sf::RenderWindow* win)
 {
 	win->draw(rect);
+}
+
+void Tile::Move(sf::Vector2f shift)
+{
+	rect.move(shift);
 }

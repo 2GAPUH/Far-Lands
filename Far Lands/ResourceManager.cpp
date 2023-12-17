@@ -3,6 +3,15 @@
 ResourceManager* ResourceManager::instance = nullptr;
 int ResourceManager::count = 0;
 
+int getRandomNumber(int minValue, int maxValue)
+{
+    static std::random_device rd; // »нициализаци€ генератора случайных чисел
+    static std::mt19937 gen(rd()); // »спользуем генератор Mersenne Twister
+    std::uniform_int_distribution<> distrib(minValue, maxValue); // «адаем равномерное распределение в заданном диапазоне
+
+    return distrib(gen); // ¬озвращаем случайное число
+}
+
 
 ResourceManager::ResourceManager()
 {
@@ -12,6 +21,7 @@ ResourceManager::ResourceManager()
     arr = new sf::Texture * [MAX_TEXTURE_COUNT] {nullptr};
 
     arr[(int)TextureType::GRASS] = LoadTexture("grass.png");
+
     arr[(int)TextureType::PLAYER] = LoadTexture("player.png");
 }
 
@@ -45,6 +55,17 @@ void ResourceManager::DestroyInstance()
 sf::Texture* ResourceManager::GetTexture(TextureType type)
 {
     return arr[(int)type];
+}
+
+sf::IntRect ResourceManager::GetTextureRect(TextureType type)
+{
+    sf::IntRect rect = { 0, 0, TEXTURE_SIZE, TEXTURE_SIZE };
+    switch (type)
+    {
+    case TextureType::GRASS:
+        rect.left = getRandomNumber(0, 11) * TEXTURE_SIZE;
+    }
+    return rect;
 }
 
 sf::Texture* ResourceManager::LoadTexture(sf::String path)
