@@ -2,6 +2,7 @@
 #include "BaseValue.h"
 #include "World.h"
 #include "Player.h"
+#include "EntityManager.h"
 
 class GameCore
 {
@@ -20,12 +21,14 @@ public:
 private:
     sf::RenderWindow* win = nullptr;
     World* world = nullptr;
-    Player* player = nullptr;
+    sf::View* view = nullptr;
 
 private:
     void Update();
     void Draw();
     void Move();
+    Player* player = nullptr;
+    EntityManager* entityManager = nullptr;
 
 public:
     void Start();

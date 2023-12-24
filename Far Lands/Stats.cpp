@@ -12,12 +12,17 @@ void Stats::SetStats(float HP, float DMG, float defense, float speed, float mone
 	this->gazeDerection = gazeDerection;
 }
 
-Stats::Stats(EntityType type)
+Stats::Stats(Type type)
 {
 	switch (type)
 	{
-	case EntityType::PLAYER:
+	case Type::PLAYER:
 		SetStats(PLAYER_HP, PLAYER_DMG, PLAYER_DEFENSE, PLAYER_SPEED, PLAYER_MONEY, PLAYER_LUCKY, PLAYER_COLLISION, BASE_GAZE_DERECTION);
 		break;
+
+	case Type::CHICKEN:
+		SetStats(CHICKEN_HP, CHICKEN_DMG, CHICKEN_DEFENSE, CHICKEN_SPEED, CHICKEN_MONEY, CHICKEN_LUCKY, CHICKEN_COLLISION, BASE_GAZE_DERECTION);
+		break;
+
 	}
 }

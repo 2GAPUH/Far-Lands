@@ -15,14 +15,14 @@ public:
     static void DestroyInstance();
 #pragma endregion
 private:
-    sf::Texture** arr = nullptr;
+    sf::Texture** vect = nullptr;
     static int count;
     sf::Texture* missingTexture = nullptr;
     sf::Texture* LoadTexture(sf::String path);
 
 
 public:
-    sf::Texture* GetTexture(TextureType type);   
-    sf::IntRect GetTextureRect(TextureType type);
+    sf::Texture* GetTexture(Type type);   
+    sf::IntRect GetTextureRect(Type type);
 };
 

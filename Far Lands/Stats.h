@@ -15,5 +15,5 @@ public:
 	bool collision = 0;
 	int gazeDerection = 0;
 
-	Stats(EntityType type);
+	Stats(Type type);
 };

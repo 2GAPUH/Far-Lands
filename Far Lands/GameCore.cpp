@@ -1,4 +1,5 @@
 #include "GameCore.h"
+#include "EntityManager.h"
 
 GameCore* GameCore::instance = nullptr;
 
@@ -6,15 +7,22 @@ GameCore::GameCore()
 {
     win = new sf::RenderWindow(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y), "Far Lands", sf::Style::Titlebar | sf::Style::Close);
     world = new World;
-    player = new Player;
     win->setFramerateLimit(FRAME_LIMIT);
     
+    view = new sf::View;
+    view->setCenter({ WIN_SIZE.x/2, WIN_SIZE.y / 2 });
+    view->setSize(WIN_SIZE);
+    win->setView(*view);
+
+    player = Player::GetInstance();
+    entityManager = EntityManager::GetInstance();
+
+    entityManager->Create(Type::CHICKEN, { 300, 300 });
+    world->SetObject(Type::WALL, {10, 10});
 }
 
 GameCore::~GameCore() 
 {
-    delete player;
-    player = nullptr;
     delete world;
     world = nullptr;
     delete win;
@@ -33,8 +41,6 @@ void GameCore::Update()
         case sf::Event::Closed:
             win->close();
             break;
-
-
         }
     }
 
@@ -48,6 +54,8 @@ void GameCore::Draw()
     world->Draw(win);
 
     player->Draw(win);
+
+    entityManager->Draw(win);
 
     win->display();
 }
@@ -74,8 +82,11 @@ void GameCore::Start()
     {
         Update();
 
+        entityManager->Update();
+
         Draw();
     }
+    
 }
 
 sf::RenderWindow* GameCore::GetWin()
@@ -86,27 +97,29 @@ sf::RenderWindow* GameCore::GetWin()
 void GameCore::Move()
 {
     sf::Vector2f shift = {0, 0};
+    float speed = player->GetSpeed();
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-    {
-        shift.x += player->GetSpeed();
-    }
+        shift.x += -speed;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        shift.x += -player->GetSpeed();
-    }
+        shift.x += speed;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
-        shift.y += player->GetSpeed();
-    }
+        shift.y += -speed;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        shift.y += -player->GetSpeed();
-    }
+        shift.y += speed;
 
-    world->Move(shift);
+
+    world->CheckCollision(shift, player->GetPosition(), player->GetTilePosition());
+
+    player->Move(shift);
+    view->setCenter(player->GetCenter());
+    win->setView(*view);
+    
 }
+
+
 
 

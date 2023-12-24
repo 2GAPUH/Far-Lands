@@ -18,19 +18,27 @@ ResourceManager::ResourceManager()
     missingTexture = new sf::Texture;
     missingTexture->loadFromFile(MISSING_TEXTURE_PATH);
 
-    arr = new sf::Texture * [MAX_TEXTURE_COUNT] {nullptr};
+    vect = new sf::Texture * [MAX_TEXTURE_COUNT] {nullptr};
 
-    arr[(int)TextureType::GRASS] = LoadTexture("grass.png");
+    vect[(int)Type::GRASS] = LoadTexture("grass.png");
 
-    arr[(int)TextureType::PLAYER] = LoadTexture("player.png");
+    vect[(int)Type::PLAYER] = LoadTexture("player.png");
+
+    vect[(int)Type::WALL] = LoadTexture("wall.png");
+
+    vect[(int)Type::ARROW] = LoadTexture("arrow.png");
+
+    vect[(int)Type::CHICKEN] = LoadTexture("chicken.png");
+
+    vect[(int)Type::APPLE] = LoadTexture("apple.png");
 }
 
 ResourceManager::~ResourceManager()
 {
     for (int i = 0; i < count; i++)
-        if (arr[i] != missingTexture)
-            delete arr[i];
-    delete arr;
+        if (vect[i] != missingTexture)
+            delete vect[i];
+    delete vect;
     
     if(missingTexture != nullptr)
     {
@@ -52,17 +60,17 @@ void ResourceManager::DestroyInstance()
     instance = nullptr;
 }
 
-sf::Texture* ResourceManager::GetTexture(TextureType type)
+sf::Texture* ResourceManager::GetTexture(Type type)
 {
-    return arr[(int)type];
+    return vect[(int)type];
 }
 
-sf::IntRect ResourceManager::GetTextureRect(TextureType type)
+sf::IntRect ResourceManager::GetTextureRect(Type type)
 {
     sf::IntRect rect = { 0, 0, TEXTURE_SIZE, TEXTURE_SIZE };
     switch (type)
     {
-    case TextureType::GRASS:
+    case Type::GRASS:
         rect.left = getRandomNumber(0, 11) * TEXTURE_SIZE;
     }
     return rect;
