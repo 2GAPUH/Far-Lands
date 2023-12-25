@@ -41,7 +41,16 @@ void GameCore::Update()
         case sf::Event::Closed:
             win->close();
             break;
+
+        case sf::Event::MouseButtonPressed:
+            if (ev.mouseButton.button == sf::Mouse::Right)
+                entityManager->CreateProjectile(Type::ARROW, player->GetCenter(),
+                    { view->getCenter().x - WIN_SIZE.x / 2 + ev.mouseButton.x,
+                    view->getCenter().y - WIN_SIZE.y / 2 + ev.mouseButton.y });
+                break;
+            
         }
+    
     }
 
     Move();
@@ -53,9 +62,9 @@ void GameCore::Draw()
 
     world->Draw(win);
 
-    player->Draw(win);
-
     entityManager->Draw(win);
+
+    player->Draw(win);
 
     win->display();
 }

@@ -30,16 +30,22 @@ void EntityManager::Create(Type type, sf::Vector2f pos)
 {
     switch (type)
     {
-    case Type::ARROW:
-        vect.push_back(new Projectile(type, pos));
-        break;
-
     case Type::CHICKEN:
         vect.push_back(new Enemy(type, pos));
         break;
 
     case Type::APPLE:
-        vect.push_back(new ItemInWorld());
+        vect.push_back(new ItemInWorld(type, pos));
+        break;
+    }
+}
+
+void EntityManager::CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f aim)
+{
+    switch (type)
+    {
+    case Type::ARROW:
+        vect.push_back(new Projectile(type, pos, aim));
         break;
     }
 }
@@ -65,6 +71,7 @@ void EntityManager::Update()
     for (auto elem : vect)
     {
         elem->Update();
+
     }
 }
 

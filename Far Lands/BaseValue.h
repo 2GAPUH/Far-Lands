@@ -28,6 +28,9 @@ struct MyTexture
 
 #define FRAME_LIMIT 30
 
+#define ARROW_SPEED 15
+#define ARROW_SIZE sf::Vector2f{41, 5}
+
 #pragma region PLAYER
 #define PLAYER_HP 100
 #define PLAYER_DMG 10

@@ -19,6 +19,7 @@ public:
     std::vector<Entity*> vect;
 public:
     void Create(Type type, sf::Vector2f pos);
+    void CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f aim);
     void Destroy(int ID);
     void Draw(sf::RenderWindow* win);
     void Update();

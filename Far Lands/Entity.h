@@ -9,10 +9,10 @@ protected:
 	static int count;
 	int ID;
 public:
-	Entity();
+	Entity(Type type, sf::Vector2f pos);
 	~Entity();
 	void Draw(sf::RenderWindow* win);
-	void Update();
+	virtual void Update() = 0;
 	int GetID();
 };
 

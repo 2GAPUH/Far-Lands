@@ -7,5 +7,6 @@ class Enemy :public Entity
 public:
 	Enemy(Type type, sf::Vector2f pos);
 	~Enemy();
+	void Update() override; 
 };
 
