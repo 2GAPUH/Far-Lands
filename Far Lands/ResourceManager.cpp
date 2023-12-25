@@ -30,6 +30,8 @@ ResourceManager::ResourceManager()
 
     vect[(int)Type::CHICKEN] = LoadTexture("chicken.png");
 
+    vect[(int)Type::CHICKEN_MEAT_RAW] = LoadTexture("chicken_meat_raw.png");
+
     vect[(int)Type::EGG] = LoadTexture("egg.png");
 }
 

@@ -97,7 +97,6 @@ void GameCore::Start()
 
         Draw();
     }
-    
 }
 
 sf::RenderWindow* GameCore::GetWin()

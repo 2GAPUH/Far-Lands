@@ -31,7 +31,7 @@ void ItemInWorld::Update()
 ItemInWorld::ItemInWorld(Type type, sf::Vector2f pos) : Entity(type, pos)
 {
 	player = Player::GetInstance();
-	rect.setSize({ 16, 16 });
+	rect.setSize({ 32, 32 });
 }
 
 ItemInWorld::~ItemInWorld()

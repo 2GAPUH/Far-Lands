@@ -10,7 +10,7 @@ protected:
 	int ID;
 public:
 	Entity(Type type, sf::Vector2f pos);
-	~Entity();
+	virtual ~Entity();
 	void Draw(sf::RenderWindow* win);
 	virtual void Update() = 0;
 	int GetID();

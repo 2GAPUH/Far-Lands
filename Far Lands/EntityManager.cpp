@@ -35,6 +35,7 @@ void EntityManager::Create(Type type, sf::Vector2f pos)
         break;
 
     case Type::EGG:
+    case Type::CHICKEN_MEAT_RAW:
         vect.push_back(new ItemInWorld(type, pos));
         break;
     }
@@ -86,8 +87,4 @@ void EntityManager::AddInDestroyList(int ID)
     destroyList.push_back(ID);
 }
 
-std::vector<Entity*> EntityManager::GetVect()
-{
-    return vect;
-}
 

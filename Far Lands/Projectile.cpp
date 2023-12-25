@@ -37,14 +37,20 @@ void Projectile::Update()
 {
     rect.move(movementVector);
 
-    for (Entity* enities : EntityManager::GetInstance()->GetVect())
+    for (Entity* enities : EntityManager::GetInstance()->vect)
     {
         if (Enemy* enemy = dynamic_cast<Enemy*>(enities))
             if (enemy->GetBounds().intersects(rect.getGlobalBounds()))
+            {
                 EntityManager::GetInstance()->AddInDestroyList(ID);
+                enemy->Punch(DMG);
+                return;
+            }
+
     }
 
     sf::Vector2f pos = rect.getPosition();
     if(pos.x < 0 || pos.y < 0 || pos.x > TILE_SIZE.x * MAP_SIZE.x || pos.y > TILE_SIZE.y * MAP_SIZE.y)
         EntityManager::GetInstance()->AddInDestroyList(ID);
+   
 }
