@@ -30,7 +30,7 @@ ResourceManager::ResourceManager()
 
     vect[(int)Type::CHICKEN] = LoadTexture("chicken.png");
 
-    vect[(int)Type::APPLE] = LoadTexture("apple.png");
+    vect[(int)Type::EGG] = LoadTexture("egg.png");
 }
 
 ResourceManager::~ResourceManager()

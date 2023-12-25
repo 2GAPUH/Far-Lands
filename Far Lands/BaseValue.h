@@ -4,7 +4,7 @@
 #include <random>
 #define WIN_SIZE sf::Vector2f{1280, 720}
 
-enum class Type { PLAYER, GRASS, WALL, ARROW, CHICKEN, APPLE};
+enum class Type { PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG};
 
 struct MyTexture
 {
@@ -30,6 +30,9 @@ struct MyTexture
 
 #define ARROW_SPEED 15
 #define ARROW_SIZE sf::Vector2f{41, 5}
+#define ARROW_DMG 10
+
+#define ITEM_PICK_UP_SPEED 15
 
 #pragma region PLAYER
 #define PLAYER_HP 100
@@ -39,6 +42,7 @@ struct MyTexture
 #define PLAYER_MONEY 100
 #define PLAYER_LUCKY 0.2
 #define PLAYER_COLLISION 1
+#define BASE_MAGNET_DISTANCE 200
 #pragma endregion
 
 #pragma region CHICKEN
@@ -50,12 +54,3 @@ struct MyTexture
 #define CHICKEN_LUCKY 0
 #define CHICKEN_COLLISION 1
 #pragma endregion
-
-
-
-
-
-
-
-
-

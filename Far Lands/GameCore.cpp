@@ -18,7 +18,9 @@ GameCore::GameCore()
     entityManager = EntityManager::GetInstance();
 
     entityManager->Create(Type::CHICKEN, { 300, 300 });
+    entityManager->Create(Type::EGG, { 1000, 1000 });
     world->SetObject(Type::WALL, {10, 10});
+
 }
 
 GameCore::~GameCore() 
@@ -51,7 +53,7 @@ void GameCore::Update()
             
         }
     
-    }
+    } 
 
     Move();
 }

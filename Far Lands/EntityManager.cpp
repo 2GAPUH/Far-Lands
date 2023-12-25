@@ -34,7 +34,7 @@ void EntityManager::Create(Type type, sf::Vector2f pos)
         vect.push_back(new Enemy(type, pos));
         break;
 
-    case Type::APPLE:
+    case Type::EGG:
         vect.push_back(new ItemInWorld(type, pos));
         break;
     }
@@ -57,6 +57,7 @@ void EntityManager::Destroy(int ID)
         {
             delete (*elem);
             vect.erase(elem);
+            return;
         }
 }
 
@@ -71,7 +72,22 @@ void EntityManager::Update()
     for (auto elem : vect)
     {
         elem->Update();
-
     }
+
+    for (auto ID : destroyList)
+    {
+        Destroy(ID);
+    }
+    destroyList.clear();
+}
+
+void EntityManager::AddInDestroyList(int ID)
+{
+    destroyList.push_back(ID);
+}
+
+std::vector<Entity*> EntityManager::GetVect()
+{
+    return vect;
 }
 

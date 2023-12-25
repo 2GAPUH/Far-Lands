@@ -23,10 +23,6 @@ void Entity::Draw(sf::RenderWindow* win)
 	win->draw(rect);
 }
 
-void Entity::Update()
-{
-}
-
 int Entity::GetID()
 {
 	return ID;

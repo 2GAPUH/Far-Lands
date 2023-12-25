@@ -4,11 +4,12 @@ void World::Load()
 {
 }
 
-void World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& shift) {
+bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& shift) {
     sf::FloatRect intersection;
     sf::FloatRect playerNew = { player.left + shift.x, player.top + shift.y, player.width, player.height };
 
-    if (block.intersects(playerNew, intersection)) {
+    if (block.intersects(playerNew, intersection)) 
+    {
         // Рассчитываем пересечение по осям X и Y
         float overlapX = intersection.width;
         float overlapY = intersection.height;
@@ -55,7 +56,9 @@ void World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, s
                 }
             }
         }
+        return true;
     }
+    return false;
 }
 
 
@@ -86,11 +89,13 @@ void World::SetObject(Type type, sf::Vector2i pos)
 	map[pos.x][pos.y]->SetObject(type);
 }
 
-void World::CheckCollision(sf::Vector2f& shift, sf::FloatRect player, sf::Vector2i tilePos)
+bool World::CheckCollision(sf::Vector2f& shift, sf::FloatRect player, sf::Vector2i tilePos)
 {
-    for (int i = tilePos.x - 2; i <= tilePos.x + 2; i++)
-        for (int j = tilePos.y - 2; j <= tilePos.y + 2; j++)
-            handleCollision(player, map[i][j]->GetObjBounds(), shift);
+    bool flag = 0;
+    for (int i = tilePos.x - 1; i <= tilePos.x + 1; i++)
+        for (int j = tilePos.y - 1; j <= tilePos.y + 1; j++)
+            flag += handleCollision(player, map[i][j]->GetObjBounds(), shift);
+    return flag;
 }
 
 

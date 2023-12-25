@@ -10,6 +10,11 @@ Enemy::~Enemy()
 
 }
 
+sf::FloatRect Enemy::GetBounds()
+{
+	return rect.getGlobalBounds();
+}
+
 void Enemy::Update()
 {
 

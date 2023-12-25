@@ -34,4 +34,5 @@ public:
 	sf::Vector2f GetCenter();
 	sf::FloatRect GetPosition();
 	sf::Vector2i GetTilePosition();
+	float GetMagnetDistance();
 };

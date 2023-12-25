@@ -5,6 +5,8 @@ class Tile
 {
 	sf::RectangleShape rect;
 	Object* obj = nullptr;
+
+
 public:
 	Tile(Type type, sf::Vector2i pos);
 	void SetObject(Type type);

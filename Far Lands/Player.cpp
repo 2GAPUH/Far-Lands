@@ -50,6 +50,11 @@ sf::Vector2i Player::GetTilePosition()
 	return tilePos;
 }
 
+float Player::GetMagnetDistance()
+{
+	return stats->magnetDistance;
+}
+
 
 
 Player* Player::GetInstance()

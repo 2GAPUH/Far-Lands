@@ -17,11 +17,14 @@ public:
     static void DestroyInstance();
 #pragma endregion
     std::vector<Entity*> vect;
+    std::vector<int> destroyList;
+    void Destroy(int ID);
 public:
     void Create(Type type, sf::Vector2f pos);
     void CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f aim);
-    void Destroy(int ID);
     void Draw(sf::RenderWindow* win);
     void Update();
+    void AddInDestroyList(int ID);
+    std::vector<Entity*> GetVect();
 };
 
