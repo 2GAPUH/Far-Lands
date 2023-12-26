@@ -56,7 +56,16 @@ void GameCore::Update()
                     { view->getCenter().x - WIN_SIZE.x / 2 + ev.mouseButton.x,
                     view->getCenter().y - WIN_SIZE.y / 2 + ev.mouseButton.y });
                 break;
-            
+         
+        case sf::Event::KeyPressed:
+            switch (ev.key.code)
+            {
+            case sf::Keyboard::E:
+                player->OpenInventory();
+                break;
+            }
+            break;
+
         }
     
     } 

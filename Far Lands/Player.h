@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseValue.h"
 #include "Stats.h"
+#include "Storage.h"
 
 class Player
 {
@@ -22,6 +23,7 @@ private:
 	sf::Vector2i tilePos = { 0 ,0 };
 	void UpdateTilePosition();
 	sf::Vector2f spawnTile = { 0, 0 };
+	Storage* inventory = nullptr;
 
 public:
 	void SetTexture();
@@ -37,4 +39,5 @@ public:
 	sf::Vector2i GetTilePosition();
 	float GetMagnetDistance();
 	void Respawn();
+	void OpenInventory();
 };

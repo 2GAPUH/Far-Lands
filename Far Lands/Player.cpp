@@ -10,12 +10,17 @@ Player::Player()
 	rect.setSize(HERO_SIZE);
 	rect.setFillColor(sf::Color(255, 255, 255));
 	spawnTile = { 24, 24 };
+	inventory = new Storage();
+	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 21);
+	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 2);
 }
 
 Player::~Player()
 {
 	delete stats;
 	stats = nullptr;
+	delete inventory;
+	inventory = nullptr;
 }
 
 
@@ -23,6 +28,7 @@ Player::~Player()
 void Player::Draw(sf::RenderWindow* win)
 {
 	win->draw(rect);
+	inventory->Draw(win);
 }
 
 float Player::GetSpeed()
@@ -33,6 +39,7 @@ float Player::GetSpeed()
 void Player::Move(sf::Vector2f shift)
 {
 	rect.move(shift);
+	inventory->Move(shift);
 }
 
 sf::Vector2f Player::GetCenter()
@@ -59,6 +66,11 @@ float Player::GetMagnetDistance()
 void Player::Respawn()
 {
 	rect.setPosition(spawnTile * TILE_SIZE.x);
+}
+
+void Player::OpenInventory()
+{
+	inventory->Open();
 }
 
 

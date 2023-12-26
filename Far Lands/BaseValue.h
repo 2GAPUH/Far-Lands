@@ -4,7 +4,7 @@
 #include <random>
 #define WIN_SIZE sf::Vector2f{1280, 720}
 
-enum class Type { PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW};
+enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, STORAGE};
 
 struct MyTexture
 {
@@ -35,6 +35,9 @@ struct MyTexture
 #define ITEM_PICK_UP_SPEED 15
 
 #define STORAGE_SIZE sf::Vector2i{8, 4}
+#define STORAGE_SIZE_OPEN sf::Vector2f{483, 255}
+#define STORAGE_CELL sf::Vector2f{48, 48}
+#define STACK_MAX_COUNT 2
 
 #pragma region PLAYER
 #define PLAYER_HP 100
