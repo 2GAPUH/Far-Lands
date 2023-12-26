@@ -10,9 +10,10 @@ class ItemInWorld :public Entity
 	sf::Vector2f gradualMovement(sf::Vector2f curPos, sf::Vector2f targetPos);
 	sf::Vector2f shift = {0, 0};
 	float distance = 0;
+	int count = 0;
 
 public:
 	void Update() override;
-	ItemInWorld(Type type, sf::Vector2f pos);
+	ItemInWorld(Type type, sf::Vector2f pos, int count);
 	~ItemInWorld();
 };

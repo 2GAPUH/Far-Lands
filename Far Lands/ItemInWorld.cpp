@@ -17,8 +17,8 @@ sf::Vector2f ItemInWorld::gradualMovement(sf::Vector2f curPos, sf::Vector2f targ
 
 void ItemInWorld::Update()
 {
-	distance = distanceBetweenPoints(rect.getPosition(), player->GetCenter());
-	if (distance < player->GetMagnetDistance())
+	distance = distanceBetweenPoints(rect.getPosition() + rect.getSize() * 0.5f, player->GetCenter());
+	if (distance < player->GetMagnetDistance() && distance > 30)
 	{
 		shift = gradualMovement(rect.getPosition(), player->GetCenter());
 	}
@@ -28,10 +28,11 @@ void ItemInWorld::Update()
 	rect.move(shift);
 }
 
-ItemInWorld::ItemInWorld(Type type, sf::Vector2f pos) : Entity(type, pos)
+ItemInWorld::ItemInWorld(Type type, sf::Vector2f pos, int count) : Entity(type, pos)
 {
 	player = Player::GetInstance();
 	rect.setSize({ 32, 32 });
+	this->count = count;
 }
 
 ItemInWorld::~ItemInWorld()

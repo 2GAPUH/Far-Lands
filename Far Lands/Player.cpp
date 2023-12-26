@@ -36,7 +36,7 @@ void Player::Move(sf::Vector2f shift)
 
 sf::Vector2f Player::GetCenter()
 {
-	return { rect.getPosition().x + rect.getSize().x / 2, rect.getPosition().y + rect.getSize().y / 2 };
+	return rect.getPosition() + 0.5f * rect.getSize();
 }
 
 sf::FloatRect Player::GetPosition()

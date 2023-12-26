@@ -26,19 +26,16 @@ void EntityManager::DestroyInstance()
     instance = nullptr;
 }
 
-void EntityManager::Create(Type type, sf::Vector2f pos)
+void EntityManager::CreateEnemy(Type type, sf::Vector2f pos)
 {
-    switch (type)
-    {
-    case Type::CHICKEN:
-        vect.push_back(new Enemy(type, pos));
-        break;
+    vect.push_back(new Enemy(type, pos));
+}
 
-    case Type::EGG:
-    case Type::CHICKEN_MEAT_RAW:
-        vect.push_back(new ItemInWorld(type, pos));
-        break;
-    }
+
+
+void EntityManager::CreateItemInWorld(Type type, sf::Vector2f pos, int count)
+{
+    vect.push_back(new ItemInWorld(type, pos, count));
 }
 
 void EntityManager::CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f aim)

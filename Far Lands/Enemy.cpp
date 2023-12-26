@@ -1,12 +1,15 @@
 #include "Enemy.h"
 #include "EntityManager.h"
+#include "ResourceManager.h"
 
 void Enemy::Drop()
 {
+	int count = ResourceManager::GetInstance()->getRandomNumber(0, 2);
+	if(count != 0)
 	switch (type)
 	{
 	case Type::CHICKEN:
-		EntityManager::GetInstance()->Create(Type::CHICKEN_MEAT_RAW, rect.getPosition());
+		EntityManager::GetInstance()->CreateItemInWorld(Type::CHICKEN_MEAT_RAW, rect.getPosition(),count );
 		break;
 	}
 }

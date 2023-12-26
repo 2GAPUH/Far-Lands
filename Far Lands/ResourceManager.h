@@ -20,8 +20,8 @@ private:
     sf::Texture* missingTexture = nullptr;
     sf::Texture* LoadTexture(sf::String path);
 
-
 public:
+    int getRandomNumber(int minValue, int maxValue);
     sf::Texture* GetTexture(Type type);   
     sf::IntRect GetTextureRect(Type type);
 };

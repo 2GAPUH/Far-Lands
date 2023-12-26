@@ -23,7 +23,8 @@ private:
     void Destroy(int ID);
 
 public:
-    void Create(Type type, sf::Vector2f pos);
+    void CreateEnemy(Type type, sf::Vector2f pos);
+    void CreateItemInWorld(Type type, sf::Vector2f pos, int count);
     void CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f aim);
     void Draw(sf::RenderWindow* win);
     void Update();

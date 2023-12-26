@@ -3,14 +3,6 @@
 ResourceManager* ResourceManager::instance = nullptr;
 int ResourceManager::count = 0;
 
-int getRandomNumber(int minValue, int maxValue)
-{
-    static std::random_device rd; // »нициализаци€ генератора случайных чисел
-    static std::mt19937 gen(rd()); // »спользуем генератор Mersenne Twister
-    std::uniform_int_distribution<> distrib(minValue, maxValue); // «адаем равномерное распределение в заданном диапазоне
-
-    return distrib(gen); // ¬озвращаем случайное число
-}
 
 
 ResourceManager::ResourceManager()
@@ -86,4 +78,13 @@ sf::Texture* ResourceManager::LoadTexture(sf::String path)
         return missingTexture;
     count++;
     return tmp;
+}
+
+int ResourceManager::getRandomNumber(int minValue, int maxValue)
+{
+    static std::random_device rd; // »нициализаци€ генератора случайных чисел
+    static std::mt19937 gen(rd()); // »спользуем генератор Mersenne Twister
+    std::uniform_int_distribution<> distrib(minValue, maxValue); // «адаем равномерное распределение в заданном диапазоне
+
+    return distrib(gen); // ¬озвращаем случайное число
 }

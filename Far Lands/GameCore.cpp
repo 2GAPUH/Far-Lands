@@ -17,9 +17,15 @@ GameCore::GameCore()
     player = Player::GetInstance();
     entityManager = EntityManager::GetInstance();
 
-    entityManager->Create(Type::CHICKEN, { 300, 300 });
-    entityManager->Create(Type::EGG, { 1000, 1000 });
-    world->SetObject(Type::WALL, {10, 10});
+    entityManager->CreateEnemy(Type::CHICKEN, { 300, 300 });
+    entityManager->CreateEnemy(Type::CHICKEN, { 400, 300 });
+    entityManager->CreateEnemy(Type::CHICKEN, { 500, 300 });
+    world->SetObject(Type::WALL, { 10, 10 });
+    world->SetObject(Type::WALL, { 10, 11 });
+    world->SetObject(Type::WALL, { 10, 12 });
+    world->SetObject(Type::WALL, { 11, 10 });
+    world->SetObject(Type::WALL, { 12, 10 });
+    world->SetObject(Type::WALL, {14, 10});
 
 }
 
