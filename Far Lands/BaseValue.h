@@ -35,8 +35,8 @@ struct MyTexture
 #define ITEM_PICK_UP_SPEED 15
 
 #define STORAGE_SIZE sf::Vector2i{8, 4}
-#define STORAGE_SIZE_OPEN sf::Vector2f{483, 255}
-#define STORAGE_CELL sf::Vector2f{48, 48}
+#define STORAGE_SIZE_OPEN sf::Vector2f{644, 340}
+#define STORAGE_CELL sf::Vector2f{64, 64}
 #define STACK_MAX_COUNT 2
 
 #pragma region PLAYER

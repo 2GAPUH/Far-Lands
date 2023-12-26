@@ -19,10 +19,12 @@ private:
     static int count;
     sf::Texture* missingTexture = nullptr;
     sf::Texture* LoadTexture(sf::String path);
+    sf::Font* font = nullptr;
 
 public:
     int getRandomNumber(int minValue, int maxValue);
     sf::Texture* GetTexture(Type type);   
     sf::IntRect GetTextureRect(Type type);
+    sf::Font* GetFont();
 };
 

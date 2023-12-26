@@ -8,6 +8,8 @@ private:
 	Type type;
 	sf::Texture* texture = nullptr;
 	sf::RectangleShape rect;
+	sf::Text text;
+	void UpdateText();
 
 public:
 	ItemInStorage();

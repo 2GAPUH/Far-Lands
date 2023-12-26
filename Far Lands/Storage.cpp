@@ -39,11 +39,11 @@ void Storage::Draw(sf::RenderWindow* win)
 {
 	if (open)
 	{
-		sf::Vector2f shift = rect.getPosition() + sf::Vector2f{19, 19};
+		sf::Vector2f shift = rect.getPosition() + sf::Vector2f{25, 25};
 		win->draw(rect);
 		for (int i = 0; i < STORAGE_SIZE.x; i++)
 			for (int j = 0; j < STORAGE_SIZE.y; j++)
-				storage[i][j]->Draw(win, shift + sf::Vector2f{ 57.f * i,57.f * j });
+				storage[i][j]->Draw(win, shift + sf::Vector2f{ 76.f * i,76.f * j });
 	}
 }
 

@@ -10,6 +10,12 @@ ResourceManager::ResourceManager()
     missingTexture = new sf::Texture;
     missingTexture->loadFromFile(MISSING_TEXTURE_PATH);
 
+    font = new sf::Font;    
+    if (!font->loadFromFile("BrassMono.ttf")) // Загрузка шрифта
+    {
+        std::cout << "Error text load!";
+    }
+
     vect = new sf::Texture * [MAX_TEXTURE_COUNT] {nullptr};
 
     vect[(int)Type::GRASS] = LoadTexture("grass.png");
@@ -27,6 +33,8 @@ ResourceManager::ResourceManager()
     vect[(int)Type::EGG] = LoadTexture("egg.png");
 
     vect[(int)Type::STORAGE] = LoadTexture("storage.png");
+
+
 }
 
 ResourceManager::~ResourceManager()
@@ -41,6 +49,9 @@ ResourceManager::~ResourceManager()
         delete missingTexture;
         missingTexture = nullptr;
     }
+
+    delete font;
+    font = nullptr;
 }
 
 ResourceManager* ResourceManager::GetInstance()
@@ -70,6 +81,11 @@ sf::IntRect ResourceManager::GetTextureRect(Type type)
         rect.left = getRandomNumber(0, 11) * TEXTURE_SIZE;
     }
     return rect;
+}
+
+sf::Font* ResourceManager::GetFont()
+{
+    return font;
 }
 
 sf::Texture* ResourceManager::LoadTexture(sf::String path)

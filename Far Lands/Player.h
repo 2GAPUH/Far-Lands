@@ -40,4 +40,5 @@ public:
 	float GetMagnetDistance();
 	void Respawn();
 	void OpenInventory();
+	int PickUpItem(Type type, int count);
 };

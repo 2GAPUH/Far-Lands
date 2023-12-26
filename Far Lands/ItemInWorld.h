@@ -12,6 +12,7 @@ private:
 	sf::Vector2f shift = {0, 0};
 	float distance = 0;
 	int count = 0;
+	Type type;
 
 public:
 	void Update() override;

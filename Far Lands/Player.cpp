@@ -65,12 +65,18 @@ float Player::GetMagnetDistance()
 
 void Player::Respawn()
 {
-	rect.setPosition(spawnTile * TILE_SIZE.x);
+	sf::Vector2f tmp = spawnTile * TILE_SIZE.x;
+	Move(tmp - rect.getPosition());
 }
 
 void Player::OpenInventory()
 {
 	inventory->Open();
+}
+
+int Player::PickUpItem(Type type, int count)
+{
+	return inventory->PutItemAuto(type, count);
 }
 
 
