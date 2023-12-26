@@ -3,6 +3,7 @@
 
 class Enemy :public Entity
 {
+private:
 	Stats*  stats = nullptr;
 	void Drop();
 	Type type;

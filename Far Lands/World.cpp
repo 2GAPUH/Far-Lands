@@ -2,6 +2,7 @@
 
 void World::Load()
 {
+
 }
 
 bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& shift) {
@@ -75,13 +76,29 @@ World::World()
 
 World::~World()
 {
+    for (int i = 0; i < MAP_SIZE.x; i++)
+        for (int j = 0; j < MAP_SIZE.y; j++)
+            delete map[i][j];
+
+    for (int i = 0; i < MAP_SIZE.x; i++)
+        delete map[i];
+
+    delete map;
+    map = nullptr;
 }
 
-void World::Draw(sf::RenderWindow* win)
+void World::Draw(sf::RenderWindow* win, sf::Vector2i tilePos)
 {
-	for (int i = 0; i < MAP_SIZE.x; i++)
-		for (int j = 0; j < MAP_SIZE.y; j++)
-			map[i][j]->Draw(win);
+    sf::Vector2i shift = { int(WIN_SIZE.x / TILE_SIZE.x / 2 + 1), int(WIN_SIZE.y / TILE_SIZE.y / 2 + 1) };
+
+    int startX = std::max(0, tilePos.x - shift.x);
+    int startY = std::max(0, tilePos.y - shift.y);
+    int endX = std::min((int)MAP_SIZE.x, tilePos.x + shift.x + 1);
+    int endY = std::min((int)MAP_SIZE.y, tilePos.y + shift.y + 1);
+
+    for (int i = startX; i < endX; ++i)
+        for (int j = startY; j < endY; ++j)
+            map[i][j]->Draw(win);
 }
 
 void World::SetObject(Type type, sf::Vector2i pos)

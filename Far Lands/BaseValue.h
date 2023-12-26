@@ -34,6 +34,8 @@ struct MyTexture
 
 #define ITEM_PICK_UP_SPEED 15
 
+#define STORAGE_SIZE sf::Vector2i{8, 4}
+
 #pragma region PLAYER
 #define PLAYER_HP 100
 #define PLAYER_DMG 10

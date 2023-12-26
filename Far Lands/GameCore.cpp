@@ -68,7 +68,7 @@ void GameCore::Draw()
 {
     win->clear();
 
-    world->Draw(win);
+    world->Draw(win, player->GetTilePosition());
 
     entityManager->Draw(win);
 

@@ -14,7 +14,7 @@ private:
 public:
 	World();
 	~World();
-	void Draw(sf::RenderWindow* win);
+	void Draw(sf::RenderWindow* win, sf::Vector2i tilePos);
 	void SetObject(Type type, sf::Vector2i pos);
 	bool CheckCollision(sf::Vector2f& shift, sf::FloatRect player, sf::Vector2i tilePos);
 };

@@ -4,6 +4,7 @@
 
 class Projectile :public Entity
 {
+private:
 	float speed = 0;
 	sf::Vector2f movementVector = { 0 ,0 };
 	void UpdateMovementVector(sf::Vector2f pos, sf::Vector2f aim);

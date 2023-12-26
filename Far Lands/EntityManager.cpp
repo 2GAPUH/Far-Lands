@@ -11,6 +11,7 @@ EntityManager::EntityManager()
 
 EntityManager::~EntityManager()
 {
+    vect.clear();
 }
 
 EntityManager* EntityManager::GetInstance()

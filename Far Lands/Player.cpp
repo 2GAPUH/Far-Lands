@@ -9,6 +9,7 @@ Player::Player()
 	rect.setPosition({ WIN_SIZE.x/2 - HERO_SIZE.x /2, WIN_SIZE.y / 2 - HERO_SIZE.y / 2 });
 	rect.setSize(HERO_SIZE);
 	rect.setFillColor(sf::Color(255, 255, 255));
+	spawnTile = { 24, 24 };
 }
 
 Player::~Player()
@@ -55,6 +56,11 @@ float Player::GetMagnetDistance()
 	return stats->magnetDistance;
 }
 
+void Player::Respawn()
+{
+	rect.setPosition(spawnTile * TILE_SIZE.x);
+}
+
 
 
 Player* Player::GetInstance()
@@ -77,4 +83,6 @@ void Player::UpdateTilePosition()
 {
 	tilePos.x = (rect.getPosition().x + rect.getSize().x / 2) / TILE_SIZE.x;
 	tilePos.y = (rect.getPosition().y + rect.getSize().y / 2) / TILE_SIZE.y;
+	if (tilePos.x <= 1 || tilePos.x >= MAP_SIZE.x - 2 || tilePos.y <= 1 || tilePos.y >= MAP_SIZE.y - 2)
+		Respawn();
 }

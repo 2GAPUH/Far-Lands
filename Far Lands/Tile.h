@@ -9,6 +9,7 @@ class Tile
 
 public:
 	Tile(Type type, sf::Vector2i pos);
+	~Tile();
 	void SetObject(Type type);
 	void Draw(sf::RenderWindow* win);
 	void Move(sf::Vector2f shift);

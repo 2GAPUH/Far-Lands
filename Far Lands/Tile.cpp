@@ -16,6 +16,13 @@ Tile::Tile(Type type, sf::Vector2i pos)
 	rect.setTexture(ResourceManager::GetInstance()->GetTexture(type));
 }
 
+Tile::~Tile()
+{
+	if (obj != 0)
+		delete obj;
+	obj = nullptr;
+}
+
 void Tile::SetObject(Type type)
 {
 	obj = new Object(type, rect.getPosition());

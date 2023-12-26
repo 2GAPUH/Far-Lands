@@ -21,6 +21,7 @@ private:
 	sf::RectangleShape rect;
 	sf::Vector2i tilePos = { 0 ,0 };
 	void UpdateTilePosition();
+	sf::Vector2f spawnTile = { 0, 0 };
 
 public:
 	void SetTexture();
@@ -35,4 +36,5 @@ public:
 	sf::FloatRect GetPosition();
 	sf::Vector2i GetTilePosition();
 	float GetMagnetDistance();
+	void Respawn();
 };

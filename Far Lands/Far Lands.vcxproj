@@ -38,7 +38,9 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="Storage.cpp" />
     <ClCompile Include="GameCore.cpp" />
+    <ClCompile Include="ItemInStorage.cpp" />
     <ClCompile Include="ItemInWorld.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -54,7 +56,9 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="Storage.h" />
     <ClInclude Include="GameCore.h" />
+    <ClInclude Include="ItemInStorage.h" />
     <ClInclude Include="ItemInWorld.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
