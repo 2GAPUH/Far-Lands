@@ -7,7 +7,7 @@ class Storage
 protected:
 	ItemInStorage*** storage = nullptr;
 	bool open = false;
-	sf::RectangleShape mainRect;
+	sf::RectangleShape rectStorage;
 	sf::Vector2f middlePos;
 	sf::Vector2f topPos;
 	sf::Vector2f downPos;

@@ -12,8 +12,8 @@ Storage::Storage()
 		for (int j = 0; j < STORAGE_SIZE.y; j++)
 			storage[i][j] = new ItemInStorage();
 
-	mainRect.setSize(STORAGE_SIZE_OPEN);
-	mainRect.setTexture(ResourceManager::GetInstance()->GetTexture(Type::STORAGE));
+	rectStorage.setSize(STORAGE_SIZE_OPEN);
+	rectStorage.setTexture(ResourceManager::GetInstance()->GetTexture(Type::STORAGE));
 	
 	downPos = (sf::Vector2f{ WIN_SIZE.x * 0.5f, WIN_SIZE.y * 0.75f } - STORAGE_SIZE_OPEN * 0.5f);
 	topPos = (sf::Vector2f{WIN_SIZE.x * 0.5f, WIN_SIZE.y * 0.25f } - STORAGE_SIZE_OPEN * 0.5f);
@@ -42,9 +42,9 @@ void Storage::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 {
 	if (open)
 	{
-		mainRect.setPosition(pos + middlePos);
-		sf::Vector2f shift = mainRect.getPosition() + sf::Vector2f{25, 25};
-		win->draw(mainRect);
+		rectStorage.setPosition(pos + middlePos);
+		sf::Vector2f shift = rectStorage.getPosition() + sf::Vector2f{24, 24};
+		win->draw(rectStorage);
 		for (int i = 0; i < STORAGE_SIZE.x; i++)
 			for (int j = 0; j < STORAGE_SIZE.y; j++)
 				storage[i][j]->Draw(win, shift + sf::Vector2f{ 76.f * i,76.f * j });

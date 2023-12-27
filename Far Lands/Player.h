@@ -42,4 +42,5 @@ public:
 	void OpenInventory();
 	int PickUpItem(Type type, int count);
 	void EditCurLine();
+	void EditCurElem(int i);
 };

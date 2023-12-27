@@ -47,17 +47,28 @@ void GameCore::Update()
         switch (ev.type)
         {
         case sf::Event::Closed:
+        {
             win->close();
-            break;
+        }
+        break;
 
         case sf::Event::MouseButtonPressed:
+        {
             if (ev.mouseButton.button == sf::Mouse::Right)
                 entityManager->CreateProjectile(Type::ARROW, player->GetCenter(),
                     { view->getCenter().x - WIN_SIZE.x / 2 + ev.mouseButton.x,
                     view->getCenter().y - WIN_SIZE.y / 2 + ev.mouseButton.y });
-                break;
+        }
+        break;
          
+        case sf::Event::MouseWheelScrolled:
+        {
+            player->EditCurElem(ev.mouseWheelScroll.delta);
+        }
+        break;
+
         case sf::Event::KeyPressed:
+        {
             switch (ev.key.code)
             {
             case sf::Keyboard::E:
@@ -67,7 +78,8 @@ void GameCore::Update()
             case sf::Keyboard::Tab:
                 player->EditCurLine();
             }
-            break;
+        }
+        break;
 
         }
     

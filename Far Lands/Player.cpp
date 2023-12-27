@@ -83,6 +83,11 @@ void Player::EditCurLine()
 	inventory->EditCurLine();
 }
 
+void Player::EditCurElem(int i)
+{
+	inventory->EditCurElem(i);
+}
+
 
 
 Player* Player::GetInstance()
