@@ -8,30 +8,35 @@ void Inventory::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 	{
 		rectBar.setPosition(pos + downPosSub);
 		sf::Vector2f shift = rectBar.getPosition() + sf::Vector2f{ 24, 24 };
-		rectCurElem.setPosition(shift + sf::Vector2f{ 76.f * curElem, 0 });
+		rectCurElem.setPosition(shift + sf::Vector2f{ 76.f * cutLine, 0 });
 
 		win->draw(rectBar);
 		win->draw(rectCurElem);
 		for (int i = 0; i < STORAGE_SIZE.x; i++)
-				storage[i][curLine]->Draw(win, shift + sf::Vector2f{ 76.f * i, 0 });
+				storage[i][curElem]->Draw(win, shift + sf::Vector2f{ 76.f * i, 0 });
 	}
 }
 
 void Inventory::EditCurLine()
 {
-	curLine = ++curLine % 4;
+	curElem = ++curElem % 4;
 }
 
 void Inventory::EditCurElem(int i)
 {
-	curElem += i;
+	cutLine += i;
 
-	if (curElem > 7) {
-		curElem = curElem % 8;
+	if (cutLine > 7) {
+		cutLine = cutLine % 8;
 	}
-	else if (curElem < 0) {
-		curElem = 8 + (curElem % 8); 
+	else if (cutLine < 0) {
+		cutLine = 8 + (cutLine % 8); 
 	}
+}
+
+Type Inventory::GetCurType()
+{
+	return storage[cutLine][curElem]->GetItemType();
 }
 
 Inventory::Inventory() : Storage()
@@ -43,7 +48,7 @@ Inventory::Inventory() : Storage()
 	rectCurElem.setSize(CUR_ELEM_TEXTURE_SIZE);
 	rectCurElem.setTexture(ResourceManager::GetInstance()->GetTexture(Type::CUR_ELEM));
 
-	curLine = 3;
+	curElem = 3;
 }
 
 Inventory::~Inventory()

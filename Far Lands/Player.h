@@ -2,6 +2,7 @@
 #include "BaseValue.h"
 #include "Stats.h"
 #include "Inventory.h"
+#include "EntityManager.h"
 
 class Player
 {
@@ -24,12 +25,14 @@ private:
 	void UpdateTilePosition();
 	sf::Vector2f spawnTile = { 0, 0 };
 	Inventory* inventory = nullptr;
+	EntityManager* entityManager = nullptr;
 
 public:
 	void SetTexture();
 	void AtrackItem();
 	void Interact();
 	void Atack();
+	void Use(sf::Vector2f mousePos);
 
 	void Draw(sf::RenderWindow* win);
 	float GetSpeed();

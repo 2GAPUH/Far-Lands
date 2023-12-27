@@ -55,9 +55,7 @@ void GameCore::Update()
         case sf::Event::MouseButtonPressed:
         {
             if (ev.mouseButton.button == sf::Mouse::Right)
-                entityManager->CreateProjectile(Type::ARROW, player->GetCenter(),
-                    { view->getCenter().x - WIN_SIZE.x / 2 + ev.mouseButton.x,
-                    view->getCenter().y - WIN_SIZE.y / 2 + ev.mouseButton.y });
+                player->Use(sf::Vector2f{(float) ev.mouseButton.x, (float)ev.mouseButton.y });
         }
         break;
          

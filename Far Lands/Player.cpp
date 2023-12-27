@@ -13,6 +13,8 @@ Player::Player()
 	inventory = new Inventory();
 	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 21);
 	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 2);
+	entityManager = EntityManager::GetInstance();
+	inventory->PutItemAuto(Type::BOW, 1);
 }
 
 Player::~Player()
@@ -24,6 +26,16 @@ Player::~Player()
 }
 
 
+
+void Player::Use(sf::Vector2f mousePos)
+{
+	switch (inventory->GetCurType())
+	{
+	case Type::BOW:
+		entityManager->CreateProjectile(Type::ARROW, GetCenter(), GetCenter() - WIN_SIZE / 2.f + mousePos);
+		break;
+	}
+}
 
 void Player::Draw(sf::RenderWindow* win)
 {

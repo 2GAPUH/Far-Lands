@@ -4,7 +4,7 @@
 #include <random>
 #define WIN_SIZE sf::Vector2f{1280, 720}
 
-enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, STORAGE, HOT_BAR, CUR_ELEM};
+enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, STORAGE, HOT_BAR, CUR_ELEM, BOW};
 
 struct MyTexture
 {

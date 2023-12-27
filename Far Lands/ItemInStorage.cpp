@@ -1,6 +1,7 @@
 
 #include "ItemInStorage.h"
 #include "ResourceManager.h"
+#include "EntityManager.h"
 
 void ItemInStorage::UpdateText()
 {
@@ -68,5 +69,7 @@ int ItemInStorage::PutItem(Type type, int count)
 	}
 	return 0;
 }
+
+
 
 

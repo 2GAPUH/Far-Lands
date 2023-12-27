@@ -35,6 +35,8 @@ ResourceManager::ResourceManager()
     vect[(int)Type::HOT_BAR] = LoadTexture("hot_bar.png");
 
     vect[(int)Type::CUR_ELEM] = LoadTexture("cur_elem.png");
+
+    vect[(int)Type::BOW] = LoadTexture("bow.png");
 }
 
 ResourceManager::~ResourceManager()
