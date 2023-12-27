@@ -1,7 +1,7 @@
 #pragma once
 #include "BaseValue.h"
 #include "Stats.h"
-#include "Storage.h"
+#include "Inventory.h"
 
 class Player
 {
@@ -23,7 +23,7 @@ private:
 	sf::Vector2i tilePos = { 0 ,0 };
 	void UpdateTilePosition();
 	sf::Vector2f spawnTile = { 0, 0 };
-	Storage* inventory = nullptr;
+	Inventory* inventory = nullptr;
 
 public:
 	void SetTexture();
@@ -41,4 +41,5 @@ public:
 	void Respawn();
 	void OpenInventory();
 	int PickUpItem(Type type, int count);
+	void EditCurLine();
 };

@@ -10,7 +10,7 @@ Player::Player()
 	rect.setSize(HERO_SIZE);
 	rect.setFillColor(sf::Color(255, 255, 255));
 	spawnTile = { 24, 24 };
-	inventory = new Storage();
+	inventory = new Inventory();
 	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 21);
 	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 2);
 }
@@ -28,7 +28,7 @@ Player::~Player()
 void Player::Draw(sf::RenderWindow* win)
 {
 	win->draw(rect);
-	inventory->Draw(win);
+	inventory->Draw(win, GetCenter() - WIN_SIZE / 2.f);
 }
 
 float Player::GetSpeed()
@@ -39,7 +39,6 @@ float Player::GetSpeed()
 void Player::Move(sf::Vector2f shift)
 {
 	rect.move(shift);
-	inventory->Move(shift);
 }
 
 sf::Vector2f Player::GetCenter()
@@ -77,6 +76,11 @@ void Player::OpenInventory()
 int Player::PickUpItem(Type type, int count)
 {
 	return inventory->PutItemAuto(type, count);
+}
+
+void Player::EditCurLine()
+{
+	inventory->EditCurLine();
 }
 
 

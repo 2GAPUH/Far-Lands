@@ -4,17 +4,19 @@
 
 class Storage
 {
-private:
+protected:
 	ItemInStorage*** storage = nullptr;
 	bool open = false;
-	sf::RectangleShape rect;
+	sf::RectangleShape mainRect;
+	sf::Vector2f middlePos;
+	sf::Vector2f topPos;
+	sf::Vector2f downPos;
 
 public:
 	Storage();
 	~Storage();
 	void Open();
-	void Draw(sf::RenderWindow* win);
-	void Move(sf::Vector2f shift);
+	virtual void Draw(sf::RenderWindow* win, sf::Vector2f pos);
 	int PutItemAuto(Type type, int count);
 };
 

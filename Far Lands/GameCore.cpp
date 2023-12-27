@@ -63,6 +63,9 @@ void GameCore::Update()
             case sf::Keyboard::E:
                 player->OpenInventory();
                 break;
+
+            case sf::Keyboard::Tab:
+                player->EditCurLine();
             }
             break;
 

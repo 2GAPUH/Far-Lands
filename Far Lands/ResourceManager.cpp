@@ -3,8 +3,6 @@
 ResourceManager* ResourceManager::instance = nullptr;
 int ResourceManager::count = 0;
 
-
-
 ResourceManager::ResourceManager()
 {
     missingTexture = new sf::Texture;
@@ -34,7 +32,7 @@ ResourceManager::ResourceManager()
 
     vect[(int)Type::STORAGE] = LoadTexture("storage.png");
 
-
+    vect[(int)Type::HOT_BAR] = LoadTexture("hot_bar.png");
 }
 
 ResourceManager::~ResourceManager()
