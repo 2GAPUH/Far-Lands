@@ -15,6 +15,7 @@ public:
 	void EditCurLine();
 	void EditCurElem(int i);
 	Type GetCurType();
+	void ReduceCurElem();
 	Inventory();
 	~Inventory();
 };

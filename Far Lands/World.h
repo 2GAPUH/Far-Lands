@@ -4,6 +4,18 @@
 
 class World
 {
+#pragma region ST
+private:
+	World();
+	World(World&);
+	World(World&&);
+	static World* instance;
+	~World();
+public:
+	static World* GetInstance();
+	static void DestroyInstance();
+#pragma endregion 
+
 private:
 	void Load();
 	int time = 0;
@@ -12,8 +24,6 @@ private:
 	bool handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& shift);
 
 public:
-	World();
-	~World();
 	void Draw(sf::RenderWindow* win, sf::Vector2i tilePos);
 	void SetObject(Type type, sf::Vector2i pos);
 	bool CheckCollision(sf::Vector2f& shift, sf::FloatRect player, sf::Vector2i tilePos);

@@ -38,6 +38,13 @@ Type ItemInStorage::GetItemType()
 	return type;
 }
 
+void ItemInStorage::ReduceItem()
+{
+	if (--count <= 0)
+		type = Type::EMPTY;
+	UpdateText();
+}
+
 
 
 //Возврат сколько поместилось

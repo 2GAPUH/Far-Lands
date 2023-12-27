@@ -37,6 +37,10 @@ ResourceManager::ResourceManager()
     vect[(int)Type::CUR_ELEM] = LoadTexture("cur_elem.png");
 
     vect[(int)Type::BOW] = LoadTexture("bow.png");
+
+    vect[(int)Type::BERRY_BUSH] = LoadTexture("berry_bush.png");
+
+    vect[(int)Type::OBJECTS] = LoadTexture("objects.png");
 }
 
 ResourceManager::~ResourceManager()
@@ -81,6 +85,10 @@ sf::IntRect ResourceManager::GetTextureRect(Type type)
     {
     case Type::GRASS:
         rect.left = getRandomNumber(0, 11) * TEXTURE_SIZE;
+        break;
+    case Type::OBJECTS:
+        rect.left = getRandomNumber(0, 5) * TEXTURE_SIZE;
+        break;
     }
     return rect;
 }

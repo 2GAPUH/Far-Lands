@@ -6,7 +6,7 @@ GameCore* GameCore::instance = nullptr;
 GameCore::GameCore() 
 {
     win = new sf::RenderWindow(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y), "Far Lands", sf::Style::Titlebar | sf::Style::Close);
-    world = new World;
+    world = World::GetInstance();
     win->setFramerateLimit(FRAME_LIMIT);
     
     view = new sf::View;
@@ -20,18 +20,11 @@ GameCore::GameCore()
     entityManager->CreateEnemy(Type::CHICKEN, { 300, 300 });
     entityManager->CreateEnemy(Type::CHICKEN, { 400, 300 });
     entityManager->CreateEnemy(Type::CHICKEN, { 500, 300 });
-    world->SetObject(Type::WALL, { 10, 10 });
-    world->SetObject(Type::WALL, { 10, 11 });
-    world->SetObject(Type::WALL, { 10, 12 });
-    world->SetObject(Type::WALL, { 11, 10 });
-    world->SetObject(Type::WALL, { 12, 10 });
-    world->SetObject(Type::WALL, {14, 10});
 
 }
 
 GameCore::~GameCore() 
 {
-    delete world;
     world = nullptr;
     delete win;
     win = nullptr;
@@ -61,7 +54,7 @@ void GameCore::Update()
          
         case sf::Event::MouseWheelScrolled:
         {
-            player->EditCurElem(ev.mouseWheelScroll.delta);
+            player->EditCurElem(ev.mouseWheelScroll.delta * -1);
         }
         break;
 

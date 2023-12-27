@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "ResourceManager.h"
 Player* Player::instance = nullptr;
+#include "World.h"
 
 Player::Player()
 {
@@ -15,6 +16,8 @@ Player::Player()
 	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 2);
 	entityManager = EntityManager::GetInstance();
 	inventory->PutItemAuto(Type::BOW, 1);
+	inventory->PutItemAuto(Type::BERRY_BUSH, 6);
+	world = World::GetInstance();
 }
 
 Player::~Player()
@@ -25,8 +28,6 @@ Player::~Player()
 	inventory = nullptr;
 }
 
-
-
 void Player::Use(sf::Vector2f mousePos)
 {
 	switch (inventory->GetCurType())
@@ -34,6 +35,11 @@ void Player::Use(sf::Vector2f mousePos)
 	case Type::BOW:
 		entityManager->CreateProjectile(Type::ARROW, GetCenter(), GetCenter() - WIN_SIZE / 2.f + mousePos);
 		break;
+	case Type::BERRY_BUSH:
+		inventory->ReduceCurElem();
+		world->SetObject(Type::BERRY_BUSH, GetTilePosition());
+		break;
+		
 	}
 }
 
@@ -99,8 +105,6 @@ void Player::EditCurElem(int i)
 {
 	inventory->EditCurElem(i);
 }
-
-
 
 Player* Player::GetInstance()
 {

@@ -1,8 +1,25 @@
 #include "World.h"
+World* World::instance = nullptr;
 
 void World::Load()
 {
 
+}
+
+World* World::GetInstance()
+{
+    if (instance == nullptr)
+        instance = new World();
+    return instance;
+}
+
+void World::DestroyInstance()
+{
+    if (instance != nullptr)
+    {
+        delete instance;
+        instance = nullptr;
+    }
 }
 
 bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& shift) {
@@ -71,7 +88,13 @@ World::World()
 
 	for (int i = 0; i < MAP_SIZE.x; i++)
 		for (int j = 0; j < MAP_SIZE.y; j++)
-			map[i][j] = new Tile(Type::GRASS, sf::Vector2i{ i, j });
+        {
+            map[i][j] = new Tile(Type::GRASS, sf::Vector2i{ i, j });
+            if (ResourceManager::GetInstance()->getRandomNumber(0, 30) == 0)
+            {
+                map[i][j]->SetObject(Type::OBJECTS);
+            }
+        }
 }
 
 World::~World()

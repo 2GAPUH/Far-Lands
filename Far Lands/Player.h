@@ -4,6 +4,7 @@
 #include "Inventory.h"
 #include "EntityManager.h"
 
+class World;
 class Player
 {
 #pragma region ST
@@ -26,6 +27,7 @@ private:
 	sf::Vector2f spawnTile = { 0, 0 };
 	Inventory* inventory = nullptr;
 	EntityManager* entityManager = nullptr;
+	World* world = nullptr;
 
 public:
 	void SetTexture();

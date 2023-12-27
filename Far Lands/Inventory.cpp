@@ -39,6 +39,11 @@ Type Inventory::GetCurType()
 	return storage[cutLine][curElem]->GetItemType();
 }
 
+void Inventory::ReduceCurElem()
+{
+	storage[cutLine][curElem]->ReduceItem();
+}
+
 Inventory::Inventory() : Storage()
 {
 	rectBar.setTexture(ResourceManager::GetInstance()->GetTexture(Type::HOT_BAR));

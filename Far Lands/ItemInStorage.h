@@ -16,6 +16,7 @@ public:
 	~ItemInStorage();
 	void Draw(sf::RenderWindow* win, sf::Vector2f pos);
 	Type GetItemType();
+	void ReduceItem();
 	int PutItem(Type type, int count);
 };
 
