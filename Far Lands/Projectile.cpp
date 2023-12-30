@@ -1,6 +1,5 @@
 #include "Projectile.h"
-#include "EntityManager.h"
-#include "Enemy.h"
+
 
 void Projectile::UpdateMovementVector(sf::Vector2f pos, sf::Vector2f aim)
 {
@@ -13,7 +12,7 @@ void Projectile::UpdateMovementVector(sf::Vector2f pos, sf::Vector2f aim)
     angle = std::atan2(movementVector.y, movementVector.x) * (180.0f / 3.14159f);
 }
 
-Projectile::Projectile(Type type, sf::Vector2f pos, sf::Vector2f aim) : Entity(type, pos)
+void Projectile::SetValues(Type type)
 {
     switch (type)
     {
@@ -23,34 +22,16 @@ Projectile::Projectile(Type type, sf::Vector2f pos, sf::Vector2f aim) : Entity(t
         DMG = ARROW_DMG;
         break;
     }
+}
 
+Projectile::Projectile(Type type, sf::Vector2f pos, sf::Vector2f aim) : Entity(type, pos)
+{
+    collision = true;
+    SetValues(type);
     UpdateMovementVector(pos, aim);
     rect.setRotation(angle);
 }
 
 Projectile::~Projectile()
 {
-
-}
-
-void Projectile::Update()
-{
-    rect.move(movementVector);
-
-    for (Entity* enities : EntityManager::GetInstance()->vect)
-    {
-        if (Enemy* enemy = dynamic_cast<Enemy*>(enities))
-            if (enemy->GetBounds().intersects(rect.getGlobalBounds()))
-            {
-                EntityManager::GetInstance()->AddInDestroyList(ID);
-                enemy->Punch(DMG);
-                return;
-            }
-
-    }
-
-    sf::Vector2f pos = rect.getPosition();
-    if(pos.x < 0 || pos.y < 0 || pos.x > TILE_SIZE.x * MAP_SIZE.x || pos.y > TILE_SIZE.y * MAP_SIZE.y)
-        EntityManager::GetInstance()->AddInDestroyList(ID);
-   
 }

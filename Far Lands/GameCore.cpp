@@ -16,11 +16,6 @@ GameCore::GameCore()
 
     player = Player::GetInstance();
     entityManager = EntityManager::GetInstance();
-
-    entityManager->CreateEnemy(Type::CHICKEN, { 300, 300 });
-    entityManager->CreateEnemy(Type::CHICKEN, { 400, 300 });
-    entityManager->CreateEnemy(Type::CHICKEN, { 500, 300 });
-
 }
 
 GameCore::~GameCore() 
@@ -143,12 +138,11 @@ void GameCore::Move()
         shift.y += speed;
 
 
-    world->CheckCollision(shift, player->GetPosition(), player->GetTilePosition());
+    world->CheckCollision(shift, player->GetPosition());
 
     player->Move(shift);
     view->setCenter(player->GetCenter());
     win->setView(*view);
-    
 }
 
 

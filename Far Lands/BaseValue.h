@@ -41,6 +41,8 @@ struct MyTexture
 #define STORAGE_CELL sf::Vector2f{64, 64}
 #define STACK_MAX_COUNT 2
 #define CUR_ELEM_TEXTURE_SIZE sf::Vector2f{64, 64}
+#define EQUIP_DISTANCE 30
+#define ITEM_IN_WORLD_SIZE sf::Vector2f{32, 32}
 
 #pragma region PLAYER
 #define PLAYER_HP 100

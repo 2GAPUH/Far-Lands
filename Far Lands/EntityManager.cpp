@@ -1,12 +1,15 @@
 #include "EntityManager.h"
-#include "Enemy.h"
-#include "Projectile.h"
+#include "ResourceManager.h"
 #include "ItemInWorld.h"
+#include "Arrow.h"
+#include "World.h" 
+#include "Chicken.h"
 
 EntityManager* EntityManager::instance = nullptr;
 
 EntityManager::EntityManager()
 {
+    world = World::GetInstance();
 }
 
 EntityManager::~EntityManager()
@@ -27,12 +30,20 @@ void EntityManager::DestroyInstance()
     instance = nullptr;
 }
 
-void EntityManager::CreateEnemy(Type type, sf::Vector2f pos)
+bool EntityManager::CheckOutWorld(sf::Vector2i tilePos)
 {
-    vect.push_back(new Enemy(type, pos));
+    return (tilePos.x <= 1 || tilePos.y <= 1 || tilePos.x >= MAP_SIZE.x - 2 || tilePos.y >= MAP_SIZE.y - 2);
 }
 
-
+void EntityManager::CreateEnemy(Type type, sf::Vector2i tilePos)
+{
+    switch (type)
+    {
+    case Type::CHICKEN:
+        vect.push_back(new Chicken(tilePos));
+        break;
+    }
+}
 
 void EntityManager::CreateItemInWorld(Type type, sf::Vector2f pos, int count)
 {
@@ -44,7 +55,7 @@ void EntityManager::CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f a
     switch (type)
     {
     case Type::ARROW:
-        vect.push_back(new Projectile(type, pos, aim));
+        vect.push_back(new Arrow(pos, aim));
         break;
     }
 }
@@ -70,7 +81,11 @@ void EntityManager::Update()
 {
     for (auto elem : vect)
     {
+        if (elem->GetCollision())
+            world->CheckCollision(elem->GetMovementVector(), elem->GetBounds());
         elem->Update();
+        if (CheckOutWorld(elem->GetTilePos()))
+            AddInDestroyList(elem->GetID());
     }
 
     for (auto ID : destroyList)
@@ -78,6 +93,15 @@ void EntityManager::Update()
         Destroy(ID);
     }
     destroyList.clear();
+
+    sf::Time deltaTime = clock.restart();
+    spawnTimer += deltaTime;
+
+    if (spawnTimer.asSeconds() >= spawnInterval) {
+        CreateEnemy(Type::CHICKEN, sf::Vector2i (ResourceManager::GetInstance()->getRandomNumber(2, 20), 
+            ResourceManager::GetInstance()->getRandomNumber(2, 20)));
+        spawnTimer = sf::Time::Zero; 
+    }
 }
 
 void EntityManager::AddInDestroyList(int ID)

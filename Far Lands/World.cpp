@@ -22,9 +22,9 @@ void World::DestroyInstance()
     }
 }
 
-bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& shift) {
+bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& movementVector) {
     sf::FloatRect intersection;
-    sf::FloatRect playerNew = { player.left + shift.x, player.top + shift.y, player.width, player.height };
+    sf::FloatRect playerNew = { player.left + movementVector.x, player.top + movementVector.y, player.width, player.height };
 
     if (block.intersects(playerNew, intersection)) 
     {
@@ -40,18 +40,18 @@ bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, s
         if (overlapX > 0 && overlapY > 0) {
             if (overlapX < overlapY) {
                 if (dx > 0) {
-                    shift.x += overlapX;
+                    movementVector.x += overlapX;
                 }
                 else {
-                    shift.x -= overlapX;
+                    movementVector.x -= overlapX;
                 }
             }
             else {
                 if (dy > 0) {
-                    shift.y += overlapY;
+                    movementVector.y += overlapY;
                 }
                 else {
-                    shift.y -= overlapY;
+                    movementVector.y -= overlapY;
                 }
             }
         }
@@ -59,24 +59,30 @@ bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, s
             // Иначе корректируем только по одной оси
             if (overlapX > 0) {
                 if (dx > 0) {
-                    shift.x += overlapX;
+                    movementVector.x += overlapX;
                 }
                 else {
-                    shift.x -= overlapX;
+                    movementVector.x -= overlapX;
                 }
             }
             if (overlapY > 0) {
                 if (dy > 0) {
-                    shift.y += overlapY;
+                    movementVector.y += overlapY;
                 }
                 else {
-                    shift.y -= overlapY;
+                    movementVector.y -= overlapY;
                 }
             }
         }
         return true;
     }
     return false;
+}
+
+sf::Vector2i World::TilePos(sf::FloatRect rect)
+{
+    return { int((rect.left + rect.width / 2) / TILE_SIZE.x) ,
+    int((rect.top + rect.height / 2) / TILE_SIZE.y )};
 }
 
 
@@ -129,14 +135,14 @@ void World::SetObject(Type type, sf::Vector2i pos)
 	map[pos.x][pos.y]->SetObject(type);
 }
 
-bool World::CheckCollision(sf::Vector2f& shift, sf::FloatRect player, sf::Vector2i tilePos)
+
+
+bool World::CheckCollision(sf::Vector2f& movementVector, sf::FloatRect colRect)
 {
     bool flag = 0;
+    sf::Vector2i tilePos = TilePos(colRect);
     for (int i = tilePos.x - 1; i <= tilePos.x + 1; i++)
         for (int j = tilePos.y - 1; j <= tilePos.y + 1; j++)
-            flag += handleCollision(player, map[i][j]->GetObjBounds(), shift);
+            flag += handleCollision(colRect, map[i][j]->GetObjBounds(), movementVector);
     return flag;
 }
-
-
-
