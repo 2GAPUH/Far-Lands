@@ -27,19 +27,21 @@ void EntityManager::DestroyInstance()
     instance = nullptr;
 }
 
-void EntityManager::CreateEnemy(Type type, sf::Vector2f pos)
+//Create enemy
+void EntityManager::Create(Type type, sf::Vector2f pos)
 {
     vect.push_back(new Enemy(type, pos));
 }
 
 
-
-void EntityManager::CreateItemInWorld(Type type, sf::Vector2f pos, int count)
+//Create item
+void EntityManager::Create(Type type, sf::Vector2f pos, int count)
 {
     vect.push_back(new ItemInWorld(type, pos, count));
 }
 
-void EntityManager::CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f aim)
+//Create projectile
+void EntityManager::Create(Type type, sf::Vector2f pos, sf::Vector2f aim)
 {
     switch (type)
     {

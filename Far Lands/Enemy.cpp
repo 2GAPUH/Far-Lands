@@ -9,7 +9,7 @@ void Enemy::Drop()
 	switch (type)
 	{
 	case Type::CHICKEN:
-		EntityManager::GetInstance()->CreateItemInWorld(Type::CHICKEN_MEAT_RAW, rect.getPosition(),count );
+		EntityManager::GetInstance()->Create(Type::CHICKEN_MEAT_RAW, rect.getPosition(),count );
 		break;
 	}
 }

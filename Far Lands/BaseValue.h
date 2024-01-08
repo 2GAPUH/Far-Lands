@@ -4,8 +4,26 @@
 #include <random>
 #define WIN_SIZE sf::Vector2f{1280, 720}
 
-enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, STORAGE, HOT_BAR, 
-	CUR_ELEM, BOW, OBJECTS, BERRY_BUSH};
+enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH};
+
+//enum class ObjectType {
+//
+//};
+
+
+enum class EnemyType {
+	CHICKEN = static_cast<int>(Type::CHICKEN)
+};
+
+enum class ProjectileType {
+	ARROW = static_cast<int>(Type::ARROW)
+};
+
+enum class ItemType {
+	EGG = static_cast<int>(Type::EGG),
+	CHICKEN_MEAT_RAW = static_cast<int>(Type::CHICKEN_MEAT_RAW),
+	BOW = static_cast<int>(Type::BOW)
+};
 
 struct MyTexture
 {

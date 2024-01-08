@@ -33,7 +33,7 @@ void Player::Use(sf::Vector2f mousePos)
 	switch (inventory->GetCurType())
 	{
 	case Type::BOW:
-		entityManager->CreateProjectile(Type::ARROW, GetCenter(), GetCenter() - WIN_SIZE / 2.f + mousePos);
+		entityManager->Create(Type::ARROW, GetCenter(), GetCenter() - WIN_SIZE / 2.f + mousePos);
 		break;
 	case Type::BERRY_BUSH:
 		inventory->ReduceCurElem();

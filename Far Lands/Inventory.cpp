@@ -46,12 +46,14 @@ void Inventory::ReduceCurElem()
 
 Inventory::Inventory() : Storage()
 {
-	rectBar.setTexture(ResourceManager::GetInstance()->GetTexture(Type::HOT_BAR));
+	rectBar.setTexture(ResourceManager::GetInstance()->GetTexture(Type::INTERFACE));
+	rectBar.setTextureRect(TextureRect::HOT_BAR);
 	rectBar.setSize(HOT_BAR_SIZE);
 	downPosSub = (sf::Vector2f{ WIN_SIZE.x * 0.5f, WIN_SIZE.y * 0.9f } - HOT_BAR_SIZE * 0.5f);
 
 	rectCurElem.setSize(CUR_ELEM_TEXTURE_SIZE);
-	rectCurElem.setTexture(ResourceManager::GetInstance()->GetTexture(Type::CUR_ELEM));
+	rectCurElem.setTexture(ResourceManager::GetInstance()->GetTexture(Type::INTERFACE));
+	rectCurElem.setTextureRect(TextureRect::CUR_ELEM);
 
 	curElem = 3;
 }

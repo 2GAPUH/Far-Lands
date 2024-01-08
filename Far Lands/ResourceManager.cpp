@@ -3,6 +3,11 @@
 ResourceManager* ResourceManager::instance = nullptr;
 int ResourceManager::count = 0;
 
+const sf::IntRect TextureRect::STORAGE = { 0, 0, 161, 85 };
+const sf::IntRect TextureRect::HOT_BAR = { 0, 96, 161, 28 };
+const sf::IntRect TextureRect::CUR_ELEM = { 176, 0, 16, 16 };
+
+
 ResourceManager::ResourceManager()
 {
     missingTexture = new sf::Texture;
@@ -30,11 +35,7 @@ ResourceManager::ResourceManager()
 
     vect[(int)Type::EGG] = LoadTexture("egg.png");
 
-    vect[(int)Type::STORAGE] = LoadTexture("storage.png");
-
-    vect[(int)Type::HOT_BAR] = LoadTexture("hot_bar.png");
-
-    vect[(int)Type::CUR_ELEM] = LoadTexture("cur_elem.png");
+    vect[(int)Type::INTERFACE] = LoadTexture("interface.png");
 
     vect[(int)Type::BOW] = LoadTexture("bow.png");
 
@@ -73,10 +74,13 @@ void ResourceManager::DestroyInstance()
     instance = nullptr;
 }
 
+
 sf::Texture* ResourceManager::GetTexture(Type type)
 {
     return vect[(int)type];
 }
+
+
 
 sf::IntRect ResourceManager::GetTextureRect(Type type)
 {

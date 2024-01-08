@@ -13,8 +13,9 @@ Storage::Storage()
 			storage[i][j] = new ItemInStorage();
 
 	rectStorage.setSize(STORAGE_SIZE_OPEN);
-	rectStorage.setTexture(ResourceManager::GetInstance()->GetTexture(Type::STORAGE));
-	
+	rectStorage.setTexture(ResourceManager::GetInstance()->GetTexture(Type::INTERFACE));
+	rectStorage.setTextureRect(TextureRect::STORAGE);
+
 	downPos = (sf::Vector2f{ WIN_SIZE.x * 0.5f, WIN_SIZE.y * 0.75f } - STORAGE_SIZE_OPEN * 0.5f);
 	topPos = (sf::Vector2f{WIN_SIZE.x * 0.5f, WIN_SIZE.y * 0.25f } - STORAGE_SIZE_OPEN * 0.5f);
 	middlePos = (WIN_SIZE * 0.5f - STORAGE_SIZE_OPEN * 0.5f);

@@ -23,9 +23,9 @@ private:
     void Destroy(int ID);
 
 public:
-    void CreateEnemy(Type type, sf::Vector2f pos);
-    void CreateItemInWorld(Type type, sf::Vector2f pos, int count);
-    void CreateProjectile(Type type, sf::Vector2f pos, sf::Vector2f aim);
+    void Create(Type type, sf::Vector2f pos);
+    void Create(Type type, sf::Vector2f pos, int count);
+    void Create(Type type, sf::Vector2f pos, sf::Vector2f aim);
     void Draw(sf::RenderWindow* win);
     void Update();
     void AddInDestroyList(int ID);

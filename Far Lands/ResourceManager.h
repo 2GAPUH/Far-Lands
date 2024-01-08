@@ -22,9 +22,17 @@ private:
     sf::Font* font = nullptr;
 
 public:
+    sf::Texture* GetTexture(Type type);
     int getRandomNumber(int minValue, int maxValue);
-    sf::Texture* GetTexture(Type type);   
     sf::IntRect GetTextureRect(Type type);
     sf::Font* GetFont();
+};
+
+class TextureRect
+{
+public:
+    static const sf::IntRect STORAGE;
+    static const sf::IntRect HOT_BAR;
+    static const sf::IntRect CUR_ELEM;
 };
 
