@@ -16,5 +16,5 @@ public:
 	int gazeDerection = 0;
 	float magnetDistance = 0;
 
-	Stats(Type type);
+	Stats(EnemyType type);
 };

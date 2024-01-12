@@ -8,13 +8,13 @@ void Enemy::Drop()
 	if(count != 0)
 	switch (type)
 	{
-	case Type::CHICKEN:
-		EntityManager::GetInstance()->Create(Type::CHICKEN_MEAT_RAW, rect.getPosition(),count );
+	case EnemyType::CHICKEN:
+		EntityManager::GetInstance()->Create(ItemType::CHICKEN_MEAT_RAW, rect.getPosition(),count );
 		break;
 	}
 }
 
-Enemy::Enemy(Type type, sf::Vector2f pos) : Entity(type, pos)
+Enemy::Enemy(EnemyType type, sf::Vector2f pos) : Entity(TypeConverter::Convert(type), pos)
 {
 	this->type = type;
 	stats = new Stats(type);

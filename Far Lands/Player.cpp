@@ -5,18 +5,17 @@ Player* Player::instance = nullptr;
 
 Player::Player()
 {
-	stats = new Stats(Type::PLAYER);
+	stats = new Stats(EnemyType::PLAYER);
 	rect.setTexture(ResourceManager::GetInstance()->GetTexture(Type::PLAYER));
 	rect.setPosition({ WIN_SIZE.x/2 - HERO_SIZE.x /2, WIN_SIZE.y / 2 - HERO_SIZE.y / 2 });
 	rect.setSize(HERO_SIZE);
 	rect.setFillColor(sf::Color(255, 255, 255));
 	spawnTile = { 24, 24 };
 	inventory = new Inventory();
-	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 21);
-	inventory->PutItemAuto(Type::CHICKEN_MEAT_RAW, 2);
+	inventory->PutItemAuto(ItemType::CHICKEN_MEAT_RAW, 21);
 	entityManager = EntityManager::GetInstance();
-	inventory->PutItemAuto(Type::BOW, 1);
-	inventory->PutItemAuto(Type::BERRY_BUSH, 6);
+	inventory->PutItemAuto(ItemType::BOW, 1);
+	inventory->PutItemAuto(ItemType::BERRY_BUSH, 6);
 	world = World::GetInstance();
 }
 
@@ -32,10 +31,10 @@ void Player::Use(sf::Vector2f mousePos)
 {
 	switch (inventory->GetCurType())
 	{
-	case Type::BOW:
-		entityManager->Create(Type::ARROW, GetCenter(), GetCenter() - WIN_SIZE / 2.f + mousePos);
+	case ItemType::BOW:
+		entityManager->Create(ProjectileType::ARROW, GetCenter(), GetCenter() - WIN_SIZE / 2.f + mousePos);
 		break;
-	case Type::BERRY_BUSH:
+	case ItemType::BERRY_BUSH:
 		inventory->ReduceCurElem();
 		world->SetObject(Type::BERRY_BUSH, GetTilePosition());
 		break;
@@ -91,7 +90,7 @@ void Player::OpenInventory()
 	inventory->Open();
 }
 
-int Player::PickUpItem(Type type, int count)
+int Player::PickUpItem(ItemType type, int count)
 {
 	return inventory->PutItemAuto(type, count);
 }

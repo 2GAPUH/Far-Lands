@@ -32,7 +32,7 @@ void ItemInWorld::Update()
 	rect.move(shift);
 }
 
-ItemInWorld::ItemInWorld(Type type, sf::Vector2f pos, int count) : Entity(type, pos)
+ItemInWorld::ItemInWorld(ItemType type, sf::Vector2f pos, int count) : Entity(TypeConverter::Convert(type), pos)
 {
 	player = Player::GetInstance();
 	rect.setSize({ 32, 32 });

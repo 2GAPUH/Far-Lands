@@ -6,10 +6,10 @@ class Enemy :public Entity
 private:
 	Stats*  stats = nullptr;
 	void Drop();
-	Type type;
+	EnemyType type;
 
 public:
-	Enemy(Type type, sf::Vector2f pos);
+	Enemy(EnemyType type, sf::Vector2f pos);
 	~Enemy();
 	sf::FloatRect GetBounds();
 	void Update() override; 

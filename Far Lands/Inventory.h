@@ -14,7 +14,7 @@ public:
 	void Draw(sf::RenderWindow* win, sf::Vector2f pos) override;
 	void EditCurLine();
 	void EditCurElem(int i);
-	Type GetCurType();
+	ItemType GetCurType();
 	void ReduceCurElem();
 	Inventory();
 	~Inventory();

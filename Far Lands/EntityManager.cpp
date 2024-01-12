@@ -28,27 +28,23 @@ void EntityManager::DestroyInstance()
 }
 
 //Create enemy
-void EntityManager::Create(Type type, sf::Vector2f pos)
+void EntityManager::Create(EnemyType type, sf::Vector2f pos)
 {
-    vect.push_back(new Enemy(type, pos));
+    if(type != EnemyType::PLAYER)
+        vect.push_back(new Enemy(type, pos));
 }
 
 
 //Create item
-void EntityManager::Create(Type type, sf::Vector2f pos, int count)
+void EntityManager::Create(ItemType type, sf::Vector2f pos, int count)
 {
     vect.push_back(new ItemInWorld(type, pos, count));
 }
 
 //Create projectile
-void EntityManager::Create(Type type, sf::Vector2f pos, sf::Vector2f aim)
+void EntityManager::Create(ProjectileType type, sf::Vector2f pos, sf::Vector2f aim)
 {
-    switch (type)
-    {
-    case Type::ARROW:
-        vect.push_back(new Projectile(type, pos, aim));
-        break;
-    }
+    vect.push_back(new Projectile(type, pos, aim));
 }
 
 void EntityManager::Destroy(int ID)
@@ -80,6 +76,8 @@ void EntityManager::Update()
         Destroy(ID);
     }
     destroyList.clear();
+
+
 }
 
 void EntityManager::AddInDestroyList(int ID)

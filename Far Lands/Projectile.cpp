@@ -13,11 +13,11 @@ void Projectile::UpdateMovementVector(sf::Vector2f pos, sf::Vector2f aim)
     angle = std::atan2(movementVector.y, movementVector.x) * (180.0f / 3.14159f);
 }
 
-Projectile::Projectile(Type type, sf::Vector2f pos, sf::Vector2f aim) : Entity(type, pos)
+Projectile::Projectile(ProjectileType type, sf::Vector2f pos, sf::Vector2f aim) : Entity(TypeConverter::Convert(type), pos)
 {
     switch (type)
     {
-    case Type::ARROW:
+    case ProjectileType::ARROW:
         speed = ARROW_SPEED;
         rect.setSize(ARROW_SIZE);
         DMG = ARROW_DMG;

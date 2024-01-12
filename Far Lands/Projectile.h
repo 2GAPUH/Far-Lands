@@ -12,7 +12,7 @@ private:
 	float DMG = 0;
 
 public:
-	Projectile(Type type, sf::Vector2f pos, sf::Vector2f aim);
+	Projectile(ProjectileType, sf::Vector2f pos, sf::Vector2f aim);
 	~Projectile();
 	void Update() override;
 };

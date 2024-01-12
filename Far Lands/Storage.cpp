@@ -53,7 +53,7 @@ void Storage::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 }
 
 //Возврат сколько не поместилось
-int Storage::PutItemAuto(Type type, int count)
+int Storage::PutItemAuto(ItemType type, int count)
 {
 	for (int j = 0; j < STORAGE_SIZE.y; j++)
 		for (int i = 0; i < STORAGE_SIZE.x; i++)

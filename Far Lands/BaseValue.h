@@ -2,17 +2,14 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <random>
+#include <unordered_map>
 #define WIN_SIZE sf::Vector2f{1280, 720}
 
 enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH};
 
-//enum class ObjectType {
-//
-//};
-
-
 enum class EnemyType {
-	CHICKEN = static_cast<int>(Type::CHICKEN)
+    CHICKEN = static_cast<int>(Type::CHICKEN),
+    PLAYER = static_cast<int>(Type::PLAYER)
 };
 
 enum class ProjectileType {
@@ -22,7 +19,43 @@ enum class ProjectileType {
 enum class ItemType {
 	EGG = static_cast<int>(Type::EGG),
 	CHICKEN_MEAT_RAW = static_cast<int>(Type::CHICKEN_MEAT_RAW),
-	BOW = static_cast<int>(Type::BOW)
+    BOW = static_cast<int>(Type::BOW),
+    EMPTY = static_cast<int>(Type::EMPTY),
+    BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH)
+};
+
+class TypeConverter {
+public:
+    static Type Convert(ItemType itemType) {
+        static const std::unordered_map<ItemType, Type> typeMap = {
+            {ItemType::EGG, Type::EGG},
+            {ItemType::CHICKEN_MEAT_RAW, Type::CHICKEN_MEAT_RAW},
+            {ItemType::BOW, Type::BOW},
+            {ItemType::EMPTY, Type::EMPTY},
+            {ItemType::BERRY_BUSH, Type::BERRY_BUSH}
+            
+        };
+
+        auto it = typeMap.find(itemType);
+        return (it != typeMap.end()) ? it->second : Type::EMPTY;
+    }
+    static Type Convert(EnemyType itemType) {
+        static const std::unordered_map<EnemyType, Type> typeMap = {
+            {EnemyType::CHICKEN, Type::CHICKEN},
+            {EnemyType::PLAYER, Type::PLAYER}
+        };
+
+        auto it = typeMap.find(itemType);
+        return (it != typeMap.end()) ? it->second : Type::EMPTY;
+    }
+    static Type Convert(ProjectileType itemType) {
+        static const std::unordered_map<ProjectileType, Type> typeMap = {
+            {ProjectileType::ARROW, Type::ARROW}
+        };
+
+        auto it = typeMap.find(itemType);
+        return (it != typeMap.end()) ? it->second : Type::EMPTY;
+    }
 };
 
 struct MyTexture

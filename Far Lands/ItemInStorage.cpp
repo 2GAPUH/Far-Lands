@@ -11,7 +11,7 @@ void ItemInStorage::UpdateText()
 ItemInStorage::ItemInStorage()
 {
 	rect.setSize(STORAGE_CELL);
-	type = Type::EMPTY;
+	type = ItemType::EMPTY;
 	text.setFont(*ResourceManager::GetInstance()->GetFont());
 	text.setFillColor(sf::Color::Black);
 	text.setOutlineColor(sf::Color::Black);
@@ -24,7 +24,7 @@ ItemInStorage::~ItemInStorage()
 
 void ItemInStorage::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 {
-	if(type != Type::EMPTY)
+	if(type != ItemType::EMPTY)
 	{
 		rect.setPosition(pos);
 		text.setPosition({ pos.x + 48, pos.y + 46 });
@@ -33,7 +33,7 @@ void ItemInStorage::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 	}
 }
 
-Type ItemInStorage::GetItemType()
+ItemType ItemInStorage::GetItemType()
 {
 	return type;
 }
@@ -41,20 +41,20 @@ Type ItemInStorage::GetItemType()
 void ItemInStorage::ReduceItem()
 {
 	if (--count <= 0)
-		type = Type::EMPTY;
+		type = ItemType::EMPTY;
 	UpdateText();
 }
 
 
 
 //Возврат сколько поместилось
-int ItemInStorage::PutItem(Type type, int count)
+int ItemInStorage::PutItem(ItemType type, int count)
 {
-	if (this->type == Type::EMPTY)
+	if (this->type == ItemType::EMPTY)
 	{
 		this->type = type;
 		this->count = std::min(STACK_MAX_COUNT, count);
-		rect.setTexture(ResourceManager::GetInstance()->GetTexture(type));
+		rect.setTexture(ResourceManager::GetInstance()->GetTexture(TypeConverter::Convert(type)));
 		UpdateText();
 		return this->count;
 	}

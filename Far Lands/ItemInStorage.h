@@ -5,7 +5,7 @@ class ItemInStorage
 {
 private:
 	int count = 0;
-	Type type;
+	ItemType type;
 	sf::Texture* texture = nullptr;
 	sf::RectangleShape rect;
 	sf::Text text;
@@ -15,8 +15,8 @@ public:
 	ItemInStorage();
 	~ItemInStorage();
 	void Draw(sf::RenderWindow* win, sf::Vector2f pos);
-	Type GetItemType();
+	ItemType GetItemType();
 	void ReduceItem();
-	int PutItem(Type type, int count);
+	int PutItem(ItemType type, int count);
 };
 

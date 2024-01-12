@@ -17,9 +17,9 @@ GameCore::GameCore()
     player = Player::GetInstance();
     entityManager = EntityManager::GetInstance();
 
-    entityManager->Create(Type::CHICKEN, { 300, 300 });
-    entityManager->Create(Type::CHICKEN, { 400, 300 });
-    entityManager->Create(Type::CHICKEN, { 500, 300 });
+    entityManager->Create(EnemyType::CHICKEN, { 300, 300 });
+    entityManager->Create(EnemyType::CHICKEN, { 400, 300 });
+    entityManager->Create(EnemyType::CHICKEN, { 500, 300 });
 
 }
 

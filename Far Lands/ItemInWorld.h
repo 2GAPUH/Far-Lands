@@ -12,10 +12,10 @@ private:
 	sf::Vector2f shift = {0, 0};
 	float distance = 0;
 	int count = 0;
-	Type type;
+	ItemType type;
 
 public:
 	void Update() override;
-	ItemInWorld(Type type, sf::Vector2f pos, int count);
+	ItemInWorld(ItemType type, sf::Vector2f pos, int count);
 	~ItemInWorld();
 };

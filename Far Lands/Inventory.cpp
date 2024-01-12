@@ -34,7 +34,7 @@ void Inventory::EditCurElem(int i)
 	}
 }
 
-Type Inventory::GetCurType()
+ItemType Inventory::GetCurType()
 {
 	return storage[cutLine][curElem]->GetItemType();
 }

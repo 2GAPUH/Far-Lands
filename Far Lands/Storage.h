@@ -17,6 +17,6 @@ public:
 	~Storage();
 	void Open();
 	virtual void Draw(sf::RenderWindow* win, sf::Vector2f pos);
-	int PutItemAuto(Type type, int count);
+	int PutItemAuto(ItemType type, int count);
 };
 
