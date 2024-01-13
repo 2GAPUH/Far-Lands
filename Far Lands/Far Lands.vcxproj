@@ -62,6 +62,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="ItemInStorage.h" />

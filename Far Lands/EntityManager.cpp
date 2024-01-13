@@ -1,7 +1,7 @@
 #include "EntityManager.h"
-#include "Projectile.h"
 #include "ItemInWorld.h"
 #include "Chicken.h"
+#include "Arrow.h"
 
 EntityManager* EntityManager::instance = nullptr;
 
@@ -50,9 +50,8 @@ void EntityManager::Create(ProjectileType type, sf::Vector2f pos, sf::Vector2f a
     switch (type)
     {
     case ProjectileType::ARROW:
-        vect.push_back(new Projectile(type, pos, aim));
+        vect.push_back(new Arrow(pos, aim));
         break;
-
     }
 }
 

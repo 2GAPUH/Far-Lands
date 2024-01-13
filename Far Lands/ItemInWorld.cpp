@@ -20,16 +20,16 @@ void ItemInWorld::Update()
 	distance = distanceBetweenPoints(rect.getPosition() + rect.getSize() * 0.5f, player->GetCenter());
 	if (distance < player->GetMagnetDistance())
 	{
-		shift = gradualMovement(rect.getPosition(), player->GetCenter());
+		movementVector = gradualMovement(rect.getPosition(), player->GetCenter());
 		if (distance < 30)
 			count = player->PickUpItem(type, count);
 		if (count == 0)
 			EntityManager::GetInstance()->AddInDestroyList(ID);
 	}
 	else
-		shift = { 0, 0 };
+		movementVector = { 0, 0 };
 
-	rect.move(shift);
+	rect.move(movementVector);
 }
 
 ItemInWorld::ItemInWorld(ItemType type, sf::Vector2f pos, int count) : Entity(TypeConverter::Convert(type), pos)

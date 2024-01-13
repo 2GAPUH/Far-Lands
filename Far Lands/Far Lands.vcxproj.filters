@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Entity">
+      <UniqueIdentifier>{0012d2fd-5e5d-4ada-8173-83c4c5d48000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Projectile">
+      <UniqueIdentifier>{e35a0d85-5fda-46fc-bd6f-ab672fd230e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Enemy">
+      <UniqueIdentifier>{c2c2c3e9-b6bb-4eab-a184-167d6c373309}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\ItemInWorld">
+      <UniqueIdentifier>{9142e5fc-6614-4ddc-a64a-0121ccfc6782}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseValue.h">
@@ -39,16 +51,7 @@
     <ClInclude Include="EntityManager.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemInWorld.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Storage.h">
@@ -61,10 +64,22 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Arrow.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Entity\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Entity</Filter>
     </ClInclude>
     <ClInclude Include="Chicken.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Entity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemInWorld.h">
+      <Filter>Entity\ItemInWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Entity\Projectile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -92,19 +107,7 @@
     <ClCompile Include="EntityManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemInWorld.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Storage.cpp">
@@ -117,10 +120,22 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Arrow.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Entity\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="Chicken.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Entity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemInWorld.cpp">
+      <Filter>Entity\ItemInWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Entity\Projectile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
