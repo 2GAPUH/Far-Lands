@@ -76,6 +76,19 @@ public:
     }
 };
 
+class RandomNumber
+{
+public:
+    static int GetRandomNumber(int minValue, int maxValue)
+    {
+        static std::random_device rd; // »нициализаци€ генератора случайных чисел
+        static std::mt19937 gen(rd()); // »спользуем генератор Mersenne Twister
+        std::uniform_int_distribution<> distrib(minValue, maxValue); // «адаем равномерное распределение в заданном диапазоне
+
+        return distrib(gen); // ¬озвращаем случайное число
+    }
+};
+
 struct MyTexture
 {
 	sf::Vector2i frameCount = { 0, 0 };

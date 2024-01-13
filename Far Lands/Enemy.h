@@ -1,18 +1,18 @@
 #pragma once
 #include "Entity.h"
+#include "BaseValue.h"
 
 class Enemy :public Entity
 {
-private:
+protected:
 	Stats*  stats = nullptr;
-	void Drop();
+	virtual void Drop() = 0;
 	EnemyType type;
 
 public:
 	Enemy(EnemyType type, sf::Vector2f pos);
 	~Enemy();
 	sf::FloatRect GetBounds();
-	void Update() override; 
+	virtual void Update() override = 0; 
 	void Punch(float DMG);
 };
-

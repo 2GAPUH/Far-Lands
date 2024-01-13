@@ -1,7 +1,7 @@
 #include "EntityManager.h"
-#include "Enemy.h"
 #include "Projectile.h"
 #include "ItemInWorld.h"
+#include "Chicken.h"
 
 EntityManager* EntityManager::instance = nullptr;
 
@@ -27,21 +27,24 @@ void EntityManager::DestroyInstance()
     instance = nullptr;
 }
 
-//Create enemy
 void EntityManager::Create(EnemyType type, sf::Vector2f pos)
 {
-    if(type != EnemyType::PLAYER)
-        vect.push_back(new Enemy(type, pos));
+    switch (type)
+    {
+    case EnemyType::CHICKEN:
+        vect.push_back(new Chicken(pos));
+        break;
+    
+    case EnemyType::PLAYER:
+        break;
+    }
 }
 
-
-//Create item
 void EntityManager::Create(ItemType type, sf::Vector2f pos, int count)
 {
     vect.push_back(new ItemInWorld(type, pos, count));
 }
 
-//Create projectile
 void EntityManager::Create(ProjectileType type, sf::Vector2f pos, sf::Vector2f aim)
 {
     switch (type)

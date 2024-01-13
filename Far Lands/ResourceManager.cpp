@@ -90,10 +90,10 @@ sf::IntRect ResourceManager::GetTextureRect(Type type)
     switch (type)
     {
     case Type::GRASS:
-        rect.left = getRandomNumber(0, 11) * TEXTURE_SIZE;
+        rect.left = RandomNumber::GetRandomNumber(0, 11) * TEXTURE_SIZE;
         break;
     case Type::OBJECTS:
-        rect.left = getRandomNumber(0, 5) * TEXTURE_SIZE;
+        rect.left = RandomNumber::GetRandomNumber(0, 5) * TEXTURE_SIZE;
         break;
     }
     return rect;
@@ -114,11 +114,4 @@ sf::Texture* ResourceManager::LoadTexture(sf::String path)
     return tmp;
 }
 
-int ResourceManager::getRandomNumber(int minValue, int maxValue)
-{
-    static std::random_device rd; // »нициализаци€ генератора случайных чисел
-    static std::mt19937 gen(rd()); // »спользуем генератор Mersenne Twister
-    std::uniform_int_distribution<> distrib(minValue, maxValue); // «адаем равномерное распределение в заданном диапазоне
 
-    return distrib(gen); // ¬озвращаем случайное число
-}

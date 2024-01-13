@@ -131,7 +131,7 @@ World::World()
                     map[i][j]->SetObject(ObjectType::INVISIBLE_WALL);
                     break;
                 case 0:
-                    if (ResourceManager::GetInstance()->getRandomNumber(0, 30) == 0)
+                    if (RandomNumber::GetRandomNumber(0, 30) == 0)
                     {
                         map[i][j]->SetObject(ObjectType::OBJECTS);
                     }

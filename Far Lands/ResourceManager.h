@@ -23,7 +23,6 @@ private:
 
 public:
     sf::Texture* GetTexture(Type type);
-    int getRandomNumber(int minValue, int maxValue);
     sf::IntRect GetTextureRect(Type type);
     sf::Font* GetFont();
 };
