@@ -5,7 +5,14 @@
 #include <unordered_map>
 #define WIN_SIZE sf::Vector2f{1280, 720}
 
-enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH};
+enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH, INVISIBLE_WALL};
+
+enum class ObjectType {
+    OBJECTS = static_cast<int>(Type::OBJECTS),
+    BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH),
+    WALL = static_cast<int>(Type::WALL),
+    INVISIBLE_WALL = static_cast<int>(Type::INVISIBLE_WALL)
+};
 
 enum class EnemyType {
     CHICKEN = static_cast<int>(Type::CHICKEN),
@@ -56,6 +63,17 @@ public:
         auto it = typeMap.find(itemType);
         return (it != typeMap.end()) ? it->second : Type::EMPTY;
     }
+    static Type Convert(ObjectType itemType) {
+        static const std::unordered_map<ObjectType, Type> typeMap = {
+            {ObjectType::WALL, Type::WALL},
+            {ObjectType::BERRY_BUSH, Type::BERRY_BUSH},
+            {ObjectType::INVISIBLE_WALL, Type::INVISIBLE_WALL},
+            {ObjectType::OBJECTS, Type::OBJECTS}
+        };
+
+        auto it = typeMap.find(itemType);
+        return (it != typeMap.end()) ? it->second : Type::EMPTY;
+    }
 };
 
 struct MyTexture
@@ -74,7 +92,6 @@ struct MyTexture
 #define HERO_SIZE sf::Vector2f{48, 48}
 #define CHICKEN_SIZE sf::Vector2f{48, 48}
 #define TILE_SIZE sf::Vector2f{48, 48}
-#define MAP_SIZE sf::Vector2f{50, 50}
 
 #define FRAME_SIZE 16
 

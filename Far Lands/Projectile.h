@@ -4,16 +4,16 @@
 
 class Projectile :public Entity
 {
-private:
+protected:
 	float speed = 0;
-	sf::Vector2f movementVector = { 0 ,0 };
-	void UpdateMovementVector(sf::Vector2f pos, sf::Vector2f aim);
 	float angle = 0;
 	float DMG = 0;
+	sf::Vector2f movementVector = { 0 ,0 };
+	void UpdateMovementVector(sf::Vector2f pos, sf::Vector2f aim);
 
 public:
 	Projectile(ProjectileType, sf::Vector2f pos, sf::Vector2f aim);
 	~Projectile();
-	void Update() override;
+	virtual void Update() override;
 };
 

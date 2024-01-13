@@ -10,7 +10,7 @@ class Tile
 public:
 	Tile(Type type, sf::Vector2i pos);
 	~Tile();
-	void SetObject(Type type);
+	void SetObject(ObjectType type);
 	void Draw(sf::RenderWindow* win);
 	void Move(sf::Vector2f shift);
 	sf::FloatRect GetObjBounds();

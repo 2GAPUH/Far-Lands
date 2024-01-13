@@ -27,7 +27,7 @@ Storage::~Storage()
 		for (int j = 0; j < STORAGE_SIZE.y; j++)
 			delete storage[i][j];
 
-	for (int i = 0; i < MAP_SIZE.x; i++)
+	for (int i = 0; i < STORAGE_SIZE.x; i++)
 		delete storage[i];
 
 	delete storage;

@@ -8,6 +8,10 @@ protected:
 	sf::RectangleShape rect;
 	static int count;
 	int ID;
+	sf::Vector2i tilePos;
+	void UpdateTilePos();
+	sf::Vector2i GetTilePos();
+
 public:
 	Entity(Type type, sf::Vector2f pos);
 	virtual ~Entity();

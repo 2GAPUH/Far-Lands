@@ -42,6 +42,8 @@ ResourceManager::ResourceManager()
     vect[(int)Type::BERRY_BUSH] = LoadTexture("berry_bush.png");
 
     vect[(int)Type::OBJECTS] = LoadTexture("objects.png");
+
+    vect[(int)Type::INVISIBLE_WALL] = LoadTexture("invisible_wall.png");
 }
 
 ResourceManager::~ResourceManager()

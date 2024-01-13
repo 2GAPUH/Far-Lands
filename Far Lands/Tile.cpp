@@ -23,7 +23,7 @@ Tile::~Tile()
 	obj = nullptr;
 }
 
-void Tile::SetObject(Type type)
+void Tile::SetObject(ObjectType type)
 {
 	obj = new Object(type, rect.getPosition());
 }

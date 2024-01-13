@@ -1,20 +1,21 @@
 #include "Object.h"
 
-Object::Object(Type type, sf::Vector2f pos)
+Object::Object(ObjectType type, sf::Vector2f pos)
 {
 	switch (type)
 	{
-	case Type::WALL:
-	case Type::BERRY_BUSH:
-	case Type::OBJECTS:
+	case ObjectType::WALL:
+	case ObjectType::BERRY_BUSH:
+	case ObjectType::OBJECTS:
+	case ObjectType::INVISIBLE_WALL:
 		rect.setSize(TILE_SIZE);
 		break;
 	}
 
 	rect.setPosition(pos);
-	rect.setTexture(ResourceManager::GetInstance()->GetTexture(type));
-	if (type == Type::OBJECTS)
-		rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type));
+	rect.setTexture(ResourceManager::GetInstance()->GetTexture(TypeConverter::Convert(type)));
+	if (type == ObjectType::OBJECTS)
+		rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(TypeConverter::Convert(type)));
 }
 
 void Object::Draw(sf::RenderWindow* win)

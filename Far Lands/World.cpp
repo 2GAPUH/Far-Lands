@@ -1,4 +1,6 @@
 #include "World.h"
+#include <fstream>
+#include <vector>
 World* World::instance = nullptr;
 
 void World::Load()
@@ -79,31 +81,77 @@ bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, s
     return false;
 }
 
+std::vector<std::vector<int>>* World::ReadFile(std::string path)
+{
+    std::ifstream inputFile(path);
+
+    if (!inputFile.is_open()) {
+        std::cerr << "Error opening file: " << path << std::endl;
+        return nullptr;
+    }
+
+    int rows, columns;
+    inputFile >> rows >> columns;
+
+    static std::vector<std::vector<int>> matrix(rows, std::vector<int>(columns));
+
+    for (int i = 0; i < rows; ++i) {
+
+        for (int j = 0; j < columns; ++j) {
+            inputFile >> matrix[i][j];
+        }
+    }
+
+    inputFile.close();
+
+    return &matrix;
+}
+
 
 World::World()
 {
-	map = new Tile**[MAP_SIZE.x];
-	for (int i = 0; i < MAP_SIZE.x; i++)
-		map[i] = new Tile * [MAP_SIZE.y];
+    std::vector<std::vector<int>>* matrix = ReadFile("Map.txt");
 
-	for (int i = 0; i < MAP_SIZE.x; i++)
-		for (int j = 0; j < MAP_SIZE.y; j++)
-        {
-            map[i][j] = new Tile(Type::GRASS, sf::Vector2i{ i, j });
-            if (ResourceManager::GetInstance()->getRandomNumber(0, 30) == 0)
+    if(matrix != nullptr)
+    {
+        size = { int(matrix->size()), int((*matrix)[0].size()) };
+
+        map = new Tile * *[size.x];
+        for (int i = 0; i < size.x; i++)
+            map[i] = new Tile * [size.y];
+
+        for (int i = 0; i < size.x; i++)
+            for (int j = 0; j < size.y; j++)
             {
-                map[i][j]->SetObject(Type::OBJECTS);
+                map[i][j] = new Tile(Type::GRASS, sf::Vector2i{ i, j });
+
+                switch ((*matrix)[i][j])
+                {
+                case 99:
+                    map[i][j]->SetObject(ObjectType::INVISIBLE_WALL);
+                    break;
+                case 0:
+                    if (ResourceManager::GetInstance()->getRandomNumber(0, 30) == 0)
+                    {
+                        map[i][j]->SetObject(ObjectType::OBJECTS);
+                    }
+                    break;
+                }
             }
-        }
+
+        for (int i = 0; i < matrix->size(); i++)
+            (*matrix)[i].clear();
+        matrix->clear();
+    }
 }
 
 World::~World()
 {
-    for (int i = 0; i < MAP_SIZE.x; i++)
-        for (int j = 0; j < MAP_SIZE.y; j++)
+    for (int i = 0; i < size.x; i++)
+        for (int j = 0; j < size.y; j++)
             delete map[i][j];
 
-    for (int i = 0; i < MAP_SIZE.x; i++)
+    for (int i = 0; i < size.x; i++)
         delete map[i];
 
     delete map;
@@ -116,15 +164,15 @@ void World::Draw(sf::RenderWindow* win, sf::Vector2i tilePos)
 
     int startX = std::max(0, tilePos.x - shift.x);
     int startY = std::max(0, tilePos.y - shift.y);
-    int endX = std::min((int)MAP_SIZE.x, tilePos.x + shift.x + 1);
-    int endY = std::min((int)MAP_SIZE.y, tilePos.y + shift.y + 1);
+    int endX = std::min((int)size.x, tilePos.x + shift.x + 1);
+    int endY = std::min((int)size.y, tilePos.y + shift.y + 1);
 
     for (int i = startX; i < endX; ++i)
         for (int j = startY; j < endY; ++j)
             map[i][j]->Draw(win);
 }
 
-void World::SetObject(Type type, sf::Vector2i pos)
+void World::SetObject(ObjectType type, sf::Vector2i pos)
 {
 	map[pos.x][pos.y]->SetObject(type);
 }

@@ -36,7 +36,7 @@ void Player::Use(sf::Vector2f mousePos)
 		break;
 	case ItemType::BERRY_BUSH:
 		inventory->ReduceCurElem();
-		world->SetObject(Type::BERRY_BUSH, GetTilePosition());
+		world->SetObject(ObjectType::BERRY_BUSH, GetTilePosition());
 		break;
 		
 	}
@@ -125,6 +125,4 @@ void Player::UpdateTilePosition()
 {
 	tilePos.x = (rect.getPosition().x + rect.getSize().x / 2) / TILE_SIZE.x;
 	tilePos.y = (rect.getPosition().y + rect.getSize().y / 2) / TILE_SIZE.y;
-	if (tilePos.x <= 1 || tilePos.x >= MAP_SIZE.x - 2 || tilePos.y <= 1 || tilePos.y >= MAP_SIZE.y - 2)
-		Respawn();
 }

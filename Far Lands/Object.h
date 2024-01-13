@@ -8,7 +8,7 @@ class Object
 	sf::RectangleShape rect;
 
 public:
-	Object(Type type, sf::Vector2f pos);
+	Object(ObjectType type, sf::Vector2f pos);
 	void Draw(sf::RenderWindow* win);
 	void SetPosition(sf::Vector2f pos);
 	sf::FloatRect GetCollisionRect();

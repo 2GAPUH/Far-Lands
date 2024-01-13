@@ -44,7 +44,13 @@ void EntityManager::Create(ItemType type, sf::Vector2f pos, int count)
 //Create projectile
 void EntityManager::Create(ProjectileType type, sf::Vector2f pos, sf::Vector2f aim)
 {
-    vect.push_back(new Projectile(type, pos, aim));
+    switch (type)
+    {
+    case ProjectileType::ARROW:
+        vect.push_back(new Projectile(type, pos, aim));
+        break;
+
+    }
 }
 
 void EntityManager::Destroy(int ID)
