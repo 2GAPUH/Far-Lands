@@ -81,6 +81,9 @@
     <ClInclude Include="Projectile.h">
       <Filter>Entity\Projectile</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="Projectile.cpp">
       <Filter>Entity\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

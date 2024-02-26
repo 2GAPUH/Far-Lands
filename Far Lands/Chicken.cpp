@@ -10,7 +10,6 @@ void Chicken::Drop()
 
 void Chicken::Update()
 {
-
 }
 
 Chicken::Chicken(sf::Vector2f pos) : Enemy(EnemyType::CHICKEN, pos)

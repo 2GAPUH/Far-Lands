@@ -84,8 +84,6 @@ void EntityManager::Update()
         Destroy(ID);
     }
     destroyList.clear();
-
-
 }
 
 void EntityManager::AddInDestroyList(int ID)

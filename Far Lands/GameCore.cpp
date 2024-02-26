@@ -1,6 +1,7 @@
 #include "GameCore.h"
 #include "EntityManager.h"
 
+
 GameCore* GameCore::instance = nullptr;
 
 GameCore::GameCore() 
@@ -127,8 +128,12 @@ sf::RenderWindow* GameCore::GetWin()
 
 void GameCore::Move()
 {
-    sf::Vector2f shift = {0, 0};
+    sf::Vector2f shift = { 0, 0 };
     float speed = player->GetSpeed();
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) ||
+        sf::Keyboard::isKeyPressed(sf::Keyboard::D) && (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)))
+        speed /= ROOT_CONST;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         shift.x += -speed;
@@ -142,13 +147,11 @@ void GameCore::Move()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         shift.y += speed;
 
-
     world->CheckCollision(shift, player->GetPosition(), player->GetTilePosition());
-
     player->Move(shift);
+    player->CheckViewDerection(shift);
     view->setCenter(player->GetCenter());
     win->setView(*view);
-    
 }
 
 

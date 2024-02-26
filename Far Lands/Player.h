@@ -3,6 +3,7 @@
 #include "Stats.h"
 #include "Inventory.h"
 #include "EntityManager.h"
+#include "Animation.h"
 
 class World;
 class Player
@@ -28,6 +29,8 @@ private:
 	Inventory* inventory = nullptr;
 	EntityManager* entityManager = nullptr;
 	World* world = nullptr;
+	FullStateType viewDerection = FullStateType::DOWN;
+	Animation* animation = nullptr;
 
 public:
 	void SetTexture();
@@ -39,6 +42,7 @@ public:
 	void Draw(sf::RenderWindow* win);
 	float GetSpeed();
 	void Move(sf::Vector2f shift);
+	void CheckViewDerection(sf::Vector2f shift);
 	sf::Vector2f GetCenter();
 	sf::FloatRect GetPosition();
 	sf::Vector2i GetTilePosition();
