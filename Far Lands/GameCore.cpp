@@ -151,7 +151,10 @@ void GameCore::Move()
     player->Move(shift);
     player->CheckViewDerection(shift);
     view->setCenter(player->GetCenter());
-    win->setView(*view);
+    win->setView(*view); 
+
+    for (EntityManager::Iterator it = entityManager->begin(); it != entityManager->end(); ++it)
+        world->CheckCollision((*it)->GetMovementVector(), (*it)->GetGlobalBounds());
 }
 
 

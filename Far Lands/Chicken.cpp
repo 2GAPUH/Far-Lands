@@ -10,12 +10,12 @@ void Chicken::Drop()
 
 void Chicken::Update()
 {
-	rect.move({ 1, 1 });
+	rect.move(movementVector);
 }
 
 Chicken::Chicken(sf::Vector2f pos) : Enemy(EnemyType::CHICKEN, pos)
 {
-
+	movementVector = { 1, 1 };
 }
 
 Chicken::~Chicken()

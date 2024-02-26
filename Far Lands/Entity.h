@@ -19,5 +19,7 @@ public:
 	virtual void Draw(sf::RenderWindow* win);
 	virtual void Update() = 0;
 	int GetID();
+	sf::Vector2f& GetMovementVector();
+	sf::FloatRect GetGlobalBounds();
 };
 

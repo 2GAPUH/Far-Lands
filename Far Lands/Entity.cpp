@@ -33,3 +33,14 @@ int Entity::GetID()
 {
 	return ID;
 }
+
+sf::Vector2f& Entity::GetMovementVector()
+{
+	return movementVector;
+}
+
+sf::FloatRect Entity::GetGlobalBounds()
+{
+	return rect.getGlobalBounds();
+}
+

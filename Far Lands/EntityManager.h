@@ -29,5 +29,28 @@ public:
     void Draw(sf::RenderWindow* win);
     void Update();
     void AddInDestroyList(int ID);
+
+    class Iterator
+    {
+    private:
+        std::vector<Entity*>::iterator iter;
+
+    public:
+        Iterator(std::vector<Entity*>::iterator ptr) : iter(ptr) {}
+
+        Entity*& operator*() { return *iter; }
+
+        Iterator& operator++() { ++iter; return *this; }
+
+        bool operator!=(const Iterator& other) const { return iter != other.iter; }
+    };
+
+    Iterator begin() {
+        return Iterator(vect.begin());
+    }
+
+    Iterator end() {
+        return Iterator(vect.end());
+    }
 };
 
