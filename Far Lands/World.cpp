@@ -158,9 +158,10 @@ World::~World()
     map = nullptr;
 }
 
-void World::Draw(sf::RenderWindow* win, sf::Vector2i tilePos)
+void World::Draw(sf::RenderWindow* win, sf::FloatRect playerRect)
 {
-    sf::Vector2i shift = { int(WIN_SIZE.x / TILE_SIZE.x / 2 + 1), int(WIN_SIZE.y / TILE_SIZE.y / 2 + 1) };
+    sf::Vector2i tilePos = CheckTilePos(playerRect);
+    static sf::Vector2i shift = { int(WIN_SIZE.x / TILE_SIZE.x / 2 + 1), int(WIN_SIZE.y / TILE_SIZE.y / 2 + 1) };
 
     int startX = std::max(0, tilePos.x - shift.x);
     int startY = std::max(0, tilePos.y - shift.y);
@@ -177,13 +178,23 @@ void World::SetObject(ObjectType type, sf::Vector2i pos)
 	map[pos.x][pos.y]->SetObject(type);
 }
 
-bool World::CheckCollision(sf::Vector2f& shift, sf::FloatRect player, sf::Vector2i tilePos)
+bool World::CheckCollision(sf::Vector2f& shift, sf::FloatRect object)
 {
+    sf::Vector2i tilePos = CheckTilePos(object);
     bool flag = 0;
     for (int i = tilePos.x - 1; i <= tilePos.x + 1; i++)
         for (int j = tilePos.y - 1; j <= tilePos.y + 1; j++)
-            flag += handleCollision(player, map[i][j]->GetObjBounds(), shift);
+            flag += handleCollision(object, map[i][j]->GetObjBounds(), shift);
     return flag;
+}
+
+sf::Vector2i World::CheckTilePos(sf::FloatRect rect)
+{
+    return sf::Vector2i
+    {
+        int((rect.left + rect.width / 2.) / TILE_SIZE.x),
+        int((rect.top + rect.height / 2.) / TILE_SIZE.y)
+    };
 }
 
 

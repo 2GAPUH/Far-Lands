@@ -1,5 +1,17 @@
 #include "Animation.h"
 
+FullStateType ConvertShortToFull(ShortStateType shortState) {
+	switch (shortState) {
+	case ShortStateType::LEFT:
+		return FullStateType::LEFT;
+	case ShortStateType::RIGHT:
+		return FullStateType::RIGHT;
+	case ShortStateType::IDLE:
+		return FullStateType::IDLE;
+	}
+	// Возвращаем значение по умолчанию
+	return FullStateType::IDLE;
+}
 
 Animation::Animation(sf::Texture* texture, sf::Vector2f frameSize)
 {
@@ -42,3 +54,11 @@ void Animation::Draw(FullStateType state, sf::RenderWindow* win, sf::Vector2f po
 			clock.restart();
 		}
 }
+
+void Animation::Draw(ShortStateType state, sf::RenderWindow* win, sf::Vector2f pos)
+{
+	Draw(ConvertShortToFull(state), win, pos);
+}
+
+
+

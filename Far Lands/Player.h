@@ -23,8 +23,6 @@ public:
 private:
 	Stats* stats = nullptr;
 	sf::RectangleShape rect;
-	sf::Vector2i tilePos = { 0 ,0 };
-	void UpdateTilePosition();
 	sf::Vector2f spawnTile = { 0, 0 };
 	Inventory* inventory = nullptr;
 	EntityManager* entityManager = nullptr;
@@ -45,7 +43,6 @@ public:
 	void CheckViewDerection(sf::Vector2f shift);
 	sf::Vector2f GetCenter();
 	sf::FloatRect GetPosition();
-	sf::Vector2i GetTilePosition();
 	float GetMagnetDistance();
 	void Respawn();
 	void OpenInventory();

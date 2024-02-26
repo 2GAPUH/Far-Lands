@@ -16,7 +16,7 @@ protected:
 public:
 	Entity(Type type, sf::Vector2f pos);
 	virtual ~Entity();
-	void Draw(sf::RenderWindow* win);
+	virtual void Draw(sf::RenderWindow* win);
 	virtual void Update() = 0;
 	int GetID();
 };

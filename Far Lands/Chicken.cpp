@@ -10,6 +10,7 @@ void Chicken::Drop()
 
 void Chicken::Update()
 {
+	rect.move({ 1, 1 });
 }
 
 Chicken::Chicken(sf::Vector2f pos) : Enemy(EnemyType::CHICKEN, pos)

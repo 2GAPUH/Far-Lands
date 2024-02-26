@@ -16,5 +16,6 @@ public:
 	Animation(sf::Texture* texture, sf::Vector2f frameSize);
 	Animation(sf::Texture* texture);
 	void Draw(FullStateType state, sf::RenderWindow* win, sf::Vector2f pos);
+	void Draw(ShortStateType state, sf::RenderWindow* win, sf::Vector2f pos);
 };
 

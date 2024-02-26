@@ -36,7 +36,7 @@ void Player::Use(sf::Vector2f mousePos)
 		break;
 	case ItemType::BERRY_BUSH:
 		inventory->ReduceCurElem();
-		world->SetObject(ObjectType::BERRY_BUSH, GetTilePosition());
+		world->SetObject(ObjectType::BERRY_BUSH, world->CheckTilePos(GetPosition()));
 		break;
 		
 	}
@@ -86,12 +86,6 @@ sf::FloatRect Player::GetPosition()
 	return rect.getGlobalBounds();
 }
 
-sf::Vector2i Player::GetTilePosition()
-{
-	UpdateTilePosition();
-	return tilePos;
-}
-
 float Player::GetMagnetDistance()
 {
 	return stats->magnetDistance;
@@ -139,8 +133,3 @@ void Player::DestroyInstance()
     }
 }
 
-void Player::UpdateTilePosition()
-{
-	tilePos.x = (rect.getPosition().x + rect.getSize().x / 2) / TILE_SIZE.x;
-	tilePos.y = (rect.getPosition().y + rect.getSize().y / 2) / TILE_SIZE.y;
-}

@@ -84,7 +84,7 @@ void GameCore::Draw()
 {
     win->clear();
 
-    world->Draw(win, player->GetTilePosition());
+    world->Draw(win, player->GetPosition());
 
     entityManager->Draw(win);
 
@@ -147,7 +147,7 @@ void GameCore::Move()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         shift.y += speed;
 
-    world->CheckCollision(shift, player->GetPosition(), player->GetTilePosition());
+    world->CheckCollision(shift, player->GetPosition());
     player->Move(shift);
     player->CheckViewDerection(shift);
     view->setCenter(player->GetCenter());
