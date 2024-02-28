@@ -139,6 +139,7 @@ struct MyTexture
 #define PLAYER_LUCKY 0.2
 #define PLAYER_COLLISION 1
 #define BASE_MAGNET_DISTANCE 200
+#define TOUCH_DISTANCE 3
 #pragma endregion
 
 #pragma region CHICKEN

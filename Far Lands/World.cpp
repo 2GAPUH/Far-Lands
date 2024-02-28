@@ -28,7 +28,8 @@ bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, s
     sf::FloatRect intersection;
     sf::FloatRect playerNew = { player.left + shift.x, player.top + shift.y, player.width, player.height };
 
-    if (block.intersects(playerNew, intersection)) 
+    // Проверяем столкновение
+    if (block.intersects(playerNew, intersection))
     {
         // Рассчитываем пересечение по осям X и Y
         float overlapX = intersection.width;
@@ -41,45 +42,27 @@ bool World::handleCollision(sf::FloatRect& player, const sf::FloatRect& block, s
         // Корректируем вектор движения по обеим осям, если есть пересечение по обеим осям
         if (overlapX > 0 && overlapY > 0) {
             if (overlapX < overlapY) {
-                if (dx > 0) {
-                    shift.x += overlapX;
-                }
-                else {
-                    shift.x -= overlapX;
-                }
+                shift.x += (dx > 0) ? overlapX : -overlapX;
             }
             else {
-                if (dy > 0) {
-                    shift.y += overlapY;
-                }
-                else {
-                    shift.y -= overlapY;
-                }
+                shift.y += (dy > 0) ? overlapY : -overlapY;
             }
         }
         else {
             // Иначе корректируем только по одной оси
             if (overlapX > 0) {
-                if (dx > 0) {
-                    shift.x += overlapX;
-                }
-                else {
-                    shift.x -= overlapX;
-                }
+                shift.x += (dx > 0) ? overlapX : -overlapX;
             }
             if (overlapY > 0) {
-                if (dy > 0) {
-                    shift.y += overlapY;
-                }
-                else {
-                    shift.y -= overlapY;
-                }
+                shift.y += (dy > 0) ? overlapY : -overlapY;
             }
         }
         return true;
     }
     return false;
 }
+
+
 
 std::vector<std::vector<int>>* World::ReadFile(std::string path)
 {
@@ -160,7 +143,7 @@ World::~World()
 
 void World::Draw(sf::RenderWindow* win, sf::FloatRect playerRect)
 {
-    sf::Vector2i tilePos = CheckTilePos(playerRect);
+    sf::Vector2i tilePos = GetTilePos(playerRect);
     static sf::Vector2i shift = { int(WIN_SIZE.x / TILE_SIZE.x / 2 + 1), int(WIN_SIZE.y / TILE_SIZE.y / 2 + 1) };
 
     int startX = std::max(0, tilePos.x - shift.x);
@@ -180,7 +163,7 @@ void World::SetObject(ObjectType type, sf::Vector2i pos)
 
 bool World::CheckCollision(sf::Vector2f& shift, sf::FloatRect object)
 {
-    sf::Vector2i tilePos = CheckTilePos(object);
+    sf::Vector2i tilePos = GetTilePos(object);
     bool flag = 0;
     for (int i = tilePos.x - 1; i <= tilePos.x + 1; i++)
         for (int j = tilePos.y - 1; j <= tilePos.y + 1; j++)
@@ -188,7 +171,7 @@ bool World::CheckCollision(sf::Vector2f& shift, sf::FloatRect object)
     return flag;
 }
 
-sf::Vector2i World::CheckTilePos(sf::FloatRect rect)
+sf::Vector2i World::GetTilePos(sf::FloatRect rect)
 {
     return sf::Vector2i
     {
@@ -196,6 +179,16 @@ sf::Vector2i World::CheckTilePos(sf::FloatRect rect)
         int((rect.top + rect.height / 2.) / TILE_SIZE.y)
     };
 }
+
+sf::Vector2i World::GetTilePos(sf::Vector2f point)
+{
+    return sf::Vector2i
+    {
+        int(point.x / TILE_SIZE.x),
+        int(point.y / TILE_SIZE.y)
+    };
+}
+
 
 
 

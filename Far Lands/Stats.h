@@ -4,7 +4,7 @@
 
 class Stats
 {
-	void SetStats(float HP, float DMG, float defense, float speed, float money, float lucky, bool collision, int gazeDerection, float magnetDistance);
+	void SetStats(float HP, float DMG, float defense, float speed, float money, float lucky, bool collision, int gazeDerection, float magnetDistance, int touchDistance);
 public:
 	float HP = 0;
 	float DMG = 0;
@@ -15,6 +15,7 @@ public:
 	bool collision = 0;
 	int gazeDerection = 0;
 	float magnetDistance = 0;
+	int touchDistance = 0;
 
 	Stats(EnemyType type);
 };

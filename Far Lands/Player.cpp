@@ -27,19 +27,29 @@ Player::~Player()
 	inventory = nullptr;
 }
 
+
 void Player::Use(sf::Vector2f mousePos)
 {
-	switch (inventory->GetCurType())
-	{
-	case ItemType::BOW:
-		entityManager->Create(ProjectileType::ARROW, GetCenter(), GetCenter() - WIN_SIZE / 2.f + mousePos);
-		break;
-	case ItemType::BERRY_BUSH:
-		inventory->ReduceCurElem();
-		world->SetObject(ObjectType::BERRY_BUSH, world->CheckTilePos(GetPosition()));
-		break;
-		
-	}
+	sf::Vector2f mouseWorldClick = GetCenter() + mousePos - WIN_SIZE * 0.5f;
+	sf::Vector2i mouseTileClick = world->GetTilePos(mouseWorldClick);
+	sf::Vector2i playerTilePos = world->GetTilePos(GetCenter());
+	sf::Vector2i tmp = playerTilePos - mouseTileClick;
+
+	if(tmp.x <= stats->touchDistance && tmp.x >= -stats->touchDistance && tmp.y <= stats->touchDistance && tmp.y >= -stats->touchDistance)
+		switch (inventory->GetCurType())
+		{
+		case ItemType::BERRY_BUSH:
+			inventory->ReduceCurElem();
+			world->SetObject(ObjectType::BERRY_BUSH, mouseTileClick);
+			break;
+		}
+	else
+		switch (inventory->GetCurType())
+		{
+		case ItemType::BOW:
+			entityManager->Create(ProjectileType::ARROW, GetCenter(), mouseWorldClick);
+			break;
+		}
 }
 
 void Player::Draw(sf::RenderWindow* win)
