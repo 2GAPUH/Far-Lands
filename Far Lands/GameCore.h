@@ -27,6 +27,7 @@ private:
     void Update();
     void Draw();
     void Move();
+
     Player* player = nullptr;
     EntityManager* entityManager = nullptr;
 

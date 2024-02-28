@@ -6,6 +6,7 @@
 #define WIN_SIZE sf::Vector2f{1280, 720}
 #define ROOT_CONST 1.414213562373
 enum class StateType { LEFT, RIGHT, DOWN, TOP, IDLE };
+enum class CollisionInfo {FALSE, TRUE, OUT_WORLD};
 
 #define BASE_FRAME_TIME 50
 #define BASE_FRAME_COUNT 4

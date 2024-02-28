@@ -161,14 +161,21 @@ void World::SetObject(ObjectType type, sf::Vector2i pos)
 	map[pos.x][pos.y]->SetObject(type);
 }
 
-bool World::CheckCollision(sf::Vector2f& shift, sf::FloatRect object)
+CollisionInfo World::CheckCollision(sf::Vector2f& shift, sf::FloatRect object)
 {
     sf::Vector2i tilePos = GetTilePos(object);
     bool flag = 0;
+
+    if (tilePos.x <= 1 || tilePos.y <= 1 || tilePos.x >= size.x - 1 || tilePos.y >= size.y - 1)
+        return CollisionInfo::OUT_WORLD;
+
     for (int i = tilePos.x - 1; i <= tilePos.x + 1; i++)
         for (int j = tilePos.y - 1; j <= tilePos.y + 1; j++)
             flag += handleCollision(object, map[i][j]->GetObjBounds(), shift);
-    return flag;
+    if (flag)
+
+        return CollisionInfo::TRUE;
+    return CollisionInfo::FALSE;
 }
 
 sf::Vector2i World::GetTilePos(sf::FloatRect rect)

@@ -27,7 +27,7 @@ private:
 public:
 	void Draw(sf::RenderWindow* win, sf::FloatRect tilePos);
 	void SetObject(ObjectType type, sf::Vector2i pos);
-	bool CheckCollision(sf::Vector2f& shift, sf::FloatRect player);
+	CollisionInfo CheckCollision(sf::Vector2f& shift, sf::FloatRect player);
 	sf::Vector2i GetTilePos(sf::FloatRect rect);
 	sf::Vector2i GetTilePos(sf::Vector2f point);
 };

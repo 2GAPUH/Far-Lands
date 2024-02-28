@@ -147,14 +147,16 @@ void GameCore::Move()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         shift.y += speed;
 
-    world->CheckCollision(shift, player->GetPosition());
+    if (CollisionInfo::OUT_WORLD == world->CheckCollision(shift, player->GetPosition()))
+        player->Respawn();
     player->Move(shift);
     player->CheckViewDerection(shift);
     view->setCenter(player->GetCenter());
     win->setView(*view); 
 
     for (EntityManager::Iterator it = entityManager->begin(); it != entityManager->end(); ++it)
-        world->CheckCollision((*it)->GetMovementVector(), (*it)->GetGlobalBounds());
+        if (world->CheckCollision((*it)->GetMovementVector(), (*it)->GetGlobalBounds()) == CollisionInfo::OUT_WORLD)
+            entityManager->AddInDestroyList((*it)->GetID());
 }
 
 
