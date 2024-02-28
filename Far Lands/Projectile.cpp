@@ -50,3 +50,8 @@ void Projectile::Update()
 
     sf::Vector2f pos = rect.getPosition();
 }
+
+void Projectile::WorldCollision()
+{
+    EntityManager::GetInstance()->AddInDestroyList(ID);
+}

@@ -24,6 +24,8 @@ private:
 public:
     sf::Texture* GetTexture(Type type);
     sf::IntRect GetTextureRect(Type type);
+    sf::IntRect GetTextureRect(Type type, sf::Vector2i pos);
+
     sf::Font* GetFont();
 };
 

@@ -35,7 +35,7 @@ void Player::Use(sf::Vector2f mousePos)
 	sf::Vector2i playerTilePos = world->GetTilePos(GetCenter());
 	sf::Vector2i tmp = playerTilePos - mouseTileClick;
 
-	if(tmp.x <= stats->touchDistance && tmp.x >= -stats->touchDistance && tmp.y <= stats->touchDistance && tmp.y >= -stats->touchDistance)
+	if (tmp.x <= stats->touchDistance && tmp.x >= -stats->touchDistance && tmp.y <= stats->touchDistance && tmp.y >= -stats->touchDistance)
 		switch (inventory->GetCurType())
 		{
 		case ItemType::BERRY_BUSH:
@@ -43,13 +43,13 @@ void Player::Use(sf::Vector2f mousePos)
 			world->SetObject(ObjectType::BERRY_BUSH, mouseTileClick);
 			break;
 		}
-	else
-		switch (inventory->GetCurType())
-		{
-		case ItemType::BOW:
-			entityManager->Create(ProjectileType::ARROW, GetCenter(), mouseWorldClick);
-			break;
-		}
+	
+	switch (inventory->GetCurType())
+	{
+	case ItemType::BOW:
+		entityManager->Create(ProjectileType::ARROW, GetCenter(), mouseWorldClick);
+		break;
+	}
 }
 
 void Player::Draw(sf::RenderWindow* win)

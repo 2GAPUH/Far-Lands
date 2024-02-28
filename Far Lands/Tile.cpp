@@ -1,18 +1,56 @@
 #include "Tile.h"
 #include "ResourceManager.h"
 
+enum class GrassType { TOP_LEFT = 12, TOP_MIDDLE, TOP_RIGHT, DOWN_LEFT, DOWN_MIDDLE, DOWN_RIGHT, MIDDLE_LEFT, MIDDLE_RIGHT };
+
 Tile::Tile(Type type, sf::Vector2i pos)
 {
 	rect.setPosition(pos.x * TILE_SIZE.x, pos.y * TILE_SIZE.y);
 	rect.setSize(TILE_SIZE);
-
-	switch (type)
-	{
-	case Type::GRASS:
-		break;
-	}
 	
-	rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type));
+	if (type == Type::GRASS)
+	{
+        switch (pos.x) {
+        case 2:
+            switch (pos.y) {
+            case 2:
+                rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::TOP_LEFT, 0) ));
+                break;
+            case 47:
+                rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::DOWN_LEFT, 0)));
+                break;
+            default:
+                if (pos.y >= 3 && pos.y <= 46) 
+                    rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::MIDDLE_RIGHT, 0)));
+                break;
+            }
+            break;
+        case 47:
+            switch (pos.y) {
+            case 2:
+                rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::TOP_RIGHT, 0)));
+                break;
+            case 47:
+                rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::DOWN_RIGHT, 0)));
+                break;
+            default:
+                if (pos.y >= 3 && pos.y <= 46) 
+                    rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::MIDDLE_LEFT, 0)));
+                break;
+            }
+            break;
+        default:
+            if (pos.y == 2) 
+                rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::TOP_MIDDLE, 0)));
+            else if (pos.y == 47) 
+                rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type, sf::Vector2i((int)GrassType::DOWN_MIDDLE, 0)));
+            else
+                rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type));
+            break;
+        }
+	}
+	else
+		rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(type));
 	rect.setTexture(ResourceManager::GetInstance()->GetTexture(type));
 }
 

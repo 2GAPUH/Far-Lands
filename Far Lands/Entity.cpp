@@ -59,3 +59,6 @@ sf::FloatRect Entity::GetGlobalBounds()
 	return rect.getGlobalBounds();
 }
 
+void Entity::WorldCollision()
+{
+}

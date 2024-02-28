@@ -106,19 +106,18 @@ World::World()
         for (int i = 0; i < size.x; i++)
             for (int j = 0; j < size.y; j++)
             {
-                map[i][j] = new Tile(Type::GRASS, sf::Vector2i{ i, j });
-
-                switch ((*matrix)[i][j])
+                if(i <= 1 || j <= 1 || i >= size.x - 2 || j >= size.y - 2)
                 {
-                case 99:
-                    map[i][j]->SetObject(ObjectType::INVISIBLE_WALL);
-                    break;
-                case 0:
-                    if (RandomNumber::GetRandomNumber(0, 30) == 0)
-                    {
-                        map[i][j]->SetObject(ObjectType::OBJECTS);
-                    }
-                    break;
+                    map[i][j] = new Tile(Type::WATER, sf::Vector2i{ i, j });
+                    if((*matrix)[i][j] == 99)
+                        map[i][j]->SetObject(ObjectType::INVISIBLE_WALL);
+                }
+                else
+                {
+                    map[i][j] = new Tile(Type::GRASS, sf::Vector2i{ i, j });
+                    if ((*matrix)[i][j] == 0)
+                        if (RandomNumber::GetRandomNumber(0, 30) == 0)
+                            map[i][j]->SetObject(ObjectType::OBJECTS);
                 }
             }
 

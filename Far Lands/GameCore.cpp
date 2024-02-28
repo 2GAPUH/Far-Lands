@@ -21,7 +21,6 @@ GameCore::GameCore()
     entityManager->Create(EnemyType::CHICKEN, { 300, 300 });
     entityManager->Create(EnemyType::CHICKEN, { 400, 300 });
     entityManager->Create(EnemyType::CHICKEN, { 500, 300 });
-
 }
 
 GameCore::~GameCore() 
@@ -155,8 +154,13 @@ void GameCore::Move()
     win->setView(*view); 
 
     for (EntityManager::Iterator it = entityManager->begin(); it != entityManager->end(); ++it)
-        if (world->CheckCollision((*it)->GetMovementVector(), (*it)->GetGlobalBounds()) == CollisionInfo::OUT_WORLD)
+    {
+        CollisionInfo tmp = world->CheckCollision((*it)->GetMovementVector(), (*it)->GetGlobalBounds());
+        if (tmp == CollisionInfo::OUT_WORLD)
             entityManager->AddInDestroyList((*it)->GetID());
+        else if (tmp == CollisionInfo::TRUE)
+            (*it)->WorldCollision();
+    }
 }
 
 

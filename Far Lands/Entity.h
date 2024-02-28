@@ -23,5 +23,6 @@ public:
 	int GetID();
 	sf::Vector2f& GetMovementVector();
 	sf::FloatRect GetGlobalBounds();
+	virtual void WorldCollision();
 };
 

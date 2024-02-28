@@ -44,6 +44,8 @@ ResourceManager::ResourceManager()
     vect[(int)Type::OBJECTS] = LoadTexture("objects.png");
 
     vect[(int)Type::INVISIBLE_WALL] = LoadTexture("invisible_wall.png");
+
+    vect[(int)Type::WATER] = LoadTexture("water.png");
 }
 
 ResourceManager::~ResourceManager()
@@ -92,11 +94,19 @@ sf::IntRect ResourceManager::GetTextureRect(Type type)
     case Type::GRASS:
         rect.left = RandomNumber::GetRandomNumber(0, 11) * TEXTURE_SIZE;
         break;
+    case Type::WATER:
+        rect.left = RandomNumber::GetRandomNumber(0, 3) * TEXTURE_SIZE;
+        break;
     case Type::OBJECTS:
         rect.left = RandomNumber::GetRandomNumber(0, 5) * TEXTURE_SIZE;
         break;
     }
     return rect;
+}
+
+sf::IntRect ResourceManager::GetTextureRect(Type type, sf::Vector2i pos)
+{
+    return sf::IntRect{ pos.x * TEXTURE_SIZE, pos.y * TEXTURE_SIZE, TEXTURE_SIZE, TEXTURE_SIZE };
 }
 
 sf::Font* ResourceManager::GetFont()
