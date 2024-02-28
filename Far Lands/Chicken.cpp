@@ -10,6 +10,7 @@ void Chicken::Drop()
 
 void Chicken::Update()
 {
+	CheckViewDerection();
 	rect.move(movementVector);
 }
 

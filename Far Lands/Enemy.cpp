@@ -7,11 +7,10 @@ void Enemy::Drop()
 
 Enemy::Enemy(EnemyType type, sf::Vector2f pos) : Entity(TypeConverter::Convert(type), pos)
 {
-	this->type = type;
 	stats = new Stats(type);
+	animation = new Animation(const_cast<sf::Texture*>(rect.getTexture()));
+	this->type = type;
 }
-
-
 
 Enemy::~Enemy()
 {
@@ -30,4 +29,9 @@ void Enemy::Punch(float DMG)
 	stats->HP -= DMG;
 	if (stats->HP <= 0)
 		EntityManager::GetInstance()->AddInDestroyList(ID);
+}
+
+void Enemy::Draw(sf::RenderWindow* win)
+{
+	animation->Draw(viewDerection, win, rect.getPosition());
 }

@@ -27,7 +27,7 @@ private:
 	Inventory* inventory = nullptr;
 	EntityManager* entityManager = nullptr;
 	World* world = nullptr;
-	FullStateType viewDerection = FullStateType::DOWN;
+	StateType viewDerection = StateType::DOWN;
 	Animation* animation = nullptr;
 
 public:

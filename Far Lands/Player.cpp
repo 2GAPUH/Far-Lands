@@ -62,17 +62,17 @@ void Player::CheckViewDerection(sf::Vector2f shift)
 {
 	if (shift == sf::Vector2f{ 0, 0 })
 	{
-		viewDerection = FullStateType::IDLE;
+		viewDerection = StateType::IDLE;
 		return;
 	}
 	if (shift.x > 0)
-		viewDerection = FullStateType::RIGHT;
+		viewDerection = StateType::RIGHT;
 	else if (shift.x < 0)
-		viewDerection = FullStateType::LEFT;
+		viewDerection = StateType::LEFT;
 	else if (shift.y > 0)
-		viewDerection = FullStateType::DOWN;
+		viewDerection = StateType::DOWN;
 	else if (shift.y < 0)
-		viewDerection = FullStateType::TOP;
+		viewDerection = StateType::TOP;
 
 }
 

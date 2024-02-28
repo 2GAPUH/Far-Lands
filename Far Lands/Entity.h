@@ -8,10 +8,12 @@ protected:
 	sf::RectangleShape rect;
 	static int count;
 	int ID;
+	StateType viewDerection = StateType::IDLE;
 	sf::Vector2i tilePos;
 	void UpdateTilePos();
 	sf::Vector2i GetTilePos();
 	sf::Vector2f movementVector = { 0, 0 };
+	void CheckViewDerection();
 
 public:
 	Entity(Type type, sf::Vector2f pos);

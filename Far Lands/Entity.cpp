@@ -7,6 +7,21 @@ void Entity::UpdateTilePos()
 	tilePos = sf::Vector2i(rect.getPosition() / TILE_SIZE.x);
 }
 
+void Entity::CheckViewDerection()
+{
+	if (movementVector == sf::Vector2f{ 0, 0 })
+	{
+		viewDerection = StateType::IDLE;
+		return;
+	}
+	if (movementVector.x > 0)
+		viewDerection = StateType::RIGHT;
+	else if (movementVector.x < 0)
+		viewDerection = StateType::LEFT;
+	else if (movementVector.y != 0)
+		viewDerection = StateType::RIGHT;
+}
+
 Entity::Entity(Type type, sf::Vector2f pos)
 {
 	count++;

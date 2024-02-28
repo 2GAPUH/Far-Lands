@@ -1,22 +1,12 @@
 #include "Animation.h"
 
-FullStateType ConvertShortToFull(ShortStateType shortState) {
-	switch (shortState) {
-	case ShortStateType::LEFT:
-		return FullStateType::LEFT;
-	case ShortStateType::RIGHT:
-		return FullStateType::RIGHT;
-	case ShortStateType::IDLE:
-		return FullStateType::IDLE;
-	}
-	// Возвращаем значение по умолчанию
-	return FullStateType::IDLE;
-}
+
 
 Animation::Animation(sf::Texture* texture, sf::Vector2f frameSize)
 {
 	sprite.setTexture(*texture);
 	this->frameSize = frameSize;
+	sprite.setScale(sf::Vector2f(3., 3.));
 }
 
 Animation::Animation(sf::Texture* texture) 
@@ -25,13 +15,15 @@ Animation::Animation(sf::Texture* texture)
 	sprite.setScale(sf::Vector2f(3., 3.));
 }
 
-void Animation::Draw(FullStateType state, sf::RenderWindow* win, sf::Vector2f pos)
+
+
+void Animation::Draw(StateType state, sf::RenderWindow* win, sf::Vector2f pos)
 {
 	sprite.setPosition(pos);
 	
 	if (curState != state)
 	{
-		if(state == FullStateType::IDLE)
+		if(state == StateType::IDLE)
 			curFrame = { 0, (int)curState};
 		else
 			curFrame = { 0, (int)state };
@@ -43,7 +35,7 @@ void Animation::Draw(FullStateType state, sf::RenderWindow* win, sf::Vector2f po
 
 	win->draw(sprite);
 
-	if(curState != FullStateType::IDLE)
+	if(curState != StateType::IDLE)
 		if (clock.getElapsedTime().asMilliseconds() > frameTime)
 		{
 			curFrame.x++;
@@ -53,11 +45,6 @@ void Animation::Draw(FullStateType state, sf::RenderWindow* win, sf::Vector2f po
 			sprite.setTextureRect(tmp);
 			clock.restart();
 		}
-}
-
-void Animation::Draw(ShortStateType state, sf::RenderWindow* win, sf::Vector2f pos)
-{
-	Draw(ConvertShortToFull(state), win, pos);
 }
 
 
