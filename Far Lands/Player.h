@@ -49,4 +49,5 @@ public:
 	int PickUpItem(ItemType type, int count);
 	void EditCurLine();
 	void EditCurElem(int i);
+	void Update(sf::RenderWindow* win);
 };

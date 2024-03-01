@@ -1,6 +1,22 @@
 #include "Storage.h"
 #include "ResourceManager.h"
 
+
+sf::Vector2f Storage::constShift = { 76, 76 };
+sf::Vector2i Storage::GetCurCell(sf::Vector2i mousePos)
+{
+	sf::Vector2i start = mousePos - sf::Vector2i(middlePos + sf::Vector2f{ 24, 24 });
+
+
+	if ((start.x < 0 || start.y < 0) ||
+		(start.x / (int)constShift.x >= STORAGE_SIZE.x || start.y / (int)constShift.y >= STORAGE_SIZE.y))
+		throw("Out of storage range!");
+	else if (start.x % (int)constShift.x >= 60 || start.y % (int)constShift.y >= 60)
+		throw("Storage position error!");
+	else
+		return sf::Vector2i{ start.x / (int)constShift.x, start.y / (int)constShift.y };
+}
+
 Storage::Storage()
 {
 	storage = new ItemInStorage**[STORAGE_SIZE.x];
@@ -48,7 +64,7 @@ void Storage::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 		win->draw(rectStorage);
 		for (int i = 0; i < STORAGE_SIZE.x; i++)
 			for (int j = 0; j < STORAGE_SIZE.y; j++)
-				storage[i][j]->Draw(win, shift + sf::Vector2f{ 76.f * i,76.f * j });
+				storage[i][j]->Draw(win, shift + sf::Vector2f{ constShift.x * i, constShift.y * j });
 	}
 }
 
@@ -66,4 +82,50 @@ int Storage::PutItemAuto(ItemType type, int count)
 	return count;
 }
 
+
+
+void Storage::Move(sf::Vector2i start, sf::Vector2i end)
+{
+	try
+	{
+		start = GetCurCell(start);
+		end = GetCurCell(end);
+
+		ItemInStorage* tmp = storage[start.x][start.y];
+		storage[start.x][start.y] = storage[end.x][end.y];
+		storage[end.x][end.y] = tmp;
+	}
+	catch (const char* s)
+	{
+		std::cout << s << std::endl;
+	}
+}
+
+void Storage::Update(sf::RenderWindow* win)
+{
+	if (open)
+	{
+		static bool interact = 0;
+		static sf::Vector2i start = { 0, 0 }, end = {0, 0};
+
+		if(interact == false)
+		{
+			
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) == true)
+			{
+				interact = true;
+				start = sf::Mouse::getPosition(*win);
+			}
+		}
+		else 
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) == false)
+			{
+				interact = false;
+				end = sf::Mouse::getPosition(*win);
+				Move(start, end);
+			};
+		}
+	}
+}
 

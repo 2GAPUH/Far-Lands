@@ -55,10 +55,11 @@ Inventory::Inventory() : Storage()
 	rectCurElem.setTexture(ResourceManager::GetInstance()->GetTexture(Type::INTERFACE));
 	rectCurElem.setTextureRect(TextureRect::CUR_ELEM);
 
-	curElem = 3;
 }
 
 Inventory::~Inventory()
 {
 
 }
+
+

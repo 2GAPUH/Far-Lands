@@ -12,7 +12,7 @@ Player::Player()
 	animation = new Animation(ResourceManager::GetInstance()->GetTexture(Type::PLAYER));
 	spawnTile = { 24, 24 };
 	inventory = new Inventory();
-	inventory->PutItemAuto(ItemType::CHICKEN_MEAT_RAW, 21);
+	inventory->PutItemAuto(ItemType::CHICKEN_MEAT_RAW, 3);
 	entityManager = EntityManager::GetInstance();
 	inventory->PutItemAuto(ItemType::BOW, 1);
 	inventory->PutItemAuto(ItemType::BERRY_BUSH, 6);
@@ -125,6 +125,11 @@ void Player::EditCurLine()
 void Player::EditCurElem(int i)
 {
 	inventory->EditCurElem(i);
+}
+
+void Player::Update(sf::RenderWindow* win)
+{
+	inventory->Update(win);
 }
 
 Player* Player::GetInstance()

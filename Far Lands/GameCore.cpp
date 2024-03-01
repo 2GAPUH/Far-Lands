@@ -30,8 +30,11 @@ GameCore::~GameCore()
     win = nullptr;
 }
 
+enum class GameState { NOTHING, INVENTORY };
+
 void GameCore::Update()
 {
+    static GameState gameState = GameState::NOTHING;
     sf::Event ev;
     sf::Vector2f;
 
@@ -47,8 +50,11 @@ void GameCore::Update()
 
         case sf::Event::MouseButtonPressed:
         {
-            if (ev.mouseButton.button == sf::Mouse::Right)
-                player->Use(sf::Vector2f{(float) ev.mouseButton.x, (float)ev.mouseButton.y });
+            if (ev.mouseButton.button == sf::Mouse::Left)
+            {
+                if(gameState == GameState::NOTHING)
+                    player->Use(sf::Vector2f{ (float)ev.mouseButton.x, (float)ev.mouseButton.y });
+            }
         }
         break;
          
@@ -63,6 +69,11 @@ void GameCore::Update()
             switch (ev.key.code)
             {
             case sf::Keyboard::E:
+                if (gameState == GameState::INVENTORY)
+                    gameState = GameState::NOTHING;
+                else if (gameState == GameState::NOTHING)
+                    gameState = GameState::INVENTORY;
+
                 player->OpenInventory();
                 break;
 
@@ -77,6 +88,8 @@ void GameCore::Update()
     } 
 
     Move();
+
+    player->Update(win);
 }
 
 void GameCore::Draw()
