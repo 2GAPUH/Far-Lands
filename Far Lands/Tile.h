@@ -15,5 +15,6 @@ public:
 	void Move(sf::Vector2f shift);
 	sf::FloatRect GetObjBounds();
 	bool CheckObject();
+	void Update();
 };
 

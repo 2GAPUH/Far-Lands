@@ -170,9 +170,14 @@ CollisionInfo World::CheckCollision(sf::Vector2f& shift, sf::FloatRect object)
 
     for (int i = tilePos.x - 1; i <= tilePos.x + 1; i++)
         for (int j = tilePos.y - 1; j <= tilePos.y + 1; j++)
-            flag += handleCollision(object, map[i][j]->GetObjBounds(), shift);
-    if (flag)
+        {
+            try {
+                flag += handleCollision(object, map[i][j]->GetObjBounds(), shift);
+            }
+            catch (...){}
+        }
 
+    if (flag)
         return CollisionInfo::TRUE;
     return CollisionInfo::FALSE;
 }
@@ -193,6 +198,13 @@ sf::Vector2i World::GetTilePos(sf::Vector2f point)
         int(point.x / TILE_SIZE.x),
         int(point.y / TILE_SIZE.y)
     };
+}
+
+void World::Update()
+{
+    for (int i = 0; i < size.x; i++)
+        for (int j = 0; j < size.y; j++)
+             map[i][j]->Update();
 }
 
 

@@ -46,6 +46,14 @@ ResourceManager::ResourceManager()
     vect[(int)Type::INVISIBLE_WALL] = LoadTexture("invisible_wall.png");
 
     vect[(int)Type::WATER] = LoadTexture("water.png");
+
+    vect[(int)Type::FARMER_PLANTED] = LoadTexture("FarmerPlanted.png");
+
+    vect[(int)Type::FARMER_PLANTED] = LoadTexture("FarmerPlanted.png");
+
+    vect[(int)Type::AXE] = LoadTexture("Axe.png");
+
+    vect[(int)Type::HOE] = LoadTexture("Hoe.png");
 }
 
 ResourceManager::~ResourceManager()

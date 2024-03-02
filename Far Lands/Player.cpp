@@ -12,9 +12,11 @@ Player::Player()
 	animation = new Animation(ResourceManager::GetInstance()->GetTexture(Type::PLAYER));
 	spawnTile = { 24, 24 };
 	inventory = new Inventory();
-	inventory->PutItemAuto(ItemType::CHICKEN_MEAT_RAW, 3);
 	entityManager = EntityManager::GetInstance();
 	inventory->PutItemAuto(ItemType::BOW, 1);
+	inventory->PutItemAuto(ItemType::HOE, 1);
+	inventory->PutItemAuto(ItemType::AXE, 1);
+	inventory->PutItemAuto(ItemType::CHICKEN_MEAT_RAW, 3);
 	inventory->PutItemAuto(ItemType::BERRY_BUSH, 6);
 	world = World::GetInstance();
 }
@@ -41,6 +43,10 @@ void Player::Use(sf::Vector2f mousePos)
 		case ItemType::BERRY_BUSH:
 			inventory->ReduceCurElem();
 			world->SetObject(ObjectType::BERRY_BUSH, mouseTileClick);
+			break;
+
+		case ItemType::HOE:
+			world->SetObject(ObjectType::FARMER_PLANTED, mouseTileClick);
 			break;
 		}
 	

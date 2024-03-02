@@ -13,14 +13,15 @@ enum class CollisionInfo {FALSE, TRUE, OUT_WORLD};
 #define BASE_FRAME_SIZE sf::Vector2f{16, 16}
 
 
-enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH, INVISIBLE_WALL, WATER};
+enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH, INVISIBLE_WALL, WATER, FARMER_PLANTED, HOE, AXE};
 
 
 enum class ObjectType {
     OBJECTS = static_cast<int>(Type::OBJECTS),
     BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH),
     WALL = static_cast<int>(Type::WALL),
-    INVISIBLE_WALL = static_cast<int>(Type::INVISIBLE_WALL)
+    INVISIBLE_WALL = static_cast<int>(Type::INVISIBLE_WALL),
+    FARMER_PLANTED = static_cast<int>(Type::FARMER_PLANTED)
 };
 
 enum class EnemyType {
@@ -37,7 +38,10 @@ enum class ItemType {
 	CHICKEN_MEAT_RAW = static_cast<int>(Type::CHICKEN_MEAT_RAW),
     BOW = static_cast<int>(Type::BOW),
     EMPTY = static_cast<int>(Type::EMPTY),
-    BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH)
+    BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH),
+    HOE = static_cast<int>(Type::HOE),
+    AXE = static_cast<int>(Type::AXE)
+
 };
 
 class TypeConverter {
@@ -48,8 +52,9 @@ public:
             {ItemType::CHICKEN_MEAT_RAW, Type::CHICKEN_MEAT_RAW},
             {ItemType::BOW, Type::BOW},
             {ItemType::EMPTY, Type::EMPTY},
-            {ItemType::BERRY_BUSH, Type::BERRY_BUSH}
-            
+            {ItemType::BERRY_BUSH, Type::BERRY_BUSH},
+            {ItemType::HOE, Type::HOE},
+            {ItemType::AXE, Type::AXE}
         };
 
         auto it = typeMap.find(itemType);
@@ -77,7 +82,8 @@ public:
             {ObjectType::WALL, Type::WALL},
             {ObjectType::BERRY_BUSH, Type::BERRY_BUSH},
             {ObjectType::INVISIBLE_WALL, Type::INVISIBLE_WALL},
-            {ObjectType::OBJECTS, Type::OBJECTS}
+            {ObjectType::OBJECTS, Type::OBJECTS},
+            {ObjectType::FARMER_PLANTED, Type::FARMER_PLANTED}
         };
 
         auto it = typeMap.find(itemType);

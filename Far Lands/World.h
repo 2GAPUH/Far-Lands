@@ -30,5 +30,6 @@ public:
 	CollisionInfo CheckCollision(sf::Vector2f& shift, sf::FloatRect player);
 	sf::Vector2i GetTilePos(sf::FloatRect rect);
 	sf::Vector2i GetTilePos(sf::Vector2f point);
+	void Update();
 };
 

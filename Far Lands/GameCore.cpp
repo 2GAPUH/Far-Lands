@@ -90,6 +90,8 @@ void GameCore::Update()
     Move();
 
     player->Update(win);
+    world->Update();
+    entityManager->Update();
 }
 
 void GameCore::Draw()
@@ -126,8 +128,6 @@ void GameCore::Start()
     while (win->isOpen())
     {
         Update();
-
-        entityManager->Update();
 
         Draw();
     }

@@ -63,7 +63,14 @@ Tile::~Tile()
 
 void Tile::SetObject(ObjectType type)
 {
-	obj = new Object(type, rect.getPosition());
+    switch (type)
+    {
+
+
+    default:
+        obj = new Object(type, rect.getPosition());
+        break;
+    }
 }
 
 void Tile::Draw(sf::RenderWindow* win)
@@ -82,10 +89,10 @@ void Tile::Move(sf::Vector2f shift)
 
 sf::FloatRect Tile::GetObjBounds()
 {
-	if (obj != 0)
-		return obj->GetCollisionRect();
-	else
-		return { -10000, -10000, 1, 1 };
+    if (obj != 0 && obj->GetCollision())
+        return obj->GetCollisionRect();
+    else
+        throw("Object troubles");
 }
 
 bool Tile::CheckObject()
@@ -93,6 +100,11 @@ bool Tile::CheckObject()
 	if (obj == nullptr)
 		return 0;
 	return 1;
+}
+
+void Tile::Update()
+{
+    obj->Update();
 }
 
 

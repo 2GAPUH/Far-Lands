@@ -12,5 +12,7 @@ public:
 	void Draw(sf::RenderWindow* win);
 	void SetPosition(sf::Vector2f pos);
 	sf::FloatRect GetCollisionRect();
+	bool GetCollision();
+	void Update();
 };
 
