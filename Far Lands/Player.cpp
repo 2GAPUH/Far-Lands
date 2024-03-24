@@ -46,7 +46,12 @@ void Player::Use(sf::Vector2f mousePos)
 			break;
 
 		case ItemType::HOE:
-			world->SetObject(ObjectType::FARMER_PLANTED, mouseTileClick);
+			if(world->GetTileObjetType(mouseTileClick) == ObjectType::EMPTY)
+				world->SetObject(ObjectType::FARMER_PLANTED, mouseTileClick);
+			break;
+
+		case ItemType::EMPTY:
+			world->TouchObject(mouseTileClick);
 			break;
 		}
 	

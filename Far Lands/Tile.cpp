@@ -104,7 +104,21 @@ bool Tile::CheckObject()
 
 void Tile::Update()
 {
-    obj->Update();
+    if(obj)
+        obj->Update();
+}
+
+ObjectType Tile::GetObectType()
+{
+    if (obj == nullptr)
+        return ObjectType::EMPTY;
+    return obj->GetType();
+}
+
+void Tile::Touch()
+{
+    if (obj)
+        obj->Touch();
 }
 
 

@@ -16,5 +16,7 @@ public:
 	sf::FloatRect GetObjBounds();
 	bool CheckObject();
 	void Update();
+	ObjectType GetObectType();
+	void Touch();
 };
 

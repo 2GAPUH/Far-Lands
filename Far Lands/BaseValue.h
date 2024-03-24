@@ -13,7 +13,7 @@ enum class CollisionInfo {FALSE, TRUE, OUT_WORLD};
 #define BASE_FRAME_SIZE sf::Vector2f{16, 16}
 
 
-enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH, INVISIBLE_WALL, WATER, FARMER_PLANTED, HOE, AXE};
+enum class Type {EMPTY, PLAYER, GRASS, WALL, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, OBJECTS, BERRY_BUSH, INVISIBLE_WALL, WATER, FARMER_PLANTED, HOE, AXE, BERRYS};
 
 
 enum class ObjectType {
@@ -21,7 +21,8 @@ enum class ObjectType {
     BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH),
     WALL = static_cast<int>(Type::WALL),
     INVISIBLE_WALL = static_cast<int>(Type::INVISIBLE_WALL),
-    FARMER_PLANTED = static_cast<int>(Type::FARMER_PLANTED)
+    FARMER_PLANTED = static_cast<int>(Type::FARMER_PLANTED),
+    EMPTY = static_cast<int>(Type::EMPTY)
 };
 
 enum class EnemyType {
@@ -34,14 +35,14 @@ enum class ProjectileType {
 };
 
 enum class ItemType {
-	EGG = static_cast<int>(Type::EGG),
-	CHICKEN_MEAT_RAW = static_cast<int>(Type::CHICKEN_MEAT_RAW),
+    EGG = static_cast<int>(Type::EGG),
+    CHICKEN_MEAT_RAW = static_cast<int>(Type::CHICKEN_MEAT_RAW),
     BOW = static_cast<int>(Type::BOW),
     EMPTY = static_cast<int>(Type::EMPTY),
     BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH),
     HOE = static_cast<int>(Type::HOE),
-    AXE = static_cast<int>(Type::AXE)
-
+    AXE = static_cast<int>(Type::AXE),
+    BERRYS = static_cast<int>(Type::BERRYS),
 };
 
 class TypeConverter {
@@ -54,7 +55,8 @@ public:
             {ItemType::EMPTY, Type::EMPTY},
             {ItemType::BERRY_BUSH, Type::BERRY_BUSH},
             {ItemType::HOE, Type::HOE},
-            {ItemType::AXE, Type::AXE}
+            {ItemType::AXE, Type::AXE},
+            {ItemType::BERRYS, Type::BERRYS}
         };
 
         auto it = typeMap.find(itemType);
@@ -83,7 +85,8 @@ public:
             {ObjectType::BERRY_BUSH, Type::BERRY_BUSH},
             {ObjectType::INVISIBLE_WALL, Type::INVISIBLE_WALL},
             {ObjectType::OBJECTS, Type::OBJECTS},
-            {ObjectType::FARMER_PLANTED, Type::FARMER_PLANTED}
+            {ObjectType::FARMER_PLANTED, Type::FARMER_PLANTED},
+            {ObjectType::EMPTY, Type::EMPTY}
         };
 
         auto it = typeMap.find(itemType);
@@ -135,7 +138,7 @@ struct MyTexture
 #define STORAGE_SIZE_OPEN sf::Vector2f{644, 340}
 #define HOT_BAR_SIZE sf::Vector2f{644, 112}
 #define STORAGE_CELL sf::Vector2f{64, 64}
-#define STACK_MAX_COUNT 2
+#define STACK_MAX_COUNT 4
 #define CUR_ELEM_TEXTURE_SIZE sf::Vector2f{64, 64}
 
 #pragma region PLAYER

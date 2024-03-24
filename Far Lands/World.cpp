@@ -207,6 +207,16 @@ void World::Update()
              map[i][j]->Update();
 }
 
+ObjectType World::GetTileObjetType(sf::Vector2i pos)
+{
+    return map[pos.x][pos.y]->GetObectType();
+}
+
+void World::TouchObject(sf::Vector2i pos)
+{
+    map[pos.x][pos.y]->Touch();
+}
+
 
 
 

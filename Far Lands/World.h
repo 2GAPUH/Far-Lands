@@ -31,5 +31,7 @@ public:
 	sf::Vector2i GetTilePos(sf::FloatRect rect);
 	sf::Vector2i GetTilePos(sf::Vector2f point);
 	void Update();
+	ObjectType GetTileObjetType(sf::Vector2i pos);
+	void TouchObject(sf::Vector2i pos);
 };
 

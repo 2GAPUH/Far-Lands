@@ -11,6 +11,8 @@ void ItemInStorage::UpdateText()
 ItemInStorage::ItemInStorage()
 {
 	rect.setSize(STORAGE_CELL);
+
+
 	type = ItemType::EMPTY;
 	text.setFont(*ResourceManager::GetInstance()->GetFont());
 	text.setFillColor(sf::Color::Black);
@@ -55,6 +57,7 @@ int ItemInStorage::PutItem(ItemType type, int count)
 		this->type = type;
 		this->count = std::min(STACK_MAX_COUNT, count);
 		rect.setTexture(ResourceManager::GetInstance()->GetTexture(TypeConverter::Convert(type)));
+		rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(TypeConverter::Convert(type)));
 		UpdateText();
 		return this->count;
 	}

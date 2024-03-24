@@ -50,4 +50,5 @@ public:
 	void EditCurLine();
 	void EditCurElem(int i);
 	void Update(sf::RenderWindow* win);
+
 };

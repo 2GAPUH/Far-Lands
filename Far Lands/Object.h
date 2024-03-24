@@ -6,6 +6,9 @@ class Object
 {
 	bool collision = true;
 	sf::RectangleShape rect;
+	ObjectType type;
+	sf::Clock clock;
+	bool ready = false;
 
 public:
 	Object(ObjectType type, sf::Vector2f pos);
@@ -14,5 +17,7 @@ public:
 	sf::FloatRect GetCollisionRect();
 	bool GetCollision();
 	void Update();
+	ObjectType GetType();
+	void Touch();
 };
 

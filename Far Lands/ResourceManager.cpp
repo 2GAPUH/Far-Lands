@@ -54,6 +54,8 @@ ResourceManager::ResourceManager()
     vect[(int)Type::AXE] = LoadTexture("Axe.png");
 
     vect[(int)Type::HOE] = LoadTexture("Hoe.png");
+
+    vect[(int)Type::BERRYS] = LoadTexture("Berrys.png");
 }
 
 ResourceManager::~ResourceManager()
@@ -107,6 +109,12 @@ sf::IntRect ResourceManager::GetTextureRect(Type type)
         break;
     case Type::OBJECTS:
         rect.left = RandomNumber::GetRandomNumber(0, 5) * TEXTURE_SIZE;
+        break;
+    case Type::BERRY_BUSH:
+        rect.left = 0;
+        break;
+    case Type::BOW:
+        rect = { 0, 0, 64, 64 };
         break;
     }
     return rect;
