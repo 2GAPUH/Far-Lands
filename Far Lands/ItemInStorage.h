@@ -19,4 +19,3 @@ public:
 	void ReduceItem();
 	int PutItem(ItemType type, int count);
 };
-

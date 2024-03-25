@@ -54,7 +54,6 @@ Inventory::Inventory() : Storage()
 	rectCurElem.setSize(CUR_ELEM_TEXTURE_SIZE);
 	rectCurElem.setTexture(ResourceManager::GetInstance()->GetTexture(Type::INTERFACE));
 	rectCurElem.setTextureRect(TextureRect::CUR_ELEM);
-
 }
 
 Inventory::~Inventory()

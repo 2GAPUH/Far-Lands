@@ -57,7 +57,28 @@ int ItemInStorage::PutItem(ItemType type, int count)
 		this->type = type;
 		this->count = std::min(STACK_MAX_COUNT, count);
 		rect.setTexture(ResourceManager::GetInstance()->GetTexture(TypeConverter::Convert(type)));
-		rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(TypeConverter::Convert(type)));
+		switch(type)
+		{
+		case ItemType::BERRYS:
+			rect.setTextureRect({ 32,0, 16,16 });
+			break;
+
+		case ItemType::BIG_LOG:
+			rect.setTextureRect({ 16,0, 16,16 });
+			break;
+
+		case ItemType::SMALL_LOG:
+			rect.setTextureRect({ 32,0, 16,16 });
+			break;
+
+		case ItemType::STONE:
+			rect.setTextureRect({ 32,0, 16,16 });
+			break;
+
+		default:
+			rect.setTextureRect(ResourceManager::GetInstance()->GetTextureRect(TypeConverter::Convert(type)));
+			break;
+		}
 		UpdateText();
 		return this->count;
 	}

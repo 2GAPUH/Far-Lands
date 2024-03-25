@@ -72,12 +72,33 @@ void Storage::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 int Storage::PutItemAuto(ItemType type, int count)
 {
 	for (int j = 0; j < STORAGE_SIZE.y; j++)
+	{
 		for (int i = 0; i < STORAGE_SIZE.x; i++)
 		{
 			count -= storage[i][j]->PutItem(type, count);
 			if (count <= 0)
 				return count;
 		}
+	}
+
+	return count;
+}
+
+int Storage::PutItemAutoInStorage(ItemType type, int count)
+{
+	for (int j = 1; j < STORAGE_SIZE.y; j++)
+	{
+		for (int i = 0; i < STORAGE_SIZE.x; i++)
+		{
+			count -= storage[i][j]->PutItem(type, count);
+			if (count <= 0)
+				return count;
+		}
+		if (j == 3)
+			j = -1;
+		else if (j == 0)
+			break;
+	}
 
 	return count;
 }

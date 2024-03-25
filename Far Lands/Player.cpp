@@ -16,8 +16,7 @@ Player::Player()
 	inventory->PutItemAuto(ItemType::BOW, 1);
 	inventory->PutItemAuto(ItemType::HOE, 1);
 	inventory->PutItemAuto(ItemType::AXE, 1);
-	inventory->PutItemAuto(ItemType::CHICKEN_MEAT_RAW, 3);
-	inventory->PutItemAuto(ItemType::BERRY_BUSH, 6);
+	inventory->PutItemAutoInStorage(ItemType::CHICKEN_MEAT_RAW, 3);
 	world = World::GetInstance();
 }
 
@@ -40,14 +39,14 @@ void Player::Use(sf::Vector2f mousePos)
 	if (tmp.x <= stats->touchDistance && tmp.x >= -stats->touchDistance && tmp.y <= stats->touchDistance && tmp.y >= -stats->touchDistance)
 		switch (inventory->GetCurType())
 		{
-		case ItemType::BERRY_BUSH:
-			inventory->ReduceCurElem();
-			world->SetObject(ObjectType::BERRY_BUSH, mouseTileClick);
-			break;
 
 		case ItemType::HOE:
 			if(world->GetTileObjetType(mouseTileClick) == ObjectType::EMPTY)
 				world->SetObject(ObjectType::FARMER_PLANTED, mouseTileClick);
+			break;
+
+		case ItemType::AXE:
+			world->DestroyObject(mouseTileClick);
 			break;
 
 		case ItemType::EMPTY:
@@ -125,7 +124,7 @@ void Player::OpenInventory()
 
 int Player::PickUpItem(ItemType type, int count)
 {
-	return inventory->PutItemAuto(type, count);
+	return inventory->PutItemAutoInStorage(type, count);
 }
 
 void Player::EditCurLine()

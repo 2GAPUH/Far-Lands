@@ -1,5 +1,12 @@
 #include "Tile.h"
 #include "ResourceManager.h"
+#include "BerryBush.h"
+#include "Stone.h"
+#include "Log.h"
+#include "Stump.h"
+#include "Campfire.h"
+#include "FarmerPlanted.h"
+#include "InvisibleWall.h"
 
 enum class GrassType { TOP_LEFT = 12, TOP_MIDDLE, TOP_RIGHT, DOWN_LEFT, DOWN_MIDDLE, DOWN_RIGHT, MIDDLE_LEFT, MIDDLE_RIGHT };
 
@@ -65,10 +72,36 @@ void Tile::SetObject(ObjectType type)
 {
     switch (type)
     {
+    case ObjectType::BERRY_BUSH:
+        obj = new BerryBush(rect.getPosition());
+        break;
 
+    case ObjectType::STONE:
+        obj = new Stone(rect.getPosition());
+        break;
+
+    case ObjectType::LOG:
+        obj = new Log(rect.getPosition());
+        break;
+
+    case ObjectType::CAMPFIRE:
+        obj = new Campfire(rect.getPosition());
+        break;
+
+    case ObjectType::STUMP:
+        obj = new Stump(rect.getPosition());
+        break;
+
+    case ObjectType::FARMER_PLANTED:
+        obj = new FarmerPlanted(rect.getPosition());
+        break;
+
+    case ObjectType::INVISIBLE_WALL:
+        obj = new InvisibleWall(rect.getPosition());
+        break;
 
     default:
-        obj = new Object(type, rect.getPosition());
+        std::cout << "There is no method for creating an object with ObjectType: " << (int)type << std::endl;
         break;
     }
 }
@@ -119,6 +152,15 @@ void Tile::Touch()
 {
     if (obj)
         obj->Touch();
+}
+
+void Tile::DestroyObject()
+{
+    if (obj)
+    {
+        delete obj;
+        obj = nullptr;
+    }
 }
 
 

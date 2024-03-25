@@ -20,6 +20,7 @@ public:
 	void Open();
 	virtual void Draw(sf::RenderWindow* win, sf::Vector2f pos);
 	int PutItemAuto(ItemType type, int count);
+	int PutItemAutoInStorage(ItemType type, int count);
 	void Move(sf::Vector2i start, sf::Vector2i end);
 	void Update(sf::RenderWindow* win);
 };

@@ -25,8 +25,6 @@ ResourceManager::ResourceManager()
 
     vect[(int)Type::PLAYER] = LoadTexture("player.png");
 
-    vect[(int)Type::WALL] = LoadTexture("wall.png");
-
     vect[(int)Type::ARROW] = LoadTexture("arrow.png");
 
     vect[(int)Type::CHICKEN] = LoadTexture("chicken.png");
@@ -41,21 +39,27 @@ ResourceManager::ResourceManager()
 
     vect[(int)Type::BERRY_BUSH] = LoadTexture("berry_bush.png");
 
-    vect[(int)Type::OBJECTS] = LoadTexture("objects.png");
-
     vect[(int)Type::INVISIBLE_WALL] = LoadTexture("invisible_wall.png");
 
     vect[(int)Type::WATER] = LoadTexture("water.png");
 
-    vect[(int)Type::FARMER_PLANTED] = LoadTexture("FarmerPlanted.png");
+    vect[(int)Type::FARMER_PLANTED] = LoadTexture("farmerPlanted.png");
 
-    vect[(int)Type::FARMER_PLANTED] = LoadTexture("FarmerPlanted.png");
+    vect[(int)Type::AXE] = LoadTexture("axe.png");
 
-    vect[(int)Type::AXE] = LoadTexture("Axe.png");
+    vect[(int)Type::HOE] = LoadTexture("hoe.png");
 
-    vect[(int)Type::HOE] = LoadTexture("Hoe.png");
+    vect[(int)Type::STATUS_BAR] = LoadTexture("statusBar.png");
 
-    vect[(int)Type::BERRYS] = LoadTexture("Berrys.png");
+    vect[(int)Type::STATUS_BAR_POINT] = LoadTexture("statusBarPoint.png");
+
+    vect[(int)Type::LOG] = LoadTexture("log.png");
+
+    vect[(int)Type::STUMP] = LoadTexture("stump.png");
+
+    vect[(int)Type::STONE] = LoadTexture("stone.png");
+
+    vect[(int)Type::CAMPFIRE] = LoadTexture("campfire.png");
 }
 
 ResourceManager::~ResourceManager()
@@ -106,9 +110,6 @@ sf::IntRect ResourceManager::GetTextureRect(Type type)
         break;
     case Type::WATER:
         rect.left = RandomNumber::GetRandomNumber(0, 3) * TEXTURE_SIZE;
-        break;
-    case Type::OBJECTS:
-        rect.left = RandomNumber::GetRandomNumber(0, 5) * TEXTURE_SIZE;
         break;
     case Type::BERRY_BUSH:
         rect.left = 0;

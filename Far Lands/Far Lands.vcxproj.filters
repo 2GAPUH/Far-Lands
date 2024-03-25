@@ -25,6 +25,9 @@
     <Filter Include="Entity\ItemInWorld">
       <UniqueIdentifier>{9142e5fc-6614-4ddc-a64a-0121ccfc6782}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{6f749650-ed83-43bb-9abd-07cb650634c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseValue.h">
@@ -49,9 +52,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Storage.h">
@@ -84,6 +84,33 @@
     <ClInclude Include="Animation.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Stump.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BerryBush.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="FarmerPlanted.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusBar.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Campfire.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="InvisibleWall.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -108,9 +135,6 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="EntityManager.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Storage.cpp">
@@ -142,6 +166,33 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Stump.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BerryBush.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="FarmerPlanted.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusBar.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Campfire.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="InvisibleWall.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

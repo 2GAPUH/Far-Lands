@@ -33,5 +33,7 @@ public:
 	void Update();
 	ObjectType GetTileObjetType(sf::Vector2i pos);
 	void TouchObject(sf::Vector2i pos);
+	void DestroyObject(sf::Vector2i pos);
+	void SpawnRandomObject();
 };
 

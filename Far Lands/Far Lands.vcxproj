@@ -37,11 +37,18 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="BerryBush.cpp" />
+    <ClCompile Include="Campfire.cpp" />
     <ClCompile Include="Chicken.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="FarmerPlanted.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="InvisibleWall.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="StatusBar.cpp" />
+    <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="ItemInStorage.cpp" />
@@ -52,6 +59,7 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Stats.cpp" />
+    <ClCompile Include="Stump.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -59,12 +67,19 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="BaseValue.h" />
+    <ClInclude Include="BerryBush.h" />
+    <ClInclude Include="Campfire.h" />
     <ClInclude Include="Chicken.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="FarmerPlanted.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="InvisibleWall.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="StatusBar.h" />
+    <ClInclude Include="Stone.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="ItemInStorage.h" />
@@ -73,6 +88,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Stats.h" />
+    <ClInclude Include="Stump.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

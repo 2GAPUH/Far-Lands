@@ -115,9 +115,6 @@ World::World()
                 else
                 {
                     map[i][j] = new Tile(Type::GRASS, sf::Vector2i{ i, j });
-                    if ((*matrix)[i][j] == 0)
-                        if (RandomNumber::GetRandomNumber(0, 30) == 0)
-                            map[i][j]->SetObject(ObjectType::OBJECTS);
                 }
             }
 
@@ -125,6 +122,9 @@ World::World()
             (*matrix)[i].clear();
         matrix->clear();
     }
+
+    for (int i = 0; i < 80; i++)
+        SpawnRandomObject();
 }
 
 World::~World()
@@ -215,6 +215,48 @@ ObjectType World::GetTileObjetType(sf::Vector2i pos)
 void World::TouchObject(sf::Vector2i pos)
 {
     map[pos.x][pos.y]->Touch();
+}
+
+void World::DestroyObject(sf::Vector2i pos)
+{
+    map[pos.x][pos.y]->DestroyObject();
+}
+
+void World::SpawnRandomObject()
+{
+    int count = 0;
+    while (true || count < 10)
+    {
+        sf::Vector2i pos(RandomNumber::GetRandomNumber(3, size.x - 3), RandomNumber::GetRandomNumber(3, size.y - 3));
+        
+        if (map[pos.x][pos.y]->GetObectType() == ObjectType::EMPTY)
+        {
+            switch(RandomNumber::GetRandomNumber(0, 3))
+            {
+            case 0:
+                map[pos.x][pos.y]->SetObject(ObjectType::LOG);
+                break;
+
+            case 1:
+                map[pos.x][pos.y]->SetObject(ObjectType::STUMP);
+                break;
+
+            case 2:
+                map[pos.x][pos.y]->SetObject(ObjectType::BERRY_BUSH);
+                break;
+
+            case 3:
+                map[pos.x][pos.y]->SetObject(ObjectType::STONE);
+                break;
+            }
+
+            break;
+        }
+        else
+        {
+            count++;
+        }
+    }
 }
 
 
