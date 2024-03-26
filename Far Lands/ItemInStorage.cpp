@@ -63,6 +63,7 @@ int ItemInStorage::PutItem(ItemType type, int count)
 		case ItemType::BIG_LOG:
 		case ItemType::SMALL_LOG:
 		case ItemType::STONE:
+		case ItemType::CHICKEN_MEAT_RAW:
 			rect.setTextureRect({ 32,0, 16,16 });
 			break;
 

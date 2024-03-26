@@ -85,7 +85,6 @@ void PlayerStats::Damage(int i)
 	HP -= i;
 	if (HP <= 0)
 	{
-		//ResourceManager::GetInstance()->PlaySound(SoundList::DEATH);
 		GameCore::GetInstance()->EndGame();
 		return;
 	}

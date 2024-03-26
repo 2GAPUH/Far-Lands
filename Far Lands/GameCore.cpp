@@ -180,7 +180,8 @@ void GameCore::EndGame()
                 win->close();
             }
             if (event.type == sf::Event::KeyPressed) {
-                win->close();
+                if(event.key.code == sf::Keyboard::Enter)
+                    win->close();
             }
         }
 
