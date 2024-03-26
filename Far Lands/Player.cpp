@@ -5,7 +5,7 @@ Player* Player::instance = nullptr;
 
 Player::Player()
 {
-	stats = new Stats(EnemyType::PLAYER);
+	stats = new PlayerStats();
 	rect.setPosition({ WIN_SIZE.x/2 - HERO_SIZE.x /2, WIN_SIZE.y / 2 - HERO_SIZE.y / 2 });
 	rect.setSize(HERO_SIZE);
 	rect.setFillColor(sf::Color(255, 255, 255));
@@ -28,6 +28,11 @@ Player::~Player()
 	inventory = nullptr;
 }
 
+
+void Player::ChangeHero()
+{
+	
+}
 
 void Player::Use(sf::Vector2f mousePos)
 {
@@ -65,6 +70,7 @@ void Player::Draw(sf::RenderWindow* win)
 {
 	animation->Draw(viewDerection, win, rect.getPosition());
 	inventory->Draw(win, GetCenter() - WIN_SIZE / 2.f);
+	stats->Draw(win, GetCenter() - WIN_SIZE / 2.f);
 }
 
 float Player::GetSpeed()
@@ -149,6 +155,7 @@ void Player::EditCurElem(int i)
 void Player::Update(sf::RenderWindow* win)
 {
 	inventory->Update(win);
+	stats->Update();
 }
 
 Player* Player::GetInstance()

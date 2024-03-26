@@ -79,6 +79,11 @@ void GameCore::Update()
 
             case sf::Keyboard::Tab:
                 player->EditCurLine();
+                break;
+
+            case sf::Keyboard::C:
+                player->ChangeHero();
+                break;
             }
         }
         break;

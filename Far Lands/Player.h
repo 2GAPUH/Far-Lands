@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseValue.h"
-#include "Stats.h"
+#include "PlayerStats.h"
 #include "Inventory.h"
 #include "EntityManager.h"
 #include "Animation.h"
@@ -21,7 +21,7 @@ public:
 #pragma endregion 
 
 private:
-	Stats* stats = nullptr;
+	PlayerStats* stats = nullptr;
 	sf::RectangleShape rect;
 	sf::Vector2f spawnTile = { 0, 0 };
 	Inventory* inventory = nullptr;
@@ -31,10 +31,7 @@ private:
 	Animation* animation = nullptr;
 
 public:
-	void SetTexture();
-	void AtrackItem();
-	void Interact();
-	void Atack();
+	void ChangeHero();
 	void Use(sf::Vector2f mousePos);
 
 	void Draw(sf::RenderWindow* win);

@@ -30,6 +30,8 @@ ResourceManager::ResourceManager()
 
     texture[(int)Type::PLAYER] = LoadTexture("player.png");
 
+    texture[(int)Type::PLAYER2] = LoadTexture("player2.png");
+
     texture[(int)Type::ARROW] = LoadTexture("arrow.png");
 
     texture[(int)Type::CHICKEN] = LoadTexture("chicken.png");
