@@ -3,6 +3,7 @@
 
 
 GameCore* GameCore::instance = nullptr;
+bool GameCore::playerAlive = ALIVE;
 
 GameCore::GameCore() 
 {
@@ -130,7 +131,7 @@ void GameCore::DestroyInstance()
 
 void GameCore::Start()
 {
-    while (win->isOpen())
+    while (win->isOpen() && playerAlive)
     {
         Update();
 
@@ -141,6 +142,59 @@ void GameCore::Start()
 sf::RenderWindow* GameCore::GetWin()
 {
     return win;
+}
+
+void GameCore::EndGame()
+{
+    playerAlive = DEAD;
+
+    // Создаем текстуру и спрайт для гиф-анимации
+    std::vector<sf::Texture> frames;
+    for (int i = 1; i <= 97; ++i) {
+        sf::Texture texture;
+        std::string filename = "Death\\death" + std::to_string(i) + ".png"; // Замените на реальные имена файлов
+        if (!texture.loadFromFile(filename)) {
+            return; // Ошибка при загрузке кадра
+        }
+        frames.push_back(texture);
+    }
+
+    // Установка начального кадра
+    int current_frame = 1;
+    sf::Sprite sprite;
+    sprite.setTexture(frames[current_frame]);
+    sprite.setScale(win->getSize().x / sprite.getLocalBounds().width,
+        win->getSize().y / sprite.getLocalBounds().height);
+
+    sf::Clock clock;
+    float frame_duration = 0.1f; // Длительность каждого кадра в секундах
+
+    ResourceManager::GetInstance()->StopMusic(MusicList::SPRING_DAY);
+
+    ResourceManager::GetInstance()->PlaySound(SoundList::DEATH);
+
+    while (win->isOpen() && current_frame <= 90) {
+        sf::Event event;
+        while (win->pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                win->close();
+            }
+            if (event.type == sf::Event::KeyPressed) {
+                win->close();
+            }
+        }
+
+        // Переключение кадров с задержкой
+        if (clock.getElapsedTime().asSeconds() >= frame_duration) {
+            clock.restart();
+            current_frame = (current_frame + 1) % frames.size();
+            sprite.setTexture(frames[current_frame]);
+        }
+
+        win->clear();
+        win->draw(sprite);
+        win->display();
+    }
 }
 
 void GameCore::Move()

@@ -38,6 +38,7 @@ public:
     sf::Music* GetMusic(MusicList type);
 
     void PlaySound(SoundList type);
+    void StopMusic(MusicList type);
 };
 
 class TextureRect

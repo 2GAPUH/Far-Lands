@@ -211,6 +211,11 @@ void ResourceManager::PlaySound(SoundList type)
         }
 }
 
+void ResourceManager::StopMusic(MusicList type)
+{
+    music[(int)type]->stop();
+}
+
 sf::Texture* ResourceManager::LoadTexture(sf::String path)
 {
     path = "Textures\\" + path;

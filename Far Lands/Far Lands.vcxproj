@@ -48,8 +48,6 @@
     <ClCompile Include="InvisibleWall.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
-    <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="GameCore.cpp" />
@@ -81,8 +79,6 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="Projectile.h" />
-    <ClInclude Include="Sound.h" />
-    <ClInclude Include="StatusBar.h" />
     <ClInclude Include="Stone.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="GameCore.h" />

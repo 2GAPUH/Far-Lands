@@ -22,6 +22,7 @@ private:
     sf::RenderWindow* win = nullptr;
     World* world = nullptr;
     sf::View* view = nullptr;
+    static bool playerAlive;
 
 private:
     void Update();
@@ -34,5 +35,6 @@ private:
 public:
     void Start();
     sf::RenderWindow* GetWin();
+    void EndGame();
 };
 

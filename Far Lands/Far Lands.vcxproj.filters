@@ -96,9 +96,6 @@
     <ClInclude Include="FarmerPlanted.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="StatusBar.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Campfire.h">
       <Filter>Objects</Filter>
     </ClInclude>
@@ -110,9 +107,6 @@
     </ClInclude>
     <ClInclude Include="InvisibleWall.h">
       <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStats.h">
       <Filter>Файлы заголовков</Filter>
@@ -185,9 +179,6 @@
     <ClCompile Include="FarmerPlanted.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="StatusBar.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Campfire.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
@@ -199,9 +190,6 @@
     </ClCompile>
     <ClCompile Include="InvisibleWall.cpp">
       <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStats.cpp">
       <Filter>Исходные файлы</Filter>

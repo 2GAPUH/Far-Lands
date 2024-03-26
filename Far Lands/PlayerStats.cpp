@@ -1,5 +1,34 @@
 #include "PlayerStats.h"
 #include "ResourceManager.h"
+#include "GameCore.h"
+
+void PlayerStats::Starve()
+{
+	if (starveClock.getElapsedTime().asSeconds() > STARVE_TIME)
+	{
+		if (starve > 0)
+			starve--;
+		
+		else
+			Damage(1);
+		
+		starveClock.restart();
+	}
+}
+
+void PlayerStats::Tired()
+{
+	if (energyClock.getElapsedTime().asSeconds() > ENERGY_TIME)
+	{
+		if (energy > 0)
+			energy--;
+		
+		else
+			Damage(1);
+		
+		energyClock.restart();
+	}
+}
 
 PlayerStats::PlayerStats() : Stats(EnemyType::PLAYER)
 {
@@ -47,5 +76,17 @@ void PlayerStats::Draw(sf::RenderWindow* win, sf::Vector2f pos)
 
 void PlayerStats::Update()
 {
+	Starve();
+	Tired();
+}
 
+void PlayerStats::Damage(int i)
+{
+	HP -= i;
+	if (HP <= 0)
+	{
+		//ResourceManager::GetInstance()->PlaySound(SoundList::DEATH);
+		GameCore::GetInstance()->EndGame();
+		return;
+	}
 }
