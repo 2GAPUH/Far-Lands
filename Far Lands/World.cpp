@@ -175,10 +175,10 @@ CollisionInfo World::CheckCollision(sf::Vector2f& shift, sf::FloatRect object)
     for (int i = tilePos.x - 1; i <= tilePos.x + 1; i++)
         for (int j = tilePos.y - 1; j <= tilePos.y + 1; j++)
         {
-            try {
-                flag += handleCollision(object, map[i][j]->GetObjBounds(), shift);
-            }
-            catch (...){}
+            sf::FloatRect tmp = map[i][j]->GetObjBounds();
+            if (tmp.left == -100)
+                continue;
+            flag += handleCollision(object, tmp, shift);
         }
 
     if (flag)
@@ -224,6 +224,11 @@ void World::TouchObject(sf::Vector2i pos)
 void World::DamageObject(sf::Vector2i pos)
 {
     map[pos.x][pos.y]->DamageObject();
+}
+
+void World::Plow(sf::Vector2i pos)
+{
+    map[pos.x][pos.y]->Plow();
 }
 
 void World::SpawnRandomObject()

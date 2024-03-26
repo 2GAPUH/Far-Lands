@@ -60,17 +60,8 @@ int ItemInStorage::PutItem(ItemType type, int count)
 		switch(type)
 		{
 		case ItemType::BERRYS:
-			rect.setTextureRect({ 32,0, 16,16 });
-			break;
-
 		case ItemType::BIG_LOG:
-			rect.setTextureRect({ 16,0, 16,16 });
-			break;
-
 		case ItemType::SMALL_LOG:
-			rect.setTextureRect({ 32,0, 16,16 });
-			break;
-
 		case ItemType::STONE:
 			rect.setTextureRect({ 32,0, 16,16 });
 			break;

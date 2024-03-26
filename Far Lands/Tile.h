@@ -19,5 +19,6 @@ public:
 	ObjectType GetObectType();
 	void Touch();
 	void DamageObject();
+	void Plow();
 };
 

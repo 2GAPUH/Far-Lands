@@ -15,6 +15,8 @@ void Projectile::UpdateMovementVector(sf::Vector2f pos, sf::Vector2f aim)
 
 Projectile::Projectile(ProjectileType type, sf::Vector2f pos, sf::Vector2f aim) : Entity(TypeConverter::Convert(type), pos)
 {
+    ResourceManager::GetInstance()->PlaySound(SoundList::BOW);
+
     switch (type)
     {
     case ProjectileType::ARROW:

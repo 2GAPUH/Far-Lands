@@ -41,8 +41,7 @@ void Player::Use(sf::Vector2f mousePos)
 		{
 
 		case ItemType::HOE:
-			if(world->GetTileObjetType(mouseTileClick) == ObjectType::EMPTY)
-				world->SetObject(ObjectType::FARMER_PLANTED, mouseTileClick);
+			world->Plow(mouseTileClick);
 			break;
 
 		case ItemType::AXE:
@@ -75,7 +74,17 @@ float Player::GetSpeed()
 
 void Player::Move(sf::Vector2f shift)
 {
+	static sf::Clock clock;
+	
 	rect.move(shift);
+	if (shift != sf::Vector2f{ 0, 0 })
+	{
+		if (clock.getElapsedTime().asSeconds() > 0.3)
+		{
+			clock.restart();
+			ResourceManager::GetInstance()->PlaySound(SoundList::STEP);
+		}
+	}
 }
 
 void Player::CheckViewDerection(sf::Vector2f shift)

@@ -19,6 +19,7 @@ Stone::Stone(sf::Vector2f pos) : Object(ObjectType::STONE, pos)
 Stone::~Stone()
 {
 	EntityManager::GetInstance()->Create(ItemType::STONE, rect.getPosition(), 1);
+	ResourceManager::GetInstance()->PlaySound(SoundList::STONE_BREAK);
 }
 
 void Stone::Touch()

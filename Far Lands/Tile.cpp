@@ -125,7 +125,7 @@ sf::FloatRect Tile::GetObjBounds()
     if (obj != 0 && obj->GetCollision())
         return obj->GetCollisionRect();
     else
-        throw("Object troubles");
+        return { -100, -100, 0, 0 };
 }
 
 bool Tile::CheckObject()
@@ -158,12 +158,24 @@ void Tile::DamageObject()
 {
     if (obj)
     {
+        ResourceManager::GetInstance()->PlaySound(SoundList::SLEDGE_HEAT);
         if(obj->Damage())
         {
             delete obj;
             obj = nullptr;
         }
     }
+}
+
+void Tile::Plow()
+{
+    if (obj == nullptr)
+    {
+        SetObject(ObjectType::FARMER_PLANTED);
+        ResourceManager::GetInstance()->PlaySound(SoundList::HOE_HIT);
+    }
+
+    
 }
 
 

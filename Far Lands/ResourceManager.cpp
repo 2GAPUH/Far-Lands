@@ -102,6 +102,9 @@ ResourceManager::ResourceManager()
     sound[(int)SoundList::BOW] = LoadSound("bow.wav");
 #pragma endregion
 
+
+    for (int i = 0; i < 10; i++)
+        soundArray[i].setVolume(30.);
 }
 
 ResourceManager::~ResourceManager()

@@ -9,6 +9,7 @@ BerryBush::BerryBush(sf::Vector2f pos) : Object(ObjectType::BERRY_BUSH, pos)
 BerryBush::~BerryBush()
 {
 	EntityManager::GetInstance()->Create(ItemType::BERRYS, rect.getPosition(), 1);
+	ResourceManager::GetInstance()->PlaySound(SoundList::PLANT_BREAK);
 }
 
 void BerryBush::Touch()

@@ -17,6 +17,7 @@ Stump::Stump(sf::Vector2f pos) : Object(ObjectType::STUMP, pos)
 Stump::~Stump()
 {
 	EntityManager::GetInstance()->Create(ItemType::SMALL_LOG, rect.getPosition(), 1);
+	ResourceManager::GetInstance()->PlaySound(SoundList::WOOD_BREAK);
 }
 
 void Stump::Touch()

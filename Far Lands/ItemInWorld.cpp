@@ -36,6 +36,7 @@ ItemInWorld::ItemInWorld(ItemType type, sf::Vector2f pos, int count) : Entity(Ty
 {
 	player = Player::GetInstance();
 	rect.setSize({ 32, 32 });
+	rect.setTextureRect({32, 0, 16, 16});
 	this->count = count;
 	this->type = type;
 }
