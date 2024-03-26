@@ -23,6 +23,7 @@ private:
 	Tile*** map = nullptr;
 	bool handleCollision(sf::FloatRect& player, const sf::FloatRect& block, sf::Vector2f& shift);
 	std::vector<std::vector<int>>* ReadFile(std::string path);
+	sf::Music* music = nullptr;
 
 public:
 	void Draw(sf::RenderWindow* win, sf::FloatRect tilePos);
@@ -33,7 +34,7 @@ public:
 	void Update();
 	ObjectType GetTileObjetType(sf::Vector2i pos);
 	void TouchObject(sf::Vector2i pos);
-	void DestroyObject(sf::Vector2i pos);
+	void DamageObject(sf::Vector2i pos);
 	void SpawnRandomObject();
 };
 

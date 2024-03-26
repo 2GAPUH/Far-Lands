@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "SFML/Audio.hpp"
 #include <iostream>
 #include <random>
 #include <unordered_map>
@@ -13,9 +14,12 @@ enum class CollisionInfo {FALSE, TRUE, OUT_WORLD};
 #define BASE_FRAME_SIZE sf::Vector2f{16, 16}
 
 
-enum class Type { EMPTY, PLAYER, GRASS, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, BERRY_BUSH, INVISIBLE_WALL, WATER, FARMER_PLANTED, HOE, AXE, STATUS_BAR, 
+enum class Type { EMPTY, PLAYER, GRASS, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, BERRY_BUSH, INVISIBLE_WALL, WATER, FARMER_PLANTED, HOE, SLEDGE, STATUS_BAR, 
     STATUS_BAR_POINT, STONE, LOG, CAMPFIRE, STUMP };
 
+enum class SoundList {SLEDGE_HEAT, CAMPFIRE_ADD_FUEL, DEATH, EAT, HARVEST, HOE_HIT, CHICKEN_DEATH, PLANT_BREAK, STEP, STONE_BREAK, WOOD_BREAK, BOW};
+
+enum class MusicList { SPRING_DAY };
 
 enum class ObjectType {
     BERRY_BUSH = static_cast<int>(Type::BERRY_BUSH),
@@ -43,7 +47,7 @@ enum class ItemType {
     BOW = static_cast<int>(Type::BOW),
     EMPTY = static_cast<int>(Type::EMPTY),
     HOE = static_cast<int>(Type::HOE),
-    AXE = static_cast<int>(Type::AXE),
+    AXE = static_cast<int>(Type::SLEDGE),
     BERRYS = static_cast<int>(Type::BERRY_BUSH),
     SMALL_LOG = static_cast<int>(Type::STUMP),
     BIG_LOG = static_cast<int>(Type::LOG),
@@ -60,7 +64,7 @@ public:
             {ItemType::EMPTY, Type::EMPTY},
             {ItemType::BERRYS, Type::BERRY_BUSH},
             {ItemType::HOE, Type::HOE},
-            {ItemType::AXE, Type::AXE},
+            {ItemType::AXE, Type::SLEDGE},
             {ItemType::SMALL_LOG, Type::STUMP},
             {ItemType::BIG_LOG, Type::LOG},
             {ItemType::STONE, Type::STONE}
@@ -125,6 +129,8 @@ struct MyTexture
 #define MISSING_TEXTURE_PATH "Textures\\missingTexture.png"
 
 #define MAX_TEXTURE_COUNT 100
+#define MAX_MUSIC_COUNT 10
+#define MAX_SOUND_COUNT 100
 
 #define BASE_GAZE_DERECTION 0
 #define TEXTURE_SIZE 16

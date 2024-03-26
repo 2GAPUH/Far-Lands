@@ -18,6 +18,6 @@ public:
 	void Update();
 	ObjectType GetObectType();
 	void Touch();
-	void DestroyObject();
+	void DamageObject();
 };
 

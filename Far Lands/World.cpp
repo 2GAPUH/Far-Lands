@@ -125,6 +125,10 @@ World::World()
 
     for (int i = 0; i < 80; i++)
         SpawnRandomObject();
+
+    music = ResourceManager::GetInstance()->GetMusic(MusicList::SPRING_DAY);
+    music->setLoop(true);
+    music->play();
 }
 
 World::~World()
@@ -217,9 +221,9 @@ void World::TouchObject(sf::Vector2i pos)
     map[pos.x][pos.y]->Touch();
 }
 
-void World::DestroyObject(sf::Vector2i pos)
+void World::DamageObject(sf::Vector2i pos)
 {
-    map[pos.x][pos.y]->DestroyObject();
+    map[pos.x][pos.y]->DamageObject();
 }
 
 void World::SpawnRandomObject()

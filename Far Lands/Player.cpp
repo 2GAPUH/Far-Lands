@@ -46,7 +46,7 @@ void Player::Use(sf::Vector2f mousePos)
 			break;
 
 		case ItemType::AXE:
-			world->DestroyObject(mouseTileClick);
+			world->DamageObject(mouseTileClick);
 			break;
 
 		case ItemType::EMPTY:

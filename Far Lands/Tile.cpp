@@ -154,12 +154,15 @@ void Tile::Touch()
         obj->Touch();
 }
 
-void Tile::DestroyObject()
+void Tile::DamageObject()
 {
     if (obj)
     {
-        delete obj;
-        obj = nullptr;
+        if(obj->Damage())
+        {
+            delete obj;
+            obj = nullptr;
+        }
     }
 }
 

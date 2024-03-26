@@ -47,6 +47,7 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="InvisibleWall.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Storage.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="InvisibleWall.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="StatusBar.h" />
     <ClInclude Include="Stone.h" />
     <ClInclude Include="Storage.h" />

@@ -22,4 +22,5 @@ Chicken::Chicken(sf::Vector2f pos) : Enemy(EnemyType::CHICKEN, pos)
 Chicken::~Chicken()
 {
 	Drop();
+	ResourceManager::GetInstance()->PlaySound(SoundList::CHICKEN_DEATH);
 }

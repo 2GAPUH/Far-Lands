@@ -2,6 +2,8 @@
 
 Stone::Stone(sf::Vector2f pos) : Object(ObjectType::STONE, pos)
 {
+	durability = 3;
+
 	switch (RandomNumber::GetRandomNumber(0, 1))
 	{
 	case 1:

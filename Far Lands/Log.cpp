@@ -2,6 +2,8 @@
 
 Log::Log(sf::Vector2f pos) : Object(ObjectType::LOG, pos)
 {
+	durability = 3;
+
 	rect.setTextureRect({ 0, 0, 16, 16 });
 }
 

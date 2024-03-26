@@ -111,6 +111,9 @@
     <ClInclude Include="InvisibleWall.h">
       <Filter>Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -193,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="InvisibleWall.cpp">
       <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

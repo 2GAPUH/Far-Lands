@@ -31,3 +31,11 @@ bool Object::GetCollision()
 {
 	return collision;
 }
+
+bool Object::Damage()
+{
+	durability -= 1;
+	if (durability <= 0)
+		return true;
+	return false;
+}

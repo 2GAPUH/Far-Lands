@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "BaseValue.h"
 #include "Animation.h"
+#include "ResourceManager.h"
 
 class Enemy :public Entity
 {

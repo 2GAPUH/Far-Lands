@@ -20,5 +20,6 @@ public:
 	virtual ObjectType GetType() = 0;
 	virtual void Update() = 0;
 	virtual void Touch() = 0;
+	bool Damage();
 };
 
