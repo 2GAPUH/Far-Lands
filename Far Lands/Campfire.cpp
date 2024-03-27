@@ -2,7 +2,7 @@
 
 Campfire::Campfire(sf::Vector2f pos) : Object (ObjectType::CAMPFIRE, pos)
 {
-	rect.setTextureRect({ 0, 0, 32, 32 });
+	animation = new Animation(ResourceManager::GetInstance()->GetTexture(Type::CAMPFIRE), { 32, 32 }, 5, {TILE_SIZE.x/32.f, TILE_SIZE.y /32.f});
 }
 
 Campfire::~Campfire()
@@ -21,3 +21,10 @@ ObjectType Campfire::GetType()
 {
 	return ObjectType::CAMPFIRE;
 }
+
+void Campfire::Draw(sf::RenderWindow* win)
+{
+	animation->Draw(status, win, rect.getPosition());
+}
+
+

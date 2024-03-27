@@ -7,6 +7,7 @@
 #define WIN_SIZE sf::Vector2f{1280, 720}
 #define ROOT_CONST 1.414213562373
 enum class StateType { LEFT, RIGHT, DOWN, TOP, IDLE };
+enum class StatusType {ENABLE, DISABLE};
 enum class CollisionInfo {FALSE, TRUE, OUT_WORLD};
 
 #define BASE_FRAME_TIME 50
@@ -173,8 +174,8 @@ struct MyTexture
 #pragma endregion
 
 
-#define STARVE_TIME  3
-#define ENERGY_TIME 5
+#define STARVE_TIME  10
+#define ENERGY_TIME 15
 
 #define ALIVE true
 #define DEAD false

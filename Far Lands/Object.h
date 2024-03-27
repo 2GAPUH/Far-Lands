@@ -13,7 +13,7 @@ protected:
 public:
 	Object(ObjectType type, sf::Vector2f pos);
 	virtual ~Object();
-	void Draw(sf::RenderWindow* win);
+	virtual void Draw(sf::RenderWindow* win);
 	void SetPosition(sf::Vector2f pos);
 	sf::FloatRect GetCollisionRect();
 	bool GetCollision();

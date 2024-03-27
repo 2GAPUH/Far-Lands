@@ -129,6 +129,8 @@ World::World()
     music = ResourceManager::GetInstance()->GetMusic(MusicList::SPRING_DAY);
     music->setLoop(true);
     music->play();
+
+    SetObject(ObjectType::CAMPFIRE, { 15, 15 });
 }
 
 World::~World()
