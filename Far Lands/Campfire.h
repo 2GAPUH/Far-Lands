@@ -6,6 +6,9 @@ class Campfire : public Object
 {
 	Animation* animation = nullptr;
 	StatusType status = StatusType::ENABLE;
+	sf::Clock clock;
+	float burningTime = CAMFIRE_BURNING_TIME;
+	sf::FloatRect activeRect;
 
 public:
 	Campfire(sf::Vector2f pos);

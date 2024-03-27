@@ -18,7 +18,7 @@ void PlayerStats::Starve()
 
 void PlayerStats::Tired()
 {
-	if (energyClock.getElapsedTime().asSeconds() > ENERGY_TIME)
+	if (energyClock.getElapsedTime().asSeconds() > ENERGY_TIME && restClock.getElapsedTime().asSeconds() > REST_TIME + 1)
 	{
 		if (energy > 0)
 			energy--;
@@ -38,8 +38,8 @@ PlayerStats::PlayerStats() : Stats(EnemyType::PLAYER)
 	point.setSize(sf::Vector2f{ 12, 12 });
 	point.setTexture(ResourceManager::GetInstance()->GetTexture(Type::STATUS_BAR_POINT));
 
-	starve = 10;
-	energy = 10;
+	starve = STARVE_MAX_COUNT;
+	energy = ENERGY_MAX_COUNT;
 }
 
 PlayerStats::~PlayerStats()
@@ -83,9 +83,26 @@ void PlayerStats::Update()
 void PlayerStats::Damage(int i)
 {
 	HP -= i;
+
 	if (HP <= 0)
 	{
 		GameCore::GetInstance()->EndGame();
 		return;
+	}
+}
+
+void PlayerStats::RestoreEnergy(int i)
+{
+	energy += i;
+	if (energy > ENERGY_MAX_COUNT)
+		energy = 10;
+}
+
+void PlayerStats::Rest()
+{
+	if (restClock.getElapsedTime().asSeconds() > REST_TIME)
+	{
+		restClock.restart();
+		RestoreEnergy(1);
 	}
 }

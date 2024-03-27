@@ -158,6 +158,11 @@ void Player::Update(sf::RenderWindow* win)
 	stats->Update();
 }
 
+void Player::Rest()
+{
+	stats->Rest();
+}
+
 Player* Player::GetInstance()
 {
     if (instance == nullptr)

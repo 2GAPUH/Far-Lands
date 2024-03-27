@@ -12,6 +12,8 @@ class PlayerStats : public Stats
 	sf::Clock energyClock;
 	void Starve();
 	void Tired();
+	sf::Clock restClock;
+	bool rest = false;
 
 public:
 	PlayerStats();
@@ -19,5 +21,7 @@ public:
 	void Draw(sf::RenderWindow* win, sf::Vector2f pos);
 	void Update();
 	void Damage(int i);
+	void RestoreEnergy(int i);
+	void Rest();
 };
 

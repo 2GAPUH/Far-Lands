@@ -180,6 +180,14 @@ struct MyTexture
 #define ALIVE true
 #define DEAD false
 
+#define CAMFIRE_BURNING_TIME 10
+#define CAMPFIRE_ACTIVE_TILE_RENGE 2
+#define REST_TIME 5
+
+#define STARVE_MAX_COUNT 10
+#define ENERGY_MAX_COUNT 10
+
+
 /*
 +добавить возможность ломать объекты с дропом
 добавить хищника, который охотится на сущности
