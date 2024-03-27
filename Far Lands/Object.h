@@ -19,7 +19,7 @@ public:
 	bool GetCollision();
 	virtual ObjectType GetType() = 0;
 	virtual void Update() = 0;
-	virtual void Touch() = 0;
+	virtual bool Touch(ItemType type) = 0;
 	bool Damage();
 };
 

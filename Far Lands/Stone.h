@@ -5,7 +5,7 @@ class Stone : public Object
 public:
 	Stone(sf::Vector2f pos);
 	~Stone();
-	void Touch() override;
+	bool Touch(ItemType type) override;
 	void Update() override;
 	ObjectType GetType() override;
 

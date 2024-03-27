@@ -54,7 +54,17 @@ void Player::Use(sf::Vector2f mousePos)
 			break;
 
 		case ItemType::EMPTY:
-			world->TouchObject(mouseTileClick);
+			world->TouchObject(mouseTileClick, ItemType::EMPTY);
+			break;
+
+		case ItemType::BIG_LOG:
+			if (world->TouchObject(mouseTileClick, ItemType::BIG_LOG) == USE)
+				inventory->ReduceCurElem();
+			break;
+
+		case ItemType::SMALL_LOG:
+			if (world->TouchObject(mouseTileClick, ItemType::SMALL_LOG) == USE)
+				inventory->ReduceCurElem();
 			break;
 		}
 	

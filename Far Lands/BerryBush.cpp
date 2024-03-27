@@ -12,7 +12,7 @@ BerryBush::~BerryBush()
 	ResourceManager::GetInstance()->PlaySound(SoundList::PLANT_BREAK);
 }
 
-void BerryBush::Touch()
+bool BerryBush::Touch(ItemType type)
 {
 	if (ready)
 	{
@@ -22,6 +22,8 @@ void BerryBush::Touch()
 		EntityManager::GetInstance()->Create(ItemType::BERRYS, rect.getPosition(), 3);
 		rect.setTextureRect({ 0, 0, 16, 16 });
 	}
+
+	return NOT_USE;
 }
 
 void BerryBush::Update()

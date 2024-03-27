@@ -102,6 +102,8 @@ ResourceManager::ResourceManager()
     sound[(int)SoundList::WOOD_BREAK] = LoadSound("wood_break.wav");
 
     sound[(int)SoundList::BOW] = LoadSound("bow.wav");
+
+    sound[(int)SoundList::ADD_FUEL] = LoadSound("add_fuel.wav");
 #pragma endregion
 
 

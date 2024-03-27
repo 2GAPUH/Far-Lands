@@ -18,6 +18,7 @@ FarmerPlanted::~FarmerPlanted()
 {
 }
 
-void FarmerPlanted::Touch()
+bool FarmerPlanted::Touch(ItemType type)
 {
+	return NOT_USE;
 }

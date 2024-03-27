@@ -17,7 +17,7 @@ public:
 	bool CheckObject();
 	void Update();
 	ObjectType GetObectType();
-	void Touch();
+	bool Touch(ItemType type);
 	void DamageObject();
 	void Plow();
 };

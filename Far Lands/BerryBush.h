@@ -10,7 +10,7 @@ private:
 public:
 	BerryBush(sf::Vector2f pos);
 	~BerryBush();
-	void Touch() override;
+	bool Touch(ItemType type) override;
 	void Update() override;
 	ObjectType GetType() override;
 };

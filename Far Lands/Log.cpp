@@ -13,8 +13,10 @@ Log::~Log()
 	ResourceManager::GetInstance()->PlaySound(SoundList::WOOD_BREAK);
 }
 
-void Log::Touch()
+bool Log::Touch(ItemType type)
 {
+
+	return NOT_USE;
 }
 
 void Log::Update()

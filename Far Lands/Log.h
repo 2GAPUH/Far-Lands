@@ -6,7 +6,7 @@ class Log : public Object
 public:
 	Log(sf::Vector2f pos);
 	~Log();
-	void Touch() override;
+	bool Touch(ItemType type) override;
 	void Update() override;
 	ObjectType GetType() override;
 };

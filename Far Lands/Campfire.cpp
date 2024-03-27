@@ -15,8 +15,28 @@ Campfire::~Campfire()
 {
 }
 
-void Campfire::Touch()
+bool Campfire::Touch(ItemType type)
 {
+	switch (type)
+	{
+	case ItemType::BIG_LOG:
+		burningTime += BIG_LOG_BURNING_TIME;
+		status = StatusType::ENABLE;
+		clock.restart();
+		ResourceManager::GetInstance()->PlaySound(SoundList::ADD_FUEL);
+		return USE;
+		break;
+
+	case ItemType::SMALL_LOG:
+		burningTime += SMALL_LOG_BURNING_TIME;
+		status = StatusType::ENABLE;
+		clock.restart();
+		ResourceManager::GetInstance()->PlaySound(SoundList::ADD_FUEL);
+		return USE;
+		break;
+	}
+
+	return NOT_USE;
 }
 
 void Campfire::Update()

@@ -33,7 +33,7 @@ public:
 	sf::Vector2i GetTilePos(sf::Vector2f point);
 	void Update();
 	ObjectType GetTileObjetType(sf::Vector2i pos);
-	void TouchObject(sf::Vector2i pos);
+	bool TouchObject(sf::Vector2i pos, ItemType type);
 	void DamageObject(sf::Vector2i pos);
 	void Plow(sf::Vector2i pos);
 	void SpawnRandomObject();

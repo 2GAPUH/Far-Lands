@@ -20,8 +20,9 @@ Stump::~Stump()
 	ResourceManager::GetInstance()->PlaySound(SoundList::WOOD_BREAK);
 }
 
-void Stump::Touch()
+bool Stump::Touch(ItemType type)
 {
+	return NOT_USE;
 }
 
 void Stump::Update()

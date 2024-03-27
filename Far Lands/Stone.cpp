@@ -22,8 +22,9 @@ Stone::~Stone()
 	ResourceManager::GetInstance()->PlaySound(SoundList::STONE_BREAK);
 }
 
-void Stone::Touch()
+bool Stone::Touch(ItemType type)
 {
+	return NOT_USE;
 }
 
 void Stone::Update()

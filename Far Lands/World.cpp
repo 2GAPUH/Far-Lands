@@ -218,9 +218,9 @@ ObjectType World::GetTileObjetType(sf::Vector2i pos)
     return map[pos.x][pos.y]->GetObectType();
 }
 
-void World::TouchObject(sf::Vector2i pos)
+bool World::TouchObject(sf::Vector2i pos, ItemType type)
 {
-    map[pos.x][pos.y]->Touch();
+    return map[pos.x][pos.y]->Touch(type);
 }
 
 void World::DamageObject(sf::Vector2i pos)

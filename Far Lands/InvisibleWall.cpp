@@ -9,8 +9,9 @@ InvisibleWall::~InvisibleWall()
 {
 }
 
-void InvisibleWall::Touch()
+bool InvisibleWall::Touch(ItemType type)
 {
+	return NOT_USE;
 }
 
 void InvisibleWall::Update()

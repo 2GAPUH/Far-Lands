@@ -13,7 +13,7 @@ class Campfire : public Object
 public:
 	Campfire(sf::Vector2f pos);
 	~Campfire();
-	void Touch() override;
+	bool Touch(ItemType type) override;
 	void Update() override;
 	ObjectType GetType() override;
 	void Draw(sf::RenderWindow* win) override;

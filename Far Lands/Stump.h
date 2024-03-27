@@ -7,7 +7,7 @@ class Stump : public Object
 public:
 	Stump(sf::Vector2f pos);
 	~Stump();
-	void Touch() override;
+	bool Touch(ItemType type) override;
 	void Update() override;
 	ObjectType GetType() override;
 };

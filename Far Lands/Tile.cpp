@@ -148,10 +148,11 @@ ObjectType Tile::GetObectType()
     return obj->GetType();
 }
 
-void Tile::Touch()
+bool Tile::Touch(ItemType type)
 {
     if (obj)
-        obj->Touch();
+        return obj->Touch(type);
+    return NOT_USE;
 }
 
 void Tile::DamageObject()
