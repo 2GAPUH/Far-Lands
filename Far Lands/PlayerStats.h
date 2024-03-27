@@ -21,7 +21,8 @@ public:
 	void Draw(sf::RenderWindow* win, sf::Vector2f pos);
 	void Update();
 	void Damage(int i);
-	void RestoreEnergy(int i);
 	void Rest();
+	void RestoreEnergy(int i);
+	void RestoreMeal(int i);
 };
 

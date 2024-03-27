@@ -98,6 +98,13 @@ void PlayerStats::RestoreEnergy(int i)
 		energy = 10;
 }
 
+void PlayerStats::RestoreMeal(int i)
+{
+	starve += i;
+	if (starve > STARVE_MAX_COUNT)
+		starve = 10;
+}
+
 void PlayerStats::Rest()
 {
 	if (restClock.getElapsedTime().asSeconds() > REST_TIME)

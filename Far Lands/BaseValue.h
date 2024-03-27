@@ -16,9 +16,9 @@ enum class CollisionInfo {FALSE, TRUE, OUT_WORLD};
 
 
 enum class Type { EMPTY, PLAYER, GRASS, ARROW, CHICKEN, EGG, CHICKEN_MEAT_RAW, INTERFACE, BOW, BERRY_BUSH, INVISIBLE_WALL, WATER, FARMER_PLANTED, HOE, SLEDGE, STATUS_BAR, 
-    STATUS_BAR_POINT, STONE, LOG, CAMPFIRE, STUMP, PLAYER2 };
+    STATUS_BAR_POINT, STONE, LOG, CAMPFIRE, STUMP, PLAYER2, CHICKEN_MEAT_COOKED};
 
-enum class SoundList {SLEDGE_HEAT, CAMPFIRE_ADD_FUEL, DEATH, EAT, HARVEST, HOE_HIT, CHICKEN_DEATH, PLANT_BREAK, STEP, STONE_BREAK, WOOD_BREAK, BOW, ADD_FUEL};
+enum class SoundList {SLEDGE_HEAT, CAMPFIRE_ADD_FUEL, DEATH, EAT, HARVEST, HOE_HIT, CHICKEN_DEATH, PLANT_BREAK, STEP, STONE_BREAK, WOOD_BREAK, BOW, ADD_FUEL, COOKED, EATING};
 
 enum class MusicList { SPRING_DAY };
 
@@ -52,7 +52,8 @@ enum class ItemType {
     BERRYS = static_cast<int>(Type::BERRY_BUSH),
     SMALL_LOG = static_cast<int>(Type::STUMP),
     BIG_LOG = static_cast<int>(Type::LOG),
-    STONE = static_cast<int>(Type::STONE)
+    STONE = static_cast<int>(Type::STONE),
+    CHICKEN_MEAT_COOKED = static_cast<int>(Type::CHICKEN_MEAT_COOKED)
 };
 
 class TypeConverter {
@@ -68,7 +69,8 @@ public:
             {ItemType::AXE, Type::SLEDGE},
             {ItemType::SMALL_LOG, Type::STUMP},
             {ItemType::BIG_LOG, Type::LOG},
-            {ItemType::STONE, Type::STONE}
+            {ItemType::STONE, Type::STONE},
+            {ItemType::CHICKEN_MEAT_COOKED, Type::CHICKEN_MEAT_COOKED}
         };
 
         auto it = typeMap.find(itemType);
@@ -193,14 +195,16 @@ struct MyTexture
 #define BIG_LOG_BURNING_TIME 25
 #define SMALL_LOG_BURNING_TIME 10
 
+#define COOKED_CHICKEN_MEAL 5
+
 /*
 +добавить возможность ломать объекты с дропом
 добавить хищника, который охотится на сущности
 добавить взаимодействие с пашней
 +добавить уничтожение кустика, с сбором ягод
 возможность садить ягоды, которые вырастают в кустик
-добавить систему голода и поглащения еды
-усталость, которая восполняется костром, который создается и восполняется поленьями
++добавить систему голода и поглащения еды
++усталость, которая восполняется костром, который создается и восполняется поленьями
 
 +переделать систему классов
 */

@@ -38,6 +38,8 @@ ResourceManager::ResourceManager()
 
     texture[(int)Type::CHICKEN_MEAT_RAW] = LoadTexture("chicken_meat_raw.png");
 
+    texture[(int)Type::CHICKEN_MEAT_COOKED] = LoadTexture("chicken_meat_cooked.png");
+
     texture[(int)Type::EGG] = LoadTexture("egg.png");
 
     texture[(int)Type::INTERFACE] = LoadTexture("interface.png");
@@ -104,6 +106,10 @@ ResourceManager::ResourceManager()
     sound[(int)SoundList::BOW] = LoadSound("bow.wav");
 
     sound[(int)SoundList::ADD_FUEL] = LoadSound("add_fuel.wav");
+
+    sound[(int)SoundList::COOKED] = LoadSound("cooked.wav");
+
+    sound[(int)SoundList::EATING] = LoadSound("eating.wav");
 #pragma endregion
 
 

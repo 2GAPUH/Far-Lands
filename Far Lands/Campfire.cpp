@@ -34,6 +34,15 @@ bool Campfire::Touch(ItemType type)
 		ResourceManager::GetInstance()->PlaySound(SoundList::ADD_FUEL);
 		return USE;
 		break;
+
+	case ItemType::CHICKEN_MEAT_RAW:
+		if(status == StatusType::ENABLE)
+		{
+			EntityManager::GetInstance()->Create(ItemType::CHICKEN_MEAT_COOKED, rect.getPosition(), 1);
+			ResourceManager::GetInstance()->PlaySound(SoundList::COOKED);
+			return USE;
+		}
+		break;
 	}
 
 	return NOT_USE;

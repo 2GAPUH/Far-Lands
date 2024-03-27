@@ -49,6 +49,17 @@ void Player::Use(sf::Vector2f mousePos)
 			world->Plow(mouseTileClick);
 			break;
 
+		case ItemType::CHICKEN_MEAT_RAW:
+			if (world->TouchObject(mouseTileClick, ItemType::CHICKEN_MEAT_RAW) == USE)
+				inventory->ReduceCurElem();
+			break;
+
+		case ItemType::CHICKEN_MEAT_COOKED:
+			stats->RestoreMeal(COOKED_CHICKEN_MEAL);
+			inventory->ReduceCurElem();
+			ResourceManager::GetInstance()->PlaySound(SoundList::EAT);
+			break;
+
 		case ItemType::AXE:
 			world->DamageObject(mouseTileClick);
 			break;
