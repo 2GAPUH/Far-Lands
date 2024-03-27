@@ -60,6 +60,13 @@ void Player::Use(sf::Vector2f mousePos)
 			ResourceManager::GetInstance()->PlaySound(SoundList::EAT);
 			break;
 
+
+		case ItemType::BERRYS:
+			inventory->ReduceCurElem();
+			world->SetObject(ObjectType::BERRY_BUSH, mouseTileClick);
+			ResourceManager::GetInstance()->PlaySound(SoundList::PLANT_SET);
+			break;
+
 		case ItemType::AXE:
 			world->DamageObject(mouseTileClick);
 			break;

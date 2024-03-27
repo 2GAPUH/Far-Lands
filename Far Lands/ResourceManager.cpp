@@ -110,6 +110,8 @@ ResourceManager::ResourceManager()
     sound[(int)SoundList::COOKED] = LoadSound("cooked.wav");
 
     sound[(int)SoundList::EATING] = LoadSound("eating.wav");
+
+    sound[(int)SoundList::PLANT_SET] = LoadSound("plant_set.wav");
 #pragma endregion
 
 
