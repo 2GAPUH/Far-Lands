@@ -10,6 +10,8 @@ private:
 	sf::Vector2f frameSize = BASE_FRAME_SIZE;
 	sf::Sprite sprite;
 	sf::Clock clock;
+	StateType curState = StateType::DOWN;
+	StatusType curStatus = StatusType::ENABLE;
 
 public:
 	Animation(sf::Texture* texture, sf::Vector2f frameSize = { 16, 16 }, int frameCount = 4, sf::Vector2f scale = {3, 3});

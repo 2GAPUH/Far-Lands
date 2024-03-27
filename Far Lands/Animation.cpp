@@ -10,7 +10,6 @@ Animation::Animation(sf::Texture* texture, sf::Vector2f frameSize, int frameCoun
 
 void Animation::Draw(StateType state, sf::RenderWindow* win, sf::Vector2f pos)
 {
-	static StateType curState = StateType::DOWN;
 
 	sprite.setPosition(pos);
 	
@@ -42,7 +41,6 @@ void Animation::Draw(StateType state, sf::RenderWindow* win, sf::Vector2f pos)
 
 void Animation::Draw(StatusType status, sf::RenderWindow* win, sf::Vector2f pos)
 {
-	static StatusType curStatus = StatusType::ENABLE;
 	sprite.setPosition(pos);
 
 	if (curStatus != status)
